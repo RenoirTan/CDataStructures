@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "CMakeLists.txt": "cmake",
+        "*.txt": "plaintext",
+        "*.html": "html",
+        "vector.h": "c",
+        "string.h": "c",
+        "corecrt.h": "c",
+        "vcruntime_string.h": "c"
+    }
+}

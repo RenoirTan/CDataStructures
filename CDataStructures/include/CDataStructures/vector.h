@@ -55,6 +55,18 @@ cds_vector_t *cds_vector_new(void);
 cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
 
 /**
+ * @brief 
+ * 
+ * @param self 
+ * @param clean_element 
+ * @return cds_status_t 
+ */
+cds_status_t cds_vector_destroy(
+    cds_vector_t *self,
+    void (*clean_element)(void*)
+);
+
+/**
  * @brief Get the pointer to an element in the vector.
  * 
  * @param self The pointer to a vector object.

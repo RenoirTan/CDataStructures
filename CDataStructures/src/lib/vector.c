@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <CDataStructures/vector.h>
@@ -97,6 +98,32 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size) {
     self->buffer = malloc(self->_bytes_allocated);
     self->length = 0;
     CDS_IF_NULL_RETURN_ALLOC_ERROR(self->buffer);
+    return cds_ok;
+}
+
+cds_status_t cds_vector_destroy(
+    cds_vector_t *self,
+    void (*clean_element)(void*)
+) {
+    if (self == NULL)
+        return cds_warning;
+    printf("Checkpoint 1\n");
+    if (self->buffer != NULL) {
+        if (clean_element != NULL) {
+            for (size_t index = 0; index < self->length; index++) {
+                printf("Checkpoint 2: %lu\n", index);
+                clean_element(_cds_vector_get(self, index));
+            }
+        }
+        printf("Checkpoint 3\n");
+#ifndef _MSC_VER
+        free(self->buffer);
+#endif
+        self->buffer = NULL;
+    }
+    printf("Checkpoint 4\n");
+    free(self);
+    printf("Checkpoint 5\n");
     return cds_ok;
 }
 

@@ -190,6 +190,10 @@ cds_status_t cds_vector_push_back(cds_vector_t *self, cds_ptr_t src) {
     return cds_vector_insert(self, self->length, src);
 }
 
+cds_status_t cds_vector_push_front(cds_vector_t *self, cds_ptr_t src) {
+    return cds_vector_insert(self, 0, src);
+}
+
 cds_status_t cds_vector_remove(
     cds_vector_t *self,
     size_t index,
@@ -210,4 +214,10 @@ cds_status_t cds_vector_pop_back(cds_vector_t *self, cds_ptr_t dest) {
     if (self->length <= 0)
         return cds_warning;
     return cds_vector_remove(self, self->length - 1, dest);
+}
+
+cds_status_t cds_vector_pop_front(cds_vector_t *self, cds_ptr_t dest) {
+    if (self-> length <= 0)
+        return cds_warning;
+    return cds_vector_remove(self, 0, dest);
 }

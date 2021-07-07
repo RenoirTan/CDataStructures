@@ -138,6 +138,15 @@ cds_status_t cds_vector_insert(cds_vector_t *self, size_t index, cds_ptr_t src);
 cds_status_t cds_vector_push_back(cds_vector_t *self, cds_ptr_t src);
 
 /**
+ * @brief Push an element to the front of the vector.
+ * 
+ * @param self The pointer to the vector object.
+ * @param src The source of the data of the new element.
+ * @return cds_status_t 
+ */
+cds_status_t cds_vector_push_front(cds_vector_t *self, cds_ptr_t src);
+
+/**
  * @brief Remove an element from the vector. If dest is a non-null pointer, the
  * data from the removed element is copied over to dest, otherwise dest is
  * simply ignored.
@@ -165,5 +174,17 @@ cds_status_t cds_vector_remove(
  * @return cds_status_t 
  */
 cds_status_t cds_vector_pop_back(cds_vector_t *self, cds_ptr_t dest);
+
+/**
+ * @brief Remove the first element in the vector. If dest is a non-null
+ * pointer, the data from the removed element is copied over to dest, otherwise
+ * dest is simply ignored.
+ * 
+ * @param self The pointer to a vector object.
+ * @param dest The pointer to a memory block to be overwritten by the data from
+ * the removed element.
+ * @return cds_status_t 
+ */
+cds_status_t cds_vector_pop_front(cds_vector_t *self, cds_ptr_t dest);
 
 #endif

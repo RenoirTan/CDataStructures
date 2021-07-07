@@ -26,6 +26,16 @@ cds_slist_node_t *cds_slist_node_replace(
     cds_slist_node_t *sibling
 );
 
+cds_status_t cds_slist_node_clean_once(
+    cds_slist_node_t *node,
+    cds_free_f clean_element
+);
+
+cds_status_t cds_slist_node_clean_all(
+    cds_slist_node_t *node,
+    cds_free_f clean_element
+);
+
 
 struct _cds_slist_t {
     struct _cds_slist_node_t *head;
@@ -37,6 +47,10 @@ typedef struct _cds_slist_t cds_slist_t;
 cds_slist_t *cds_slist_new(void);
 
 cds_status_t cds_slist_init(cds_slist_t *self);
+
+cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element);
+
+cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element);
 
 cds_slist_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
 

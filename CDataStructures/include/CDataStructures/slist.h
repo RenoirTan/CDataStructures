@@ -12,7 +12,23 @@ struct _cds_slist_node_t {
 
 typedef struct _cds_slist_node_t cds_slist_node_t;
 
+cds_slist_node_t *cds_slist_node_new(void);
+
+cds_status_t cds_slist_node_init(cds_slist_node_t *node);
+
 cds_slist_node_t *cds_slist_node_get(cds_slist_node_t *node, size_t index);
+
+cds_status_t cds_slist_node_copy_from(
+    cds_slist_node_t *node,
+    cds_ptr_t src,
+    size_t type_size
+);
+
+cds_status_t cds_slist_node_copy_to(
+    cds_slist_node_t *node,
+    cds_ptr_t dest,
+    size_t type_size
+);
 
 cds_status_t cds_slist_node_cut_queue(
     cds_slist_node_t *before,
@@ -38,7 +54,7 @@ cds_status_t cds_slist_node_clean_all(
 
 
 struct _cds_slist_t {
-    struct _cds_slist_node_t *head;
+    cds_slist_node_t *head;
 };
 
 typedef struct _cds_slist_t cds_slist_t;
@@ -55,5 +71,32 @@ cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element);
 cds_slist_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
 
 cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index);
+
+cds_status_t cds_slist_copy_from(
+    cds_slist_t *self,
+    size_t index,
+    cds_ptr_t src,
+    size_t type_size
+);
+
+cds_status_t cds_slist_copy_to(
+    cds_slist_t *self,
+    size_t index,
+    cds_ptr_t dest,
+    size_t type_size
+);
+
+cds_status_t cds_slist_insert(
+    cds_slist_t *self,
+    size_t index,
+    cds_ptr_t src,
+    size_t type_size
+);
+
+cds_status_t cds_slist_push_front(
+    cds_slist_t *self,
+    cds_ptr_t src,
+    size_t type_size
+);
 
 #endif

@@ -4,6 +4,8 @@ project(CDataStructures VERSION 0.1.0)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(src)

@@ -11,7 +11,7 @@
 
 static inline size_t _cds_recommended_capacity(size_t length) {
     if (length <= CDATASTRUCTURES_MIN_CAPACITY)
-        return length;
+        return CDATASTRUCTURES_MIN_CAPACITY;
     else
         return length + amount_to_next_multiple(
             length,

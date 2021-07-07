@@ -27,21 +27,39 @@ static cds_status_t _cds_vector_copy_from(
     return cds_ok;
 }
 
-static cds_status_t _cds_vector_reallocate(cds_vector_t *self, size_t length) {
-    size_t recommended = _cds_recommended_capacity(length) * self->type_size;
-    cds_array_t new_buffer = realloc(self->buffer, recommended);
+static cds_status_t _cds_vector_realloc_buffer(
+    cds_vector_t *self,
+    size_t capacity
+) {
+    cds_array_t new_buffer = realloc(self->buffer, capacity);
     if (new_buffer == NULL)
         return cds_alloc_error;
     self->buffer = new_buffer;
-    self->_bytes_allocated = recommended;
+    self->_bytes_allocated = capacity;
     return cds_ok;
+}
+
+static cds_status_t _cds_vector_reallocate(cds_vector_t *self, size_t length) {
+    size_t recommended = _cds_recommended_capacity(length) * self->type_size;
+    return _cds_vector_realloc_buffer(self, recommended);
+}
+
+static cds_status_t _cds_vector_lazy_reallocate(
+    cds_vector_t *self,
+    size_t length
+) {
+    size_t recommended = _cds_recommended_capacity(length) * self->type_size;
+    if (self->_bytes_allocated != recommended)
+        return _cds_vector_realloc_buffer(self, recommended);
+    else
+        return cds_ok;
 }
 
 static cds_status_t _cds_vector_change_length(
     cds_vector_t *self,
     size_t new_length
 ) {
-    cds_status_t status = _cds_vector_reallocate(self, new_length);
+    cds_status_t status = _cds_vector_lazy_reallocate(self, new_length);
     if (CDS_IS_ERROR(status))
         return status;
     self->length = new_length;
@@ -107,23 +125,18 @@ cds_status_t cds_vector_destroy(
 ) {
     if (self == NULL)
         return cds_warning;
-    printf("Checkpoint 1\n");
     if (self->buffer != NULL) {
         if (clean_element != NULL) {
             for (size_t index = 0; index < self->length; index++) {
-                printf("Checkpoint 2: %lu\n", index);
                 clean_element(_cds_vector_get(self, index));
             }
         }
-        printf("Checkpoint 3\n");
 #ifndef _MSC_VER
         free(self->buffer);
 #endif
         self->buffer = NULL;
     }
-    printf("Checkpoint 4\n");
     free(self);
-    printf("Checkpoint 5\n");
     return cds_ok;
 }
 

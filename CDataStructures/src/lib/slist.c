@@ -32,7 +32,7 @@ static cds_slist_node_t *_cds_slist_node_replace(
     return child;
 }
 
-static cds_status_t *_cds_slist_node_clean_once(
+static cds_status_t _cds_slist_node_clean_once(
     cds_slist_node_t *node,
     cds_free_f clean_element
 ) {

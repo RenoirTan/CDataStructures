@@ -65,10 +65,7 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
  * @param clean_element The function which destroys each element.
  * @return cds_status_t 
  */
-cds_status_t cds_vector_destroy(
-    cds_vector_t *self,
-    void (*clean_element)(void*)
-);
+cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element);
 
 /**
  * @brief Get the pointer to an element in the vector.

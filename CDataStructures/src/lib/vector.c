@@ -119,10 +119,7 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size) {
     return cds_ok;
 }
 
-cds_status_t cds_vector_destroy(
-    cds_vector_t *self,
-    void (*clean_element)(void*)
-) {
+cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
     if (self->buffer != NULL) {
@@ -131,9 +128,7 @@ cds_status_t cds_vector_destroy(
                 clean_element(_cds_vector_get(self, index));
             }
         }
-#ifndef _MSC_VER
         free(self->buffer);
-#endif
         self->buffer = NULL;
     }
     free(self);

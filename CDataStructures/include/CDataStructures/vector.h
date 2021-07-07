@@ -55,10 +55,14 @@ cds_vector_t *cds_vector_new(void);
 cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
 
 /**
- * @brief 
+ * @brief Free up the memory used by the vector (both the buffer and the
+ * vector along with its metadata). You can provide a function to on how to
+ * destroy each element as the pointer moves right as an argument to
+ * `clean_element`. If `clean_element` is NULL, this function will not call
+ * out the destructor for each element.
  * 
- * @param self 
- * @param clean_element 
+ * @param self The vector to destroy
+ * @param clean_element The function which destroys each element.
  * @return cds_status_t 
  */
 cds_status_t cds_vector_destroy(

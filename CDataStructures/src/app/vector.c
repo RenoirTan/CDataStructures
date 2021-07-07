@@ -28,13 +28,13 @@ int main(int argc, char **argv) {
     }
 
     printf("Success.\n");
-    cds_vector_destroy(vector, NULL);
+    cds_vector_free(vector, NULL);
     printf("Press enter to continue > ");
     getchar();
     return 0;
 
     errored:
-    cds_vector_destroy(vector, NULL);
+    cds_vector_free(vector, NULL);
     printf("Errored out. Press enter to continue > ");
     getchar();
     return 1;

@@ -55,6 +55,18 @@ cds_vector_t *cds_vector_new(void);
 cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
 
 /**
+ * @brief Free up the memory used by the buffer in the vector but do not free
+ * the vector itself. If you are using a 2-dimensional vector, you can pass
+ * in this function to `cds_vector_free` with the top-level vector when you
+ * want to deallocate all items. See {@link cds_vector_free} for more info.
+ * 
+ * @param self The vector to destroy
+ * @param clean_element The function which destroys each element.
+ * @return cds_status_t 
+ */
+cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element);
+
+/**
  * @brief Free up the memory used by the vector (both the buffer and the
  * vector along with its metadata). You can provide a function to on how to
  * destroy each element as the pointer moves right as an argument to
@@ -65,7 +77,7 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
  * @param clean_element The function which destroys each element.
  * @return cds_status_t 
  */
-cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element);
+cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element);
 
 /**
  * @brief Get the pointer to an element in the vector.

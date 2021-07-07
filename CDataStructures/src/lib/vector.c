@@ -131,8 +131,15 @@ cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element) {
         free(self->buffer);
         self->buffer = NULL;
     }
-    free(self);
     return cds_ok;
+}
+
+cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element) {
+    if (self == NULL)
+        return cds_warning;
+    cds_status_t status = cds_vector_destroy(self, clean_element);
+    free(self);
+    return status;
 }
 
 cds_ptr_t cds_vector_get(cds_vector_t *self, size_t index) {

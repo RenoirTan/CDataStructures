@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf("Length of vector: %lu\n", vector->length);
+    printf("Length of vector: %zu\n", vector->length);
 
     printf("Remove all even numbers.\n");
 
@@ -39,8 +39,8 @@ int main(int argc, char **argv) {
         ++index;
     }
 
-    printf("Length of vector: %lu\n", vector->length);
-    printf("Memory allocated: %lu\n", vector->_bytes_allocated);
+    printf("Length of vector: %zu\n", vector->length);
+    printf("Memory allocated: %zu\n", vector->_bytes_allocated);
 
     for (index = 0; index < vector->length; index++) {
         int32_t number = *(int32_t*) cds_vector_get(vector, index);
@@ -49,13 +49,10 @@ int main(int argc, char **argv) {
 
     printf("Success.\n");
     cds_vector_free(vector, NULL);
-    printf("Press enter to continue > ");
-    getchar();
     return 0;
 
     errored:
+    printf("Errored out.\n");
     cds_vector_free(vector, NULL);
-    printf("Errored out. Press enter to continue > ");
-    getchar();
     return 1;
 }

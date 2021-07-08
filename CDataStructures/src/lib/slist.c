@@ -1,5 +1,3 @@
-// TODO: make sure that cds_slist_node_t.data is allocated before copying data
-
 #include <stdlib.h>
 #include <string.h>
 #include <CDataStructures/slist.h>
@@ -7,24 +5,6 @@
 
 static cds_slist_node_t *_cds_slist_get_node(cds_slist_t *self, size_t index) {
     return cds_slist_node_get(self->head, index);
-}
-
-static cds_status_t _cds_slist_node_copy_from(
-    cds_slist_node_t *node,
-    cds_ptr_t src,
-    size_t type_size
-) {
-    memcpy(node->data, src, type_size);
-    return cds_ok;
-}
-
-static cds_status_t _cds_slist_node_copy_to(
-    cds_slist_node_t *node,
-    cds_ptr_t dest,
-    size_t type_size
-) {
-    memcpy(dest, node->data, type_size);
-    return cds_ok;
 }
 
 static cds_status_t _cds_slist_node_cut_queue(
@@ -66,8 +46,7 @@ static cds_status_t _cds_slist_node_clean_once(
 
 static cds_status_t _cds_slist_push_front(
     cds_slist_t *self,
-    cds_ptr_t src,
-    size_t type_size
+    cds_ptr_t data
 ) {
     cds_slist_node_t *new_node = cds_slist_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
@@ -76,13 +55,10 @@ static cds_status_t _cds_slist_push_front(
         free(new_node);
         return status;
     }
-    CDS_IF_STATUS_ERROR((_cds_slist_node_copy_from(new_node, src, type_size))) {
-        free(new_node);
-        return status;
-    }
+    new_node->data = data;
     new_node->next = self->head;
     self->head = new_node;
-    return _cds_slist_node_copy_from(new_node, src, type_size);
+    return cds_ok;
 }
 
 cds_slist_node_t *cds_slist_node_new(void) {
@@ -103,26 +79,6 @@ cds_slist_node_t *cds_slist_node_get(cds_slist_node_t *node, size_t index) {
         ++passed;
     }
     return node;
-}
-
-cds_status_t cds_slist_node_copy_from(
-    cds_slist_node_t *node,
-    cds_ptr_t src,
-    size_t type_size
-) {
-    CDS_IF_NULL_RETURN_ERROR(node);
-    CDS_IF_NULL_RETURN_ERROR(src);
-    return _cds_slist_node_copy_from(node, src, type_size);
-}
-
-cds_status_t cds_slist_node_copy_to(
-    cds_slist_node_t *node,
-    cds_ptr_t dest,
-    size_t type_size
-) {
-    CDS_IF_NULL_RETURN_ERROR(node);
-    CDS_IF_NULL_RETURN_ERROR(dest);
-    return _cds_slist_node_copy_to(node, dest, type_size);
 }
 
 cds_status_t cds_slist_node_cut_queue(
@@ -204,39 +160,15 @@ cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index) {
     return node == NULL ? NULL : node->data;
 }
 
-cds_status_t cds_slist_copy_from(
-    cds_slist_t *self,
-    size_t index,
-    cds_ptr_t src,
-    size_t type_size
-) {
-    CDS_IF_NULL_RETURN_ERROR(self);
-    cds_slist_node_t *node = cds_slist_get_node(self, index);
-    if (node == NULL)
-        return cds_index_error;
-    return _cds_slist_node_copy_from(node, src, type_size);
-}
-
-cds_status_t cds_slist_copy_to(
-    cds_slist_t *self,
-    size_t index,
-    cds_ptr_t dest,
-    size_t type_size
-) {
-    CDS_IF_NULL_RETURN_ERROR(self);
-    cds_slist_node_t *node = cds_slist_get_node(self, index);
-    if (node == NULL)
-        return cds_index_error;
-    return _cds_slist_node_copy_to(node, dest, type_size);
-}
-
 cds_status_t cds_slist_insert(
     cds_slist_t *self,
     size_t index,
-    cds_ptr_t src,
-    size_t type_size
+    cds_ptr_t data
 ) {
     CDS_IF_NULL_RETURN_ERROR(self);
+    if (index == 0)
+        return _cds_slist_push_front(self, data);
+    
     CDS_NEW_STATUS;
     cds_slist_node_t *new_node;
     CDS_IF_NULL_RETURN_ALLOC_ERROR((new_node = cds_slist_node_new()));
@@ -244,17 +176,20 @@ cds_status_t cds_slist_insert(
         free(new_node);
         return status;
     }
-    if (index == 0) {
-        new_node->next = self->head;
-        self->head = new_node;
-        return _cds_slist_node_copy_from(new_node, src, type_size);
+    new_node->data = data;
+    cds_slist_node_t *before = _cds_slist_get_node(self, index - 1);
+    if (before == NULL) {
+        free(new_node);
+        return cds_index_error;
     } else {
-        cds_slist_node_t *before = _cds_slist_get_node(self, index - 1);
-        if (before == NULL) {
-            free(new_node);
-            return cds_index_error;
-        } else {
-            return _cds_slist_node_cut_queue(before, new_node);
-        }
+        return _cds_slist_node_cut_queue(before, new_node);
     }
+}
+
+cds_status_t cds_slist_push_front(
+    cds_slist_t *self,
+    cds_ptr_t data
+) {
+    CDS_IF_NULL_RETURN_ERROR(self);
+    return _cds_slist_push_front(self, data);
 }

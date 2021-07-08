@@ -13,7 +13,7 @@ static cds_status_t _cds_slist_node_cut_queue(
 ) {
     cds_slist_node_t *after = before->next;
     before->next;
-    next->next = after;
+    cds_slist_node_get_end(next)->next = after;
     return cds_ok;
 }
 
@@ -207,7 +207,9 @@ size_t cds_slist_length(cds_slist_t *self) {
 cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
-    return cds_slist_node_free_all(self->head, clean_element);
+    cds_slist_node_t *last_head = self->head;
+    self->head = NULL;
+    return cds_slist_node_free_all(last_head, clean_element);
 }
 
 cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element) {

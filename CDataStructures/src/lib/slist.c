@@ -38,7 +38,8 @@ static cds_status_t _cds_slist_node_clean_once(
     cds_free_f clean_element
 ) {
     if (node->data != NULL) {
-        clean_element(node->data);
+        if (clean_element != NULL)
+            clean_element(node->data);
         node->data = NULL;
     }
     return cds_ok;
@@ -173,6 +174,20 @@ cds_status_t cds_slist_node_clean_all(
     return status;
 }
 
+cds_status_t cds_slist_node_free_all(
+    cds_slist_node_t *node,
+    cds_free_f clean_element
+) {
+    CDS_NEW_STATUS;
+    while (node != NULL) {
+        cds_slist_node_t *next = node->next;
+        status = _cds_slist_node_clean_once(node, clean_element);
+        free(node);
+        node = next;
+    }
+    return status;
+}
+
 cds_slist_t *cds_slist_new(void) {
     return malloc(sizeof(cds_slist_t));
 }
@@ -192,7 +207,7 @@ size_t cds_slist_length(cds_slist_t *self) {
 cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
-    return cds_slist_node_clean_all(self->head, clean_element);
+    return cds_slist_node_free_all(self->head, clean_element);
 }
 
 cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element) {

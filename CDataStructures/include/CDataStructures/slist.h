@@ -44,6 +44,11 @@ cds_status_t cds_slist_node_clean_all(
     cds_free_f clean_element
 );
 
+cds_status_t cds_slist_node_free_all(
+    cds_slist_node_t *node,
+    cds_free_f clean_element
+);
+
 
 struct _cds_slist_t {
     cds_slist_node_t *head;

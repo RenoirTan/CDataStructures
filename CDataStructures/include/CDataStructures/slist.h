@@ -70,8 +70,8 @@ cds_slist_node_t *cds_slist_node_get_end(cds_slist_node_t *node);
  * 
  *  The result will be a->b->c->h->i->j->d->e
  * 
- * @param before 
- * @param next 
+ * @param before The node where the node cuts the chain.
+ * @param next The node which inserts itself into the chain.
  * @return cds_status_t 
  */
 cds_status_t cds_slist_node_cut_queue(

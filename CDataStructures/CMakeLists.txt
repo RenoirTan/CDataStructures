@@ -4,8 +4,12 @@ project(CDataStructures VERSION 0.1.0)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 
+set(${PROJECT_NAME}-build_test ON CACHE BOOL "Whether to build tests or not.")
+message(STATUS "Build test executables - ${${PROJECT_NAME}-build_test}")
 set(CMAKE_BUILD_TYPE Debug)
+message(STATUS "CMake Build Type - ${CMAKE_BUILD_TYPE}")
 set(CMAKE_C_STANDARD 90)
+message(STATUS "C Standard - c${CMAKE_C_STANDARD}")
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=1)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)

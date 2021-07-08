@@ -44,10 +44,7 @@ static cds_status_t _cds_slist_node_clean_once(
     return cds_ok;
 }
 
-static cds_status_t _cds_slist_push_front(
-    cds_slist_t *self,
-    cds_ptr_t data
-) {
+static cds_status_t _cds_slist_push_front(cds_slist_t *self, cds_ptr_t data) {
     cds_slist_node_t *new_node = cds_slist_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
     CDS_NEW_STATUS;
@@ -58,6 +55,35 @@ static cds_status_t _cds_slist_push_front(
     new_node->data = data;
     new_node->next = self->head;
     self->head = new_node;
+    return status;
+}
+
+static cds_status_t _cds_slist_push_back(cds_slist_t *self, cds_ptr_t data) {
+    cds_slist_node_t *end_node = cds_slist_node_get_end(self->head);
+    cds_slist_node_t *new_node = cds_slist_node_new();
+    CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
+    CDS_NEW_STATUS;
+    CDS_IF_STATUS_ERROR((cds_slist_node_init(new_node))) {
+        free(new_node);
+        return status;
+    }
+    new_node->data = data;
+    new_node->next = NULL;
+    if (end_node == NULL) {
+        self->head = new_node;
+    } else {
+        end_node->next = new_node;
+    }
+    return status;
+}
+
+static cds_status_t _cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data) {
+    cds_slist_node_t *head = self->head;
+    CDS_IF_NULL_RETURN_ERROR(head);
+    cds_slist_node_t *next = head->next;
+    *data = head->data;
+    self->head = next;
+    free(head);
     return cds_ok;
 }
 
@@ -77,6 +103,26 @@ cds_slist_node_t *cds_slist_node_get(cds_slist_node_t *node, size_t index) {
     while (passed < index && node != NULL) {
         node = node->next;
         ++passed;
+    }
+    return node;
+}
+
+size_t cds_slist_node_length(cds_slist_node_t *node) {
+    if (node == NULL)
+        return 0;
+    size_t length = 0;
+    while (node != NULL) {
+        node = node->next;
+        ++length;
+    }
+    return length;
+}
+
+cds_slist_node_t *cds_slist_node_get_end(cds_slist_node_t *node) {
+    if (node == NULL)
+        return NULL;
+    while (node->next != NULL) {
+        node = node->next;
     }
     return node;
 }
@@ -137,6 +183,12 @@ cds_status_t cds_slist_init(cds_slist_t *self) {
     return cds_ok;
 }
 
+size_t cds_slist_length(cds_slist_t *self) {
+    if (self == NULL)
+        return 0;
+    return cds_slist_node_length(self->head);
+}
+
 cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
@@ -160,15 +212,21 @@ cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index) {
     return node == NULL ? NULL : node->data;
 }
 
+cds_slist_node_t *cds_slist_get_last_node(cds_slist_t *self) {
+    if (self == NULL)
+        return NULL;
+    return cds_slist_node_get_end(self->head);
+}
+
 cds_status_t cds_slist_insert(
     cds_slist_t *self,
     size_t index,
     cds_ptr_t data
 ) {
-    CDS_IF_NULL_RETURN_ERROR(self);
     if (index == 0)
-        return _cds_slist_push_front(self, data);
-    
+        return cds_slist_push_front(self, data);
+
+    CDS_IF_NULL_RETURN_ERROR(self);
     CDS_NEW_STATUS;
     cds_slist_node_t *new_node;
     CDS_IF_NULL_RETURN_ALLOC_ERROR((new_node = cds_slist_node_new()));
@@ -186,10 +244,57 @@ cds_status_t cds_slist_insert(
     }
 }
 
-cds_status_t cds_slist_push_front(
-    cds_slist_t *self,
-    cds_ptr_t data
-) {
+cds_status_t cds_slist_push_front(cds_slist_t *self, cds_ptr_t data) {
     CDS_IF_NULL_RETURN_ERROR(self);
     return _cds_slist_push_front(self, data);
+}
+
+cds_status_t cds_slist_push_back(cds_slist_t *self, cds_ptr_t data) {
+    CDS_IF_NULL_RETURN_ERROR(self);
+    return _cds_slist_push_back(self, data);
+}
+
+cds_status_t cds_slist_remove(
+    cds_slist_t *self,
+    size_t index,
+    cds_ptr_t *data
+) {
+    if (index == 0)
+        return cds_slist_pop_front(self, data);
+
+    CDS_IF_NULL_RETURN_ERROR(self);
+    cds_slist_node_t *before = _cds_slist_get_node(self, index - 1);
+    if (before == NULL)
+        return cds_index_error;
+    else {
+        cds_slist_node_t *node = _cds_slist_node_remove_next(before);
+        *data = node->data;
+        free(node);
+        return cds_ok;
+    }
+}
+
+cds_status_t cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data) {
+    CDS_IF_NULL_RETURN_ERROR(self);
+    return _cds_slist_pop_front(self, data);
+}
+
+cds_status_t cds_slist_pop_back(cds_slist_t *self, cds_ptr_t *data) {
+    CDS_IF_NULL_RETURN_ERROR(self);
+    cds_slist_node_t *tortoise = self->head;
+    if (tortoise == NULL) {
+        return cds_zero_error;
+    }
+    cds_slist_node_t *hare = tortoise->next;
+    if (hare == NULL) {
+        return _cds_slist_pop_front(self, data);
+    }
+    while (hare->next != NULL) {
+        tortoise = hare;
+        hare = hare->next;
+    }
+    *data = hare->data;
+    tortoise->next = NULL;
+    free(hare);
+    return cds_ok;
 }

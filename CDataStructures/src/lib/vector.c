@@ -124,7 +124,8 @@ cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element) {
         return cds_warning;
     if (self->buffer != NULL) {
         if (clean_element != NULL) {
-            for (size_t index = 0; index < self->length; index++) {
+            size_t index = 0;
+            for (; index < self->length; index++) {
                 clean_element(_cds_vector_get(self, index));
             }
         }

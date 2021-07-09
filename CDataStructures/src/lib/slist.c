@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <CDataStructures/slist.h>
@@ -56,7 +57,8 @@ CDS_PRIVATE cds_status_t _cds_slist_pop_front(
     cds_unary_node_t *head = self->head;
     CDS_IF_NULL_RETURN_ERROR(head);
     cds_unary_node_t *next = head->next;
-    *data = head->data;
+    if (data != NULL)
+        *data = head->data;
     self->head = next;
     free(head);
     return cds_ok;
@@ -184,7 +186,8 @@ cds_status_t cds_slist_pop_back(cds_slist_t *self, cds_ptr_t *data) {
         tortoise = hare;
         hare = hare->next;
     }
-    *data = hare->data;
+    if (data != NULL)
+        *data = hare->data;
     tortoise->next = NULL;
     free(hare);
     return cds_ok;

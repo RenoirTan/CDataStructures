@@ -22,18 +22,17 @@ int64_t check_brackets(char *pointer) {
         printf("Current index: %lli\n", index);
         char *top = cds_stack_top(stack);
         if (cds_stack_is_empty(stack)) {
-            // printf("The stack is empty.\n");
+            printf("The stack is empty.\n");
             cds_stack_push(stack, pointer);
             continue;
         } else if (top == NULL) {
-            // printf("Could not get top character.\n");
+            printf("Could not get top character.\n");
             goto errored;
         } else {
-            // printf("Current character: %c\n", pointer[index]);
-            // printf("Top character pointer: %p\n", top);
-            // printf("Top character: %c\n", *top);
+            printf("Top character pointer: %p\n", top);
+            printf("Top character: %c\n", *top);
         }
-        // printf("Current character: %c\n", *top);
+        printf("Current character: %c\n", *top);
         switch (pointer[index]) {
             case '(':
             case '[':

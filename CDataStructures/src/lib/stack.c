@@ -46,9 +46,9 @@ cds_status_t cds_stack_free(cds_stack_t *self, cds_free_f clean_element) {
 }
 
 cds_ptr_t cds_stack_top(cds_stack_t *self) {
-    if (self == NULL || self->slist == NULL)
+    if (self == NULL || self->slist == NULL || self->slist->head == NULL)
         return NULL;
-    return self->slist->head;
+    return self->slist->head->data;
 }
 
 cds_status_t cds_stack_push(cds_stack_t *self, cds_ptr_t data) {

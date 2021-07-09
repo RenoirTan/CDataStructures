@@ -4,6 +4,7 @@
 
 
 int64_t check_brackets(char *pointer) {
+    printf("Location of string: %p\n", pointer);
     cds_stack_t *stack = cds_stack_new();
     if (stack == NULL) {
         printf("Could not allocate memory for Stack.\n");
@@ -21,12 +22,16 @@ int64_t check_brackets(char *pointer) {
         printf("Current index: %lli\n", index);
         char *top = cds_stack_top(stack);
         if (cds_stack_is_empty(stack)) {
-            printf("The stack is empty.\n");
+            // printf("The stack is empty.\n");
+            cds_stack_push(stack, pointer);
+            continue;
         } else if (top == NULL) {
-            printf("Could not get top character.\n");
+            // printf("Could not get top character.\n");
             goto errored;
         } else {
-            printf("Current character: %c\n", *top);
+            // printf("Current character: %c\n", pointer[index]);
+            // printf("Top character pointer: %p\n", top);
+            // printf("Top character: %c\n", *top);
         }
         // printf("Current character: %c\n", *top);
         switch (pointer[index]) {
@@ -37,30 +42,21 @@ int64_t check_brackets(char *pointer) {
                     goto errored;
                 }
                 break;
-            case ')':
-                if (*top != '(') {
-                    goto discrepancy;
-                }
-                if (CDS_IS_ERROR(cds_stack_pop(stack, NULL))) {
-                    goto errored;
-                }
-                break;
-            case ']':
-                if (*top != '[') {
-                    goto discrepancy;
-                }
-                if (CDS_IS_ERROR(cds_stack_pop(stack, NULL))) {
-                    goto errored;
-                }
-                break;
-            case '}':
-                if (*top != '{') {
-                    goto discrepancy;
-                }
-                if (CDS_IS_ERROR(cds_stack_pop(stack, NULL))) {
-                    goto errored;
-                }
-                break;
+#define D(l, r)                                         \
+    case r:                                             \
+        if (*top != l) {                                \
+            goto discrepancy;                           \
+        }                                               \
+        if (CDS_IS_ERROR(cds_stack_pop(stack, NULL))) { \
+            goto errored;                               \
+        }                                               \
+        break;
+
+            D('(', ')')
+            D('[', ']')
+            D('{', '}')
+
+#undef D
             default:
                 goto errored;
         }

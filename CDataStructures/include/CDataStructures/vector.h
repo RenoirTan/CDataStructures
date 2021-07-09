@@ -33,7 +33,7 @@ typedef struct _cds_vector_t cds_vector_t;
  * @param self The pointer to a vector object.
  * @return cds_ptr_t 
  */
-static inline cds_ptr_t cds_vector_array(cds_vector_t *self) {
+CDS_INLINE cds_ptr_t cds_vector_array(cds_vector_t *self) {
     return self->buffer;
 }
 
@@ -44,7 +44,7 @@ static inline cds_ptr_t cds_vector_array(cds_vector_t *self) {
  * @param buffer The pointer to the buffered array.
  * @return cds_vector_t* 
  */
-static inline cds_vector_t *cds_vector_get_info(cds_ptr_t buffer) {
+CDS_INLINE cds_vector_t *cds_vector_get_info(cds_ptr_t buffer) {
     return (cds_vector_t*) buffer; 
 }
 

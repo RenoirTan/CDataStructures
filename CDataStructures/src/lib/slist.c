@@ -3,11 +3,17 @@
 #include <CDataStructures/slist.h>
 
 
-static cds_unary_node_t *_cds_slist_get_node(cds_slist_t *self, size_t index) {
+CDS_PRIVATE cds_unary_node_t *_cds_slist_get_node(
+    cds_slist_t *self,
+    size_t index
+) {
     return cds_unary_node_get(self->head, index);
 }
 
-static cds_status_t _cds_slist_push_front(cds_slist_t *self, cds_ptr_t data) {
+CDS_PRIVATE cds_status_t _cds_slist_push_front(
+    cds_slist_t *self,
+    cds_ptr_t data
+) {
     cds_unary_node_t *new_node = cds_unary_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
     CDS_NEW_STATUS;
@@ -21,7 +27,10 @@ static cds_status_t _cds_slist_push_front(cds_slist_t *self, cds_ptr_t data) {
     return status;
 }
 
-static cds_status_t _cds_slist_push_back(cds_slist_t *self, cds_ptr_t data) {
+CDS_PRIVATE cds_status_t _cds_slist_push_back(
+    cds_slist_t *self,
+    cds_ptr_t data
+) {
     cds_unary_node_t *end_node = cds_unary_node_get_end(self->head);
     cds_unary_node_t *new_node = cds_unary_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
@@ -40,7 +49,10 @@ static cds_status_t _cds_slist_push_back(cds_slist_t *self, cds_ptr_t data) {
     return status;
 }
 
-static cds_status_t _cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data) {
+CDS_PRIVATE cds_status_t _cds_slist_pop_front(
+    cds_slist_t *self,
+    cds_ptr_t *data
+) {
     cds_unary_node_t *head = self->head;
     CDS_IF_NULL_RETURN_ERROR(head);
     cds_unary_node_t *next = head->next;

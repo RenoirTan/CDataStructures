@@ -26,7 +26,7 @@
  * @param length The length of the array.
  * @return size_t The recommended capacity the array should have.
  */
-inline size_t _cds_recommended_capacity(size_t length) {
+CDS_INLINE size_t _cds_recommended_capacity(size_t length) {
     if (length <= CDATASTRUCTURES_MIN_CAPACITY)
         return CDATASTRUCTURES_MIN_CAPACITY;
     else
@@ -52,7 +52,7 @@ inline size_t _cds_recommended_capacity(size_t length) {
  * @return int32_t The index of the most significant digit (i.e. the floor
  * of the log of `n`). -1 if n is invalid (e.g. 0).
  */
-inline int32_t cds_int_log2(uint64_t n) {
+CDS_INLINE int32_t cds_int_log2(uint64_t n) {
 #   define S(k)                    \
     if (n >= (UINT64_C(1) << k)) { \
         i += k;                    \
@@ -81,7 +81,7 @@ inline int32_t cds_int_log2(uint64_t n) {
  * @param n 
  * @return int32_t 
  */
-inline int32_t cds_int_log10(uint64_t n) {
+CDS_INLINE int32_t cds_int_log10(uint64_t n) {
 #   define S(k, m)          \
     if (n >= UINT64_C(m)) { \
         i += k;             \
@@ -105,7 +105,7 @@ inline int32_t cds_int_log10(uint64_t n) {
  * @param n The input integer.
  * @return int32_t The number of leading zeroes.
  */
-inline int32_t cds_uint64_leading_zeros(uint64_t n) {
+CDS_INLINE int32_t cds_uint64_leading_zeros(uint64_t n) {
     // Same as 1 << 63
 #   define SIXTY_FOURTH_DIGIT 0x8000000000000000
     int32_t bits = 0;
@@ -123,7 +123,7 @@ inline int32_t cds_uint64_leading_zeros(uint64_t n) {
  * @param n The input integer.
  * @return int32_t The number of leading zeroes.
  */
-inline int32_t cds_uint32_leading_zeros(uint32_t n) {
+CDS_INLINE int32_t cds_uint32_leading_zeros(uint32_t n) {
     return cds_uint64_leading_zeros((uint64_t) n) - 32;
 }
 
@@ -133,7 +133,7 @@ inline int32_t cds_uint32_leading_zeros(uint32_t n) {
  * @param n The input integer.
  * @return int32_t The number of leading zeroes.
  */
-inline int32_t cds_uint16_leading_zeros(uint16_t n) {
+CDS_INLINE int32_t cds_uint16_leading_zeros(uint16_t n) {
     return cds_uint64_leading_zeros((uint64_t) n) - 48;
 }
 
@@ -143,7 +143,7 @@ inline int32_t cds_uint16_leading_zeros(uint16_t n) {
  * @param n The input integer.
  * @return int32_t The number of leading zeroes.
  */
-inline int32_t cds_uint8_leading_zeros(uint8_t n) {
+CDS_INLINE int32_t cds_uint8_leading_zeros(uint8_t n) {
     return cds_uint64_leading_zeros((uint64_t) n) - 56;
 }
 
@@ -153,7 +153,7 @@ inline int32_t cds_uint8_leading_zeros(uint8_t n) {
  * @param n The input integer.
  * @return int32_t The number of trailing ones.
  */
-inline int32_t cds_uint64_trailing_ones(uint64_t n) {
+CDS_INLINE int32_t cds_uint64_trailing_ones(uint64_t n) {
     // Put a 1 in the index after the trailing 1s.
     // So 1011 -> 0100
     // If n is max, b == 0

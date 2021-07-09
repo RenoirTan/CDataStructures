@@ -2,7 +2,7 @@
 #include <string.h>
 #include <CDataStructures/unarynode.h>
 
-static cds_status_t _cds_unary_node_cut_queue(
+CDS_PRIVATE cds_status_t _cds_unary_node_cut_queue(
     cds_unary_node_t *before,
     cds_unary_node_t *next
 ) {
@@ -12,14 +12,16 @@ static cds_status_t _cds_unary_node_cut_queue(
     return cds_ok;
 }
 
-static cds_unary_node_t *_cds_unary_node_remove_next(cds_unary_node_t *node) {
+CDS_PRIVATE cds_unary_node_t *_cds_unary_node_remove_next(
+    cds_unary_node_t *node
+) {
     cds_unary_node_t *next = node->next;
     cds_unary_node_t *after = next == NULL ? NULL : next->next;
     node->next = after;
     return next;
 }
 
-static cds_unary_node_t *_cds_unary_node_replace(
+CDS_PRIVATE cds_unary_node_t *_cds_unary_node_replace(
     cds_unary_node_t *ancestor,
     cds_unary_node_t *sibling
 ) {
@@ -28,7 +30,7 @@ static cds_unary_node_t *_cds_unary_node_replace(
     return child;
 }
 
-static cds_status_t _cds_unary_node_clean_once(
+CDS_PRIVATE cds_status_t _cds_unary_node_clean_once(
     cds_unary_node_t *node,
     cds_free_f clean_element
 ) {

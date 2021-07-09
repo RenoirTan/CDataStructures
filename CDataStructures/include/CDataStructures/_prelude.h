@@ -16,4 +16,21 @@
 #   include "status.h"
 #   include "type.h"
 
+/**
+ * @brief A macro designating a function definition as inline.
+ */
+#   define CDS_INLINE static inline
+
+/**
+ * @brief A macro designating a function definition as private (i.e. static).
+ * 
+ */
+#   define CDS_PRIVATE static
+
+/**
+ * @brief A macro designating a function definition as part of the public
+ * API.
+ */
+#   define CDS_PUBLIC
+
 #endif

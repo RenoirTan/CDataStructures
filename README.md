@@ -7,6 +7,11 @@ any problem in the source code you can file an issue or initiate a pull
 request on 
 [this library's Github Repository](https://github.com/RenoirTan/CDataStructures).
 
+# Documentation
+
+See the [Github Pages](https://renoirtan.github.io/CDataStructures/html/)
+for this repository.
+
 # Building
 
 *NOTE: I've only tested this on Windows (using Cygwin and MSVC) because I'm

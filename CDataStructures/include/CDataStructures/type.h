@@ -22,6 +22,11 @@
 typedef char cds_byte_t;
 
 /**
+ * @brief A type representing a character that is 8 bits wide.
+ */
+typedef char char8_t;
+
+/**
  * @brief A pointer to an array of bytes.
  */
 typedef cds_byte_t* cds_array_t;
@@ -37,9 +42,19 @@ typedef void* cds_ptr_t;
  */
 typedef uint32_t cds_flag_t;
 
+enum _cds_ordering_t {
+    cds_greater = 1,
+    cds_equal = 0,
+    cds_lesser = -1
+};
+
+typedef enum _cds_ordering_t cds_ordering_t;
+
 /**
  * @brief A function type which destroys an object on the heap.
  */
 typedef void (*cds_free_f)(cds_ptr_t);
+
+typedef cds_ordering_t (*cds_compare_f)(cds_ptr_t, cds_ptr_t);
 
 #endif

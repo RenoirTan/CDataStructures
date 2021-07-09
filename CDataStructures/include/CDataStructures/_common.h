@@ -20,4 +20,9 @@
 #   define bound(n, x, y) (max(min(n, y), x))
 #   define amount_to_next_multiple(a, b) (b - (a % b))
 
+#   define _CDS_SMASH_NAMES(a, b) cds_##a##_##b
+#   define CDS_SMASH_PUBLIC(typename, suffix) _CDS_SMASH_NAMES(typename, suffix)
+#   define _CDS_SMASH_ENDT(t) t##_t
+#   define CDS_SMASH_ENDT(typename) _CDS_SMASH_ENDT(typename)
+
 #endif

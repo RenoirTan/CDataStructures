@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <CDataStructures.h>
 
 
@@ -15,20 +16,21 @@ int main(int argc, char **argv) {
 
     size_t index = 0;
     int32_t *location = NULL;
+    srand((uint32_t) time(NULL));
 
-    for (index = 0; index <= 20; ++index) {
+    for (index = 0; index <= 10; ++index) {
         location = malloc(sizeof(int32_t));
         if (location == NULL) {
             goto errored;
         }
-        if (index == 20) {
+        if (index == 10) {
             *location = 1337;
             if (CDS_IS_ERROR(cds_slist_push_back(slist, location))) {
                 printf("Could not add item.\n");
                 goto errored;
             }
         } else {
-            *location = (int32_t)index;
+            *location = 9 - (int32_t)index;
             if (CDS_IS_ERROR(cds_slist_push_front(slist, location))) {
                 printf("Could not add item.\n");
                 goto errored;
@@ -38,7 +40,17 @@ int main(int argc, char **argv) {
 
     printf("Length of SList: %zu\n", cds_slist_length(slist));
 
-    cds_slist_node_t *node;
+    printf("Removing a random element.\n");
+    int32_t rindex = rand() % 11;
+    printf("Removing index: %i \n", rindex);
+    if (CDS_IS_ERROR((cds_slist_remove(slist, (size_t) rindex, &location)))) {
+        printf("Could not delete random item.\n");
+        goto errored;
+    } else {
+        free(location);
+    }
+
+    cds_unary_node_t *node;
     for (node = slist->head; node != NULL; node = node->next) {
         printf("---------------------------\n");
         printf("Location of node: %p\n", node);

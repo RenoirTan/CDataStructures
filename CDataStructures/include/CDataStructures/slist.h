@@ -3,148 +3,11 @@
 
 #   include "_prelude.h"
 #   include "_common.h"
-
-
-struct _cds_slist_node_t {
-    cds_ptr_t data;
-    struct _cds_slist_node_t *next;
-};
-
-/**
- * @brief A structure representing a node in a singly-linked list. 
- */
-typedef struct _cds_slist_node_t cds_slist_node_t;
-
-/**
- * @brief Create a new singly-linked list node. This node is uninitialised,
- * so you must pass this pointer to @see {@link cds_slist_node_init}.
- * 
- * @return cds_slist_node_t* The pointer to the node.
- */
-cds_slist_node_t *cds_slist_node_new(void);
-
-/**
- * @brief Initialise a node in a singly-linked node.
- * 
- * @param node The node to initialise.
- * @return cds_status_t This operation's status code.
- */
-cds_status_t cds_slist_node_init(cds_slist_node_t *node);
-
-/**
- * @brief Get the next <index>-th node after this one. If the successor node
- * at that index cannot be found, NULL is returned.
- * 
- * @param node The current node.
- * @param index The index of the node you want to get.
- * @return cds_slist_node_t* The pointer to the successor node.
- */
-cds_slist_node_t *cds_slist_node_get(cds_slist_node_t *node, size_t index);
-
-/**
- * @brief Get the number of nodes after this node including this node itself.
- * If `node` is NULL, 0 is returned.
- * 
- * @param node The node you want to start counting from.
- * @return size_t The length of the node chain.
- */
-size_t cds_slist_node_length(cds_slist_node_t *node);
-
-/**
- * @brief Get the final node in a chain of nodes. If the final node cannot be
- * found (because the current node is NULL), NULL is returned.
- * 
- * @param node The current node in the chain.
- * @return cds_slist_node_t* The final node in the chain.
- */
-cds_slist_node_t *cds_slist_node_get_end(cds_slist_node_t *node);
-
-/**
- * @brief Add a chain of nodes between a starting node and the node that used
- * to be right after the starting node. For example,
- * 
- *  Let x be a chain with nodes (a->b->c->d->e)
- *  and y be a chain with nodes (h->i->j)
- * 
- *  run `cds_slist_node_cut_queue` after node `c`.
- * 
- *  The result will be a->b->c->h->i->j->d->e
- * 
- * @param before The node where the node cuts the chain.
- * @param next The node which inserts itself into the chain.
- * @return cds_status_t 
- */
-cds_status_t cds_slist_node_cut_queue(
-    cds_slist_node_t *before,
-    cds_slist_node_t *next
-);
-
-/**
- * @brief Remove the next node from the chain but reattach the nodes after that
- * node to this node. This has the same effect as removing one element in
- * an array.
- * 
- * @param node The node chain.
- * @return cds_slist_node_t* The node in the chain that has been removed.
- * Note that this node has not has its memory reclaimed yet, so you must free
- * the data in the node as well as the node itself using some form of the
- * function `free`.
- */
-cds_slist_node_t *cds_slist_node_remove_next(cds_slist_node_t *node);
-
-/**
- * @brief Replace the node chain after this node with another node chain, then
- * return the old node chain. The new chain is called `sibling` in this
- * function.
- * 
- * @param ancestor The starting node in the chain.
- * @param sibling The new node chain.
- * @return cds_slist_node_t* The old node chain.
- */
-cds_slist_node_t *cds_slist_node_replace(
-    cds_slist_node_t *ancestor,
-    cds_slist_node_t *sibling
-);
-
-/**
- * @brief Free the memory pointed to by the `data` pointer.
- * 
- * @param node The current node.
- * @param clean_element The function used to free the data.
- * @return cds_status_t The status code of this operation.
- */
-cds_status_t cds_slist_node_clean_once(
-    cds_slist_node_t *node,
-    cds_free_f clean_element
-);
-
-/**
- * @brief Clean all the data pointers in all the nodes in the current chain.
- * 
- * @param node The starting node in the chain.
- * @param clean_element The function used to free the data.
- * @return cds_status_t The status code of this operation.
- */
-cds_status_t cds_slist_node_clean_all(
-    cds_slist_node_t *node,
-    cds_free_f clean_element
-);
-
-/**
- * @brief Free all the nodes and data in the current chain.
- * 
- * @param node The current node.
- * @param clean_element The function used to free the data.
- * @return cds_status_t The status code of this operation.
- */
-cds_status_t cds_slist_node_free_all(
-    cds_slist_node_t *node,
-    cds_free_f clean_element
-);
+#   include "unarynode.h"
 
 
 struct _cds_slist_t {
-    cds_slist_node_t *head;
+    cds_unary_node_t *head;
 };
 
 /**
@@ -203,9 +66,9 @@ cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element);
  * 
  * @param self The list.
  * @param index The index of the node.
- * @return cds_slist_node_t* The pointer to the node.
+ * @return cds_unary_node_t* The pointer to the node.
  */
-cds_slist_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
+cds_unary_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
 
 /**
  * @brief Get the pointer to the data stored in the node at a certain index.
@@ -220,9 +83,9 @@ cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index);
  * @brief Get the last node in the list.
  * 
  * @param self The list.
- * @return cds_slist_node_t* The last node.
+ * @return cds_unary_node_t* The last node.
  */
-cds_slist_node_t *cds_slist_get_last_node(cds_slist_t *self);
+cds_unary_node_t *cds_slist_get_last_node(cds_slist_t *self);
 
 /**
  * @brief Insert some data into the list at a certain index.

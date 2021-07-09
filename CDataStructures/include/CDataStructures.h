@@ -14,6 +14,7 @@
 
 #   include "CDataStructures/functional.h"
 #   include "CDataStructures/slist.h"
+#   include "CDataStructures/stack.h"
 #   include "CDataStructures/status.h"
 #   include "CDataStructures/type.h"
 #   include "CDataStructures/unarynode.h"

@@ -56,4 +56,7 @@ dkms.conf
 build/
 
 *.stackdump
-docs/
+
+docs/latex
+docs/man
+docs/rtf

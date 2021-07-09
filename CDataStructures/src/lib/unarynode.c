@@ -130,7 +130,7 @@ cds_status_t cds_unary_node_free_all(
     cds_unary_node_t *node,
     cds_free_f clean_element
 ) {
-    CDS_NEW_STATUS;
+    CDS_NEW_STATUS = cds_ok;
     while (node != NULL) {
         cds_unary_node_t *next = node->next;
         status = _cds_unary_node_clean_once(node, clean_element);

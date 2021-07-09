@@ -1,3 +1,14 @@
+/**
+ * @file utils.h
+ * @author RenoirTan
+ * @brief Utility functions.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_UTILS_H
 #   define CDATASTRUCTURES_UTILS_H
 

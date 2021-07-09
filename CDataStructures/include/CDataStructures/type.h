@@ -1,3 +1,14 @@
+/**
+ * @file type.h
+ * @author RenoirTan
+ * @brief Typedefs used by this library.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_TYPE_H
 #   define CDATASTRUCTURES_TYPE_H
 
@@ -22,9 +33,9 @@ typedef void* cds_ptr_t;
 
 /**
  * @brief The universal type which represents a series of options represented
- * by individual bits.
+ * by the individual bits in a 32-bit unsigned integer.
  */
-typedef int32_t cds_flag_t;
+typedef uint32_t cds_flag_t;
 
 /**
  * @brief A function type which destroys an object on the heap.

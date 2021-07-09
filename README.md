@@ -125,7 +125,8 @@ Macros use SCREAMING_SNAKE_CASE, including header guards.
 
 Available data structures:
 
-| Name | Status | Description |
-| ---- | ------ | ----------- |
-| slist | ✔️ | A list where each element points to the next element in the list via a pointer. |
-| vector | ✔️ | A dynamically allocated region of memory which can store an array of elements. This data structure can expand and shrink in size when needed. |
+| Name | Library Name | Branch Name | Status | Description |
+| ---- | ------------ | ----------- | ------ | ----------- |
+| Singly-linked List | CDataStructures-slist | singly-linked-list | ✔️ | A list where each element points to the next element in the list via a pointer. |
+| Unary Node | CDataStructures-unarynode | unary-node | ✔️ | A node which points to one other node, forming a chain which can be used in singly-linked lists, merkle trees and stacks. |
+| Vector | CDataStructures-vector | vector | ✔️ | A dynamically allocated region of memory which can store an array of elements. This data structure can expand and shrink in size when needed. |

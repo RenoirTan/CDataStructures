@@ -1,3 +1,14 @@
+/**
+ * @file unarynode.h
+ * @author RenoirTan
+ * @brief A header defining a unary node.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_UNARYNODE_H
 #   define CDATASTRUCTURES_UNARYNODE_H
 

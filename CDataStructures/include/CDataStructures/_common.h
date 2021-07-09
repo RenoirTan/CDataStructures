@@ -1,3 +1,14 @@
+/**
+ * @file _common.h
+ * @author RenoirTan
+ * @brief Common macros used by this library.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef _CDATASTRUCTURES_COMMON_H
 #   define _CDATASTRUCTURES_COMMON_H
 

@@ -1,3 +1,14 @@
+/**
+ * @file slist.h
+ * @author RenoirTan
+ * @brief A header defining a singly-linked list.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_SLIST_H
 #   define CDATASTRUCTURES_SLIST_H
 

@@ -1,3 +1,14 @@
+/**
+ * @file CDataStructures.h
+ * @author RenoirTan
+ * @brief The top-level header file which includes all the headers in the
+ * library.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ */
+
 #ifndef CDATASTRUCTURES_H
 #   define CDATASTRUCTURES_H
 

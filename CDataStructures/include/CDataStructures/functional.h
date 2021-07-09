@@ -14,9 +14,6 @@
     applier(uint32, uint32_t) \
     applier(uint64, uint64_t) \
     applier(char, char) \
-    applier(char8, char8_t) \
-    applier(char16, char16_t) \
-    applier(char32, char32_t) \
     applier(size, size_t) \
     applier(wchar, wchar_t) \
     applier(byte, cds_byte_t) \

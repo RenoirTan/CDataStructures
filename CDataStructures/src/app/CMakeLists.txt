@@ -1,5 +1,7 @@
 if(${${PROJECT_NAME}-build_test})
 
+    add_executable(${PROJECT_NAME}-functional functional.c)
+
     add_executable(${PROJECT_NAME}-stack stack.c)
     target_link_libraries(${PROJECT_NAME}-stack PRIVATE ${PROJECT_NAME}-stack-static)
 

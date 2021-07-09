@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <CDataStructures/vector.h>
+#include <CDataStructures/utils.h>
 
 static cds_byte_t *_cds_vector_get(cds_vector_t *self, size_t index) {
     return self->buffer + (index * self->type_size);

@@ -6,6 +6,7 @@
         "vector.h": "c",
         "string.h": "c",
         "corecrt.h": "c",
-        "vcruntime_string.h": "c"
+        "vcruntime_string.h": "c",
+        "_common.h": "c"
     }
 }

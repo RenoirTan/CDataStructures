@@ -100,8 +100,8 @@ CDS_PRIVATE cds_status_t _cds_vector_close_gap(
     size_t index
 ) {
     if (index >= self->length)
-        return cds_ok;
-    size_t block_size = (self->length - index) * self->type_size;
+        return cds_index_error;
+    size_t block_size = (self->length - index - 1) * self->type_size;
     cds_byte_t *new_location = _cds_vector_get(self, index);
     cds_byte_t *old_location = new_location + self->type_size;
     memcpy(new_location, old_location, block_size);

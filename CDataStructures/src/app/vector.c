@@ -13,10 +13,15 @@ int main(int argc, char **argv) {
     }
 
     printf("Vector allocated!\n");
+    printf(
+        "Length: %zu Bytes used: %zu\n",
+        vector->length,
+        vector->_bytes_allocated
+    );
     
     int32_t i = 0xdead0000;
     size_t index = 0;
-    for (; i < 0xdead0020; i += 1) {
+    for (; i < 0xdead0020; ++i) {
         if (CDS_IS_ERROR(cds_vector_push_back(vector, &i))) {
             printf("Could not add numbers.\n");
             goto errored;
@@ -24,14 +29,20 @@ int main(int argc, char **argv) {
     }
 
     printf("Length of vector: %zu\n", vector->length);
+    printf("Memory allocated: %zu\n", vector->_bytes_allocated);
+
+    for (index = 0; index < vector->length; index++) {
+        int32_t number = *(int32_t*) cds_vector_get(vector, index);
+        printf("Number: %x\n", number);
+    }
 
     printf("Remove all even numbers.\n");
 
     index = 0;
     while (index < vector->length) {
         int32_t *ptr = cds_vector_get(vector, index);
-        if (!(*ptr % 2)) {
-            if (CDS_IS_ERROR(cds_vector_remove(vector, index, ptr))) {
+        if ((*ptr % 2) == 0) {
+            if (CDS_IS_ERROR(cds_vector_remove(vector, index, NULL))) {
                 printf("Could not remove numbers.\n");
                 goto errored;
             }

@@ -40,7 +40,7 @@ cds_status_t cds_stack_destroy(cds_stack_t *self, cds_free_f clean_element) {
 
 cds_status_t cds_stack_free(cds_stack_t *self, cds_free_f clean_element) {
     CDS_NEW_STATUS;
-    CDS_IF_ERROR_RETURN_STATUS((cds_stack_destroy(self, clean_element)));
+    CDS_IF_ERROR_RETURN_STATUS(cds_stack_destroy(self, clean_element));
     free(self);
     return cds_ok;
 }

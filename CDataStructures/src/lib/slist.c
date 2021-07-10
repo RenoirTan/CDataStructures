@@ -18,7 +18,7 @@ CDS_PRIVATE cds_status_t _cds_slist_push_front(
     cds_unary_node_t *new_node = cds_unary_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
     CDS_NEW_STATUS;
-    CDS_IF_STATUS_ERROR((cds_unary_node_init(new_node))) {
+    CDS_IF_STATUS_ERROR(cds_unary_node_init(new_node)) {
         free(new_node);
         return status;
     }
@@ -36,7 +36,7 @@ CDS_PRIVATE cds_status_t _cds_slist_push_back(
     cds_unary_node_t *new_node = cds_unary_node_new();
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node);
     CDS_NEW_STATUS;
-    CDS_IF_STATUS_ERROR((cds_unary_node_init(new_node))) {
+    CDS_IF_STATUS_ERROR(cds_unary_node_init(new_node)) {
         free(new_node);
         return status;
     }
@@ -122,8 +122,8 @@ cds_status_t cds_slist_insert(
     CDS_IF_NULL_RETURN_ERROR(self);
     CDS_NEW_STATUS;
     cds_unary_node_t *new_node;
-    CDS_IF_NULL_RETURN_ALLOC_ERROR((new_node = cds_unary_node_new()));
-    CDS_IF_STATUS_ERROR((cds_unary_node_init(new_node))) {
+    CDS_IF_NULL_RETURN_ALLOC_ERROR(new_node = cds_unary_node_new());
+    CDS_IF_STATUS_ERROR(cds_unary_node_init(new_node)) {
         free(new_node);
         return status;
     }

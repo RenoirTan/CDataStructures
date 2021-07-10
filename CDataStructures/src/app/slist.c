@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     printf("Removing a random element.\n");
     int32_t rindex = rand() % 11;
     printf("Removing index: %i \n", rindex);
-    if (CDS_IS_ERROR((cds_slist_remove(slist, (size_t) rindex, &location)))) {
+    if (CDS_IS_ERROR(cds_slist_remove(slist, (size_t) rindex, &location))) {
         printf("Could not delete random item.\n");
         goto errored;
     } else {

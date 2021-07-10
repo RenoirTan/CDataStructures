@@ -71,58 +71,59 @@ $(function() {
 <div class="title">functional.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="../../d8/dea/functional_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CDATASTRUCTURES_FUNCTIONAL_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#   define CDATASTRUCTURES_FUNCTIONAL_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="../../d9/dce/__common_8h.html">_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="../../df/def/type_8h.html">type.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">    7</a></span>&#160;<span class="preprocessor">#   define TS(applier) \</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">    applier(int8, int8_t) \</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    applier(int16, int16_t) \</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    applier(int32, int32_t) \</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    applier(int64, int64_t) \</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">    applier(uint8, uint8_t) \</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">    applier(uint16, uint16_t) \</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    applier(uint32, uint32_t) \</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    applier(uint64, uint64_t) \</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    applier(char, char) \</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">    applier(size, size_t) \</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">    applier(wchar, wchar_t) \</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">    applier(byte, cds_byte_t) \</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    applier(pointer, cds_ptr_t)</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">   22</a></span>&#160;<span class="preprocessor">#   define F1(stn, ltn)        \</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">    CDS_PRIVATE cds_ordering_t \</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">    CDS_SMASH_PUBLIC(stn, compare_pointers) \</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">    (ltn *a, ltn *b) { \</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">        if (*a &gt; *b) return cds_greater; \</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">        else if (*a &lt; *b) return cds_lesser; \</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">        else return cds_equal; \</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a>(<a class="code" href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">F1</a>)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#   undef F1</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">   34</a></span>&#160;<span class="preprocessor">#   define F2(stn, ltn) \</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">    CDS_PRIVATE cds_ordering_t \</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">    CDS_SMASH_PUBLIC(stn, compare_absolute) \</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">    (ltn a, ltn b) { \</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">        if (a &gt; b) return cds_greater; \</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">        else if (a &lt; b) return cds_lesser; \</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">        else return cds_equal; \</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">    }</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a>(<a class="code" href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">F2</a>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#   undef F2</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#   undef TS</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<a href="../../d8/dea/functional_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef CDATASTRUCTURES_FUNCTIONAL_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#   define CDATASTRUCTURES_FUNCTIONAL_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="../../d9/dce/__common_8h.html">_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="../../df/def/type_8h.html">type.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">   26</a></span>&#160;<span class="preprocessor">#   define TS(applier) \</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    applier(int8, int8_t) \</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">    applier(int16, int16_t) \</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">    applier(int32, int32_t) \</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">    applier(int64, int64_t) \</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">    applier(uint8, uint8_t) \</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">    applier(uint16, uint16_t) \</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    applier(uint32, uint32_t) \</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    applier(uint64, uint64_t) \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">    applier(char, char) \</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">    applier(size, size_t) \</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">    applier(wchar, wchar_t) \</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">    applier(byte, cds_byte_t) \</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">    applier(pointer, cds_ptr_t)</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">   41</a></span>&#160;<span class="preprocessor">#   define F1(stn, ltn)        \</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">    CDS_PRIVATE cds_ordering_t \</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    CDS_SMASH_PUBLIC(stn, compare_pointers) \</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">    (ltn *a, ltn *b) { \</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">        if (*a &gt; *b) return cds_greater; \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">        else if (*a &lt; *b) return cds_lesser; \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">        else return cds_equal; \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a>(<a class="code" href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">F1</a>)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#   undef F1</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">   53</a></span>&#160;<span class="preprocessor">#   define F2(stn, ltn) \</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">    CDS_PRIVATE cds_ordering_t \</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    CDS_SMASH_PUBLIC(stn, compare_absolute) \</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">    (ltn a, ltn b) { \</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">        if (a &gt; b) return cds_greater; \</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">        else if (a &lt; b) return cds_lesser; \</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">        else return cds_equal; \</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<a class="code" href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a>(<a class="code" href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">F2</a>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#   undef F2</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#   undef TS</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a__common_8h_html"><div class="ttname"><a href="../../d9/dce/__common_8h.html">_common.h</a></div><div class="ttdoc">Common macros used by this library.</div></div>
-<div class="ttc" id="afunctional_8h_html_a8f6d83de77e67edbb383db3c3ae44404"><div class="ttname"><a href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a></div><div class="ttdeci">#define TS(applier)</div><div class="ttdef"><b>Definition:</b> functional.h:7</div></div>
-<div class="ttc" id="afunctional_8h_html_ab59cf3cb5b3e437401f5dc5c69ca838e"><div class="ttname"><a href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">F2</a></div><div class="ttdeci">#define F2(stn, ltn)</div><div class="ttdef"><b>Definition:</b> functional.h:34</div></div>
-<div class="ttc" id="afunctional_8h_html_adcf02b10d9af8b99dce91179b0bbcc9a"><div class="ttname"><a href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">F1</a></div><div class="ttdeci">#define F1(stn, ltn)</div><div class="ttdef"><b>Definition:</b> functional.h:22</div></div>
+<div class="ttc" id="afunctional_8h_html_a8f6d83de77e67edbb383db3c3ae44404"><div class="ttname"><a href="../../d8/dea/functional_8h.html#a8f6d83de77e67edbb383db3c3ae44404">TS</a></div><div class="ttdeci">#define TS(applier)</div><div class="ttdef"><b>Definition:</b> functional.h:26</div></div>
+<div class="ttc" id="afunctional_8h_html_ab59cf3cb5b3e437401f5dc5c69ca838e"><div class="ttname"><a href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">F2</a></div><div class="ttdeci">#define F2(stn, ltn)</div><div class="ttdef"><b>Definition:</b> functional.h:53</div></div>
+<div class="ttc" id="afunctional_8h_html_adcf02b10d9af8b99dce91179b0bbcc9a"><div class="ttname"><a href="../../d8/dea/functional_8h.html#adcf02b10d9af8b99dce91179b0bbcc9a">F1</a></div><div class="ttdeci">#define F1(stn, ltn)</div><div class="ttdef"><b>Definition:</b> functional.h:41</div></div>
 <div class="ttc" id="atype_8h_html"><div class="ttname"><a href="../../df/def/type_8h.html">type.h</a></div><div class="ttdoc">Typedefs used by this library.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

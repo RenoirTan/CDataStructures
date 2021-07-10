@@ -73,6 +73,9 @@ $(function() {
 <div class="title">functional.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A header defining common functions for functional programming. This includes comparison functions for the most common types.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d9/dce/__common_8h_source.html">_common.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/def/type_8h_source.html">type.h</a>&quot;</code><br />
 </div>
@@ -87,7 +90,14 @@ Macros</h2></td></tr>
 <tr class="memitem:ab59cf3cb5b3e437401f5dc5c69ca838e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dea/functional_8h.html#ab59cf3cb5b3e437401f5dc5c69ca838e">F2</a>(stn,  ltn)</td></tr>
 <tr class="separator:ab59cf3cb5b3e437401f5dc5c69ca838e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A header defining common functions for functional programming. This includes comparison functions for the most common types. </p>
+<dl class="section author"><dt>Author</dt><dd>RenoirTan</dd></dl>
+<p>To avoid having to write too much boilerplate code, the functions for each data type are generated using macros.</p>
+<p>"TS" is a macro which applies each function generator macro onto each of the data types. These function generator macros include "F1" and "F2" which expands to functions involving the types found in "TS". </p><dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-07-10</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="adcf02b10d9af8b99dce91179b0bbcc9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adcf02b10d9af8b99dce91179b0bbcc9a">&#9670;&nbsp;</a></span>F1</h2>
 

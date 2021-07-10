@@ -82,7 +82,7 @@ typedef enum _cds_status_t cds_status_t;
  * @brief The condition part of an if statement checking if an expression
  * returned an error code.
  */
-#   define CDS_IF_STATUS_ERROR(expression) if ((status = expression) > 0)
+#   define CDS_IF_STATUS_ERROR(expression) if ((status = (expression)) > 0)
 
 /**
  * @brief Return the status if the expression being checked returns an error.
@@ -107,7 +107,7 @@ typedef enum _cds_status_t cds_status_t;
  * @brief If the pointer is null, return `cds_null_error`.
  */
 #   define CDS_IF_NULL_RETURN_ERROR(pointer) \
-    if (pointer == NULL) \
+    if ((pointer) == NULL) \
         return cds_null_error;
 
 /**
@@ -115,14 +115,14 @@ typedef enum _cds_status_t cds_status_t;
  * 
  */
 #   define CDS_IF_NULL_RETURN_ALLOC_ERROR(pointer) \
-    if (pointer == NULL) \
+    if ((pointer) == NULL) \
         return cds_alloc_error;
 
 /**
  * @brief If the expression returns 0, return `cds_zero_error`.
  */
 #   define CDS_IF_ZERO_RETURN_ERROR(value) \
-    if (value == 0) \
+    if ((value) == 0) \
         return cds_zero_error;
 
 #endif

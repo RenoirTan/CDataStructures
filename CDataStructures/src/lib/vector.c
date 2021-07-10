@@ -4,11 +4,13 @@
 #include <CDataStructures/vector.h>
 #include <CDataStructures/utils.h>
 
-CDS_PRIVATE cds_byte_t *_cds_vector_get(cds_vector_t *self, size_t index) {
+CDS_PRIVATE
+cds_byte_t *_cds_vector_get(cds_vector_t *self, size_t index) {
     return self->buffer + (index * self->type_size);
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_copy_to(
+CDS_PRIVATE
+cds_status_t _cds_vector_copy_to(
     cds_vector_t *self,
     size_t index,
     cds_ptr_t dest
@@ -18,7 +20,8 @@ CDS_PRIVATE cds_status_t _cds_vector_copy_to(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_copy_from(
+CDS_PRIVATE
+cds_status_t _cds_vector_copy_from(
     cds_vector_t *self,
     size_t index,
     cds_ptr_t src
@@ -28,7 +31,8 @@ CDS_PRIVATE cds_status_t _cds_vector_copy_from(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_realloc_buffer(
+CDS_PRIVATE
+cds_status_t _cds_vector_realloc_buffer(
     cds_vector_t *self,
     size_t capacity
 ) {
@@ -40,7 +44,8 @@ CDS_PRIVATE cds_status_t _cds_vector_realloc_buffer(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_reallocate(
+CDS_PRIVATE
+cds_status_t _cds_vector_reallocate(
     cds_vector_t *self,
     size_t length
 ) {
@@ -48,7 +53,8 @@ CDS_PRIVATE cds_status_t _cds_vector_reallocate(
     return _cds_vector_realloc_buffer(self, recommended);
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_lazy_reallocate(
+CDS_PRIVATE
+cds_status_t _cds_vector_lazy_reallocate(
     cds_vector_t *self,
     size_t length
 ) {
@@ -59,7 +65,8 @@ CDS_PRIVATE cds_status_t _cds_vector_lazy_reallocate(
         return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_change_length(
+CDS_PRIVATE
+cds_status_t _cds_vector_change_length(
     cds_vector_t *self,
     size_t new_length
 ) {
@@ -70,19 +77,22 @@ CDS_PRIVATE cds_status_t _cds_vector_change_length(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_increase_one(cds_vector_t *self) {
+CDS_PRIVATE
+cds_status_t _cds_vector_increase_one(cds_vector_t *self) {
     if (self->length >= SIZE_MAX)
         return cds_alloc_error;
     return _cds_vector_change_length(self, self->length + 1);
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_decrease_one(cds_vector_t *self) {
+CDS_PRIVATE
+cds_status_t _cds_vector_decrease_one(cds_vector_t *self) {
     if (self->length <= 0)
         return cds_alloc_error;
     return _cds_vector_change_length(self, self->length - 1);
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_make_gap(
+CDS_PRIVATE
+cds_status_t _cds_vector_make_gap(
     cds_vector_t *self,
     size_t index
 ) {
@@ -95,7 +105,8 @@ CDS_PRIVATE cds_status_t _cds_vector_make_gap(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_close_gap(
+CDS_PRIVATE
+cds_status_t _cds_vector_close_gap(
     cds_vector_t *self,
     size_t index
 ) {
@@ -108,16 +119,21 @@ CDS_PRIVATE cds_status_t _cds_vector_close_gap(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_status_t _cds_vector_remove(
+/*
+CDS_PRIVATE
+cds_status_t _cds_vector_remove(
     cds_vector_t *self,
     size_t index,
     cds_ptr_t dest
 );
+*/
 
+CDS_PUBLIC
 cds_vector_t *cds_vector_new(void) {
     return malloc(sizeof(cds_vector_t));
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size) {
     CDS_IF_NULL_RETURN_ERROR(self);
     CDS_IF_ZERO_RETURN_ERROR(type_size);
@@ -129,6 +145,7 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size) {
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
@@ -145,6 +162,7 @@ cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element) {
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
@@ -153,6 +171,7 @@ cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element) {
     return status;
 }
 
+CDS_PUBLIC
 cds_ptr_t cds_vector_get(cds_vector_t *self, size_t index) {
     // Safe short-circuit in logic gate
     if (self == NULL || self->buffer == NULL || index >= self->length)
@@ -160,6 +179,7 @@ cds_ptr_t cds_vector_get(cds_vector_t *self, size_t index) {
     return _cds_vector_get(self, index);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_copy_to(
     cds_vector_t *self,
     size_t index,
@@ -172,6 +192,7 @@ cds_status_t cds_vector_copy_to(
     return _cds_vector_copy_to(self, index, dest);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_copy_from(
     cds_vector_t *self,
     size_t index,
@@ -184,6 +205,7 @@ cds_status_t cds_vector_copy_from(
     return _cds_vector_copy_from(self, index, src);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_insert(
     cds_vector_t *self,
     size_t index,
@@ -197,14 +219,17 @@ cds_status_t cds_vector_insert(
     return _cds_vector_copy_from(self, index, src);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_push_back(cds_vector_t *self, cds_ptr_t src) {
     return cds_vector_insert(self, self->length, src);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_push_front(cds_vector_t *self, cds_ptr_t src) {
     return cds_vector_insert(self, 0, src);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_remove(
     cds_vector_t *self,
     size_t index,
@@ -221,12 +246,14 @@ cds_status_t cds_vector_remove(
     return _cds_vector_decrease_one(self);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_pop_back(cds_vector_t *self, cds_ptr_t dest) {
     if (self->length <= 0)
         return cds_warning;
     return cds_vector_remove(self, self->length - 1, dest);
 }
 
+CDS_PUBLIC
 cds_status_t cds_vector_pop_front(cds_vector_t *self, cds_ptr_t dest) {
     if (self-> length <= 0)
         return cds_warning;

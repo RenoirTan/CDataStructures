@@ -4,14 +4,16 @@
 #include <CDataStructures/slist.h>
 
 
-CDS_PRIVATE cds_unary_node_t *_cds_slist_get_node(
+CDS_PRIVATE
+cds_unary_node_t *_cds_slist_get_node(
     cds_slist_t *self,
     size_t index
 ) {
     return cds_unary_node_get(self->head, index);
 }
 
-CDS_PRIVATE cds_status_t _cds_slist_push_front(
+CDS_PRIVATE
+cds_status_t _cds_slist_push_front(
     cds_slist_t *self,
     cds_ptr_t data
 ) {
@@ -28,7 +30,8 @@ CDS_PRIVATE cds_status_t _cds_slist_push_front(
     return status;
 }
 
-CDS_PRIVATE cds_status_t _cds_slist_push_back(
+CDS_PRIVATE
+cds_status_t _cds_slist_push_back(
     cds_slist_t *self,
     cds_ptr_t data
 ) {
@@ -50,7 +53,8 @@ CDS_PRIVATE cds_status_t _cds_slist_push_back(
     return status;
 }
 
-CDS_PRIVATE cds_status_t _cds_slist_pop_front(
+CDS_PRIVATE
+cds_status_t _cds_slist_pop_front(
     cds_slist_t *self,
     cds_ptr_t *data
 ) {
@@ -64,22 +68,26 @@ CDS_PRIVATE cds_status_t _cds_slist_pop_front(
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_slist_t *cds_slist_new(void) {
     return malloc(sizeof(cds_slist_t));
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_init(cds_slist_t *self) {
     CDS_IF_NULL_RETURN_ERROR(self);
     self->head = NULL;
     return cds_ok;
 }
 
+CDS_PUBLIC
 size_t cds_slist_length(cds_slist_t *self) {
     if (self == NULL)
         return 0;
     return cds_unary_node_length(self->head);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element) {
     if (self == NULL)
         return cds_warning;
@@ -88,29 +96,34 @@ cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element) {
     return cds_unary_node_free_all(last_head, clean_element);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element) {
     cds_status_t status = cds_slist_destroy(self, clean_element);
     free(self);
     return status;
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_slist_get_node(cds_slist_t *self, size_t index) {
     if (self == NULL)
         return NULL;
     return _cds_slist_get_node(self, index);
 }
 
+CDS_PUBLIC
 cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index) {
     cds_unary_node_t *node = cds_slist_get_node(self, index);
     return node == NULL ? NULL : node->data;
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_slist_get_last_node(cds_slist_t *self) {
     if (self == NULL)
         return NULL;
     return cds_unary_node_get_end(self->head);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_insert(
     cds_slist_t *self,
     size_t index,
@@ -137,16 +150,19 @@ cds_status_t cds_slist_insert(
     }
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_push_front(cds_slist_t *self, cds_ptr_t data) {
     CDS_IF_NULL_RETURN_ERROR(self);
     return _cds_slist_push_front(self, data);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_push_back(cds_slist_t *self, cds_ptr_t data) {
     CDS_IF_NULL_RETURN_ERROR(self);
     return _cds_slist_push_back(self, data);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_remove(
     cds_slist_t *self,
     size_t index,
@@ -167,11 +183,13 @@ cds_status_t cds_slist_remove(
     }
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data) {
     CDS_IF_NULL_RETURN_ERROR(self);
     return _cds_slist_pop_front(self, data);
 }
 
+CDS_PUBLIC
 cds_status_t cds_slist_pop_back(cds_slist_t *self, cds_ptr_t *data) {
     CDS_IF_NULL_RETURN_ERROR(self);
     cds_unary_node_t *tortoise = self->head;

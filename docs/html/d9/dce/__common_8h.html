@@ -86,9 +86,9 @@ Macros</h2></td></tr>
 <tr class="separator:aac664479cd63279e0616b8b95cffe08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29524b163a9b1706dc6e4b2438f9e64a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#a29524b163a9b1706dc6e4b2438f9e64a">CDATASTRUCTURES_BLOCK_SIZE</a>&#160;&#160;&#160;8</td></tr>
 <tr class="separator:a29524b163a9b1706dc6e4b2438f9e64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ff430f452500deb48b6f68612c3f984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#a0ff430f452500deb48b6f68612c3f984">bound</a>(n,  x,  y)&#160;&#160;&#160;(max(min(n, y), x))</td></tr>
+<tr class="memitem:a0ff430f452500deb48b6f68612c3f984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#a0ff430f452500deb48b6f68612c3f984">bound</a>(n,  x,  y)&#160;&#160;&#160;(max(min((n), (y)), (x)))</td></tr>
 <tr class="separator:a0ff430f452500deb48b6f68612c3f984"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5cc09b84120ff7b73d50d1ddb5d8713"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#af5cc09b84120ff7b73d50d1ddb5d8713">amount_to_next_multiple</a>(a,  b)&#160;&#160;&#160;(b - (a % b))</td></tr>
+<tr class="memitem:af5cc09b84120ff7b73d50d1ddb5d8713"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#af5cc09b84120ff7b73d50d1ddb5d8713">amount_to_next_multiple</a>(a,  b)&#160;&#160;&#160;((b) - ((a) % (b)))</td></tr>
 <tr class="separator:af5cc09b84120ff7b73d50d1ddb5d8713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f121a7d59305c47e68931736d4596b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dce/__common_8h.html#a7f121a7d59305c47e68931736d4596b9">_CDS_SMASH_NAMES</a>(a,  b)&#160;&#160;&#160;cds_##a##_##b</td></tr>
 <tr class="separator:a7f121a7d59305c47e68931736d4596b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,7 +173,7 @@ Macros</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(b - (a % b))</td>
+          <td></td><td>&#160;&#160;&#160;((b) - ((a) % (b)))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -207,7 +207,7 @@ Macros</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(max(min(n, y), x))</td>
+          <td></td><td>&#160;&#160;&#160;(max(min((n), (y)), (x)))</td>
         </tr>
       </table>
 </div><div class="memdoc">

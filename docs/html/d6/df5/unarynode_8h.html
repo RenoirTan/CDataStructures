@@ -95,39 +95,39 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab2c7be5de19de857c84670f60af9a86a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#ab2c7be5de19de857c84670f60af9a86a">cds_unary_node_new</a> (void)</td></tr>
-<tr class="memdesc:ab2c7be5de19de857c84670f60af9a86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a node with at most 1 child. This node is uninitialised, so you must pass this pointer to.  <a href="../../d6/df5/unarynode_8h.html#ab2c7be5de19de857c84670f60af9a86a">More...</a><br /></td></tr>
-<tr class="separator:ab2c7be5de19de857c84670f60af9a86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab61c54f196fb8eb7b00cbabc8c59ae2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#ab61c54f196fb8eb7b00cbabc8c59ae2f">cds_unary_node_init</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
-<tr class="memdesc:ab61c54f196fb8eb7b00cbabc8c59ae2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a unary node.  <a href="../../d6/df5/unarynode_8h.html#ab61c54f196fb8eb7b00cbabc8c59ae2f">More...</a><br /></td></tr>
-<tr class="separator:ab61c54f196fb8eb7b00cbabc8c59ae2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f0cdc36440648dcd9eb202c6d0477e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a7f0cdc36440648dcd9eb202c6d0477e6">cds_unary_node_get</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, size_t index)</td></tr>
-<tr class="memdesc:a7f0cdc36440648dcd9eb202c6d0477e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next &lt;index&gt;-th node after this one. If the successor node at that index cannot be found, NULL is returned.  <a href="../../d6/df5/unarynode_8h.html#a7f0cdc36440648dcd9eb202c6d0477e6">More...</a><br /></td></tr>
-<tr class="separator:a7f0cdc36440648dcd9eb202c6d0477e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50709f457b0c61a65958e71d1bfa74f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a50709f457b0c61a65958e71d1bfa74f6">cds_unary_node_length</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
-<tr class="memdesc:a50709f457b0c61a65958e71d1bfa74f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of nodes after this node including this node itself. If <code>node</code> is NULL, 0 is returned.  <a href="../../d6/df5/unarynode_8h.html#a50709f457b0c61a65958e71d1bfa74f6">More...</a><br /></td></tr>
-<tr class="separator:a50709f457b0c61a65958e71d1bfa74f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40d5d847a6c9c247a4cf9739a793870c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a40d5d847a6c9c247a4cf9739a793870c">cds_unary_node_get_end</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
-<tr class="memdesc:a40d5d847a6c9c247a4cf9739a793870c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the final node in a chain of nodes. If the final node cannot be found (because the current node is NULL), NULL is returned.  <a href="../../d6/df5/unarynode_8h.html#a40d5d847a6c9c247a4cf9739a793870c">More...</a><br /></td></tr>
-<tr class="separator:a40d5d847a6c9c247a4cf9739a793870c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb0ad711ee6b8adbc495aa8a9f113444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#afb0ad711ee6b8adbc495aa8a9f113444">cds_unary_node_cut_queue</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *before, <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *next)</td></tr>
-<tr class="memdesc:afb0ad711ee6b8adbc495aa8a9f113444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a chain of nodes between a starting node and the node that used to be right after the starting node. For example,.  <a href="../../d6/df5/unarynode_8h.html#afb0ad711ee6b8adbc495aa8a9f113444">More...</a><br /></td></tr>
-<tr class="separator:afb0ad711ee6b8adbc495aa8a9f113444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43838adc3274806f2b208e9513c5c86a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a43838adc3274806f2b208e9513c5c86a">cds_unary_node_remove_next</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
-<tr class="memdesc:a43838adc3274806f2b208e9513c5c86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the next node from the chain but reattach the nodes after that node to this node. This has the same effect as removing one element in an array.  <a href="../../d6/df5/unarynode_8h.html#a43838adc3274806f2b208e9513c5c86a">More...</a><br /></td></tr>
-<tr class="separator:a43838adc3274806f2b208e9513c5c86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50f839fdbd7e07f8b7ceb71f011d5fef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a50f839fdbd7e07f8b7ceb71f011d5fef">cds_unary_node_replace</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *ancestor, <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *sibling)</td></tr>
-<tr class="memdesc:a50f839fdbd7e07f8b7ceb71f011d5fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the node chain after this node with another node chain, then return the old node chain. The new chain is called <code>sibling</code> in this function.  <a href="../../d6/df5/unarynode_8h.html#a50f839fdbd7e07f8b7ceb71f011d5fef">More...</a><br /></td></tr>
-<tr class="separator:a50f839fdbd7e07f8b7ceb71f011d5fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95253476ef0a2c332f431e15d9dda276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a95253476ef0a2c332f431e15d9dda276">cds_unary_node_clean_once</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
-<tr class="memdesc:a95253476ef0a2c332f431e15d9dda276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory pointed to by the <code>data</code> pointer.  <a href="../../d6/df5/unarynode_8h.html#a95253476ef0a2c332f431e15d9dda276">More...</a><br /></td></tr>
-<tr class="separator:a95253476ef0a2c332f431e15d9dda276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588ed68c7b896edf207e4d4e4962e4ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a588ed68c7b896edf207e4d4e4962e4ae">cds_unary_node_clean_all</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
-<tr class="memdesc:a588ed68c7b896edf207e4d4e4962e4ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean all the data pointers in all the nodes in the current chain.  <a href="../../d6/df5/unarynode_8h.html#a588ed68c7b896edf207e4d4e4962e4ae">More...</a><br /></td></tr>
-<tr class="separator:a588ed68c7b896edf207e4d4e4962e4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3e385338e858985a09a35e7d7bbf8cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#af3e385338e858985a09a35e7d7bbf8cf">cds_unary_node_free_all</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
-<tr class="memdesc:af3e385338e858985a09a35e7d7bbf8cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all the nodes and data in the current chain.  <a href="../../d6/df5/unarynode_8h.html#af3e385338e858985a09a35e7d7bbf8cf">More...</a><br /></td></tr>
-<tr class="separator:af3e385338e858985a09a35e7d7bbf8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2fa5ce22ebac6305744e5c62b0dfe3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#ac2fa5ce22ebac6305744e5c62b0dfe3c">cds_unary_node_new</a> (void)</td></tr>
+<tr class="memdesc:ac2fa5ce22ebac6305744e5c62b0dfe3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a node with at most 1 child. This node is uninitialised, so you must pass this pointer to.  <a href="../../d6/df5/unarynode_8h.html#ac2fa5ce22ebac6305744e5c62b0dfe3c">More...</a><br /></td></tr>
+<tr class="separator:ac2fa5ce22ebac6305744e5c62b0dfe3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ed2ee04052296b25efebe7d3a3ccb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#ab8ed2ee04052296b25efebe7d3a3ccb3">cds_unary_node_init</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
+<tr class="memdesc:ab8ed2ee04052296b25efebe7d3a3ccb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise a unary node.  <a href="../../d6/df5/unarynode_8h.html#ab8ed2ee04052296b25efebe7d3a3ccb3">More...</a><br /></td></tr>
+<tr class="separator:ab8ed2ee04052296b25efebe7d3a3ccb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf8fd4fc6aa8fc1b7339e87b753bc21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a8bf8fd4fc6aa8fc1b7339e87b753bc21">cds_unary_node_get</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, size_t index)</td></tr>
+<tr class="memdesc:a8bf8fd4fc6aa8fc1b7339e87b753bc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next &lt;index&gt;-th node after this one. If the successor node at that index cannot be found, NULL is returned.  <a href="../../d6/df5/unarynode_8h.html#a8bf8fd4fc6aa8fc1b7339e87b753bc21">More...</a><br /></td></tr>
+<tr class="separator:a8bf8fd4fc6aa8fc1b7339e87b753bc21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec8ad737c78678f372a958ad5b3a943"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#abec8ad737c78678f372a958ad5b3a943">cds_unary_node_length</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
+<tr class="memdesc:abec8ad737c78678f372a958ad5b3a943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of nodes after this node including this node itself. If <code>node</code> is NULL, 0 is returned.  <a href="../../d6/df5/unarynode_8h.html#abec8ad737c78678f372a958ad5b3a943">More...</a><br /></td></tr>
+<tr class="separator:abec8ad737c78678f372a958ad5b3a943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1731e77cea79913f90eb2775171538"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a7c1731e77cea79913f90eb2775171538">cds_unary_node_get_end</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
+<tr class="memdesc:a7c1731e77cea79913f90eb2775171538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the final node in a chain of nodes. If the final node cannot be found (because the current node is NULL), NULL is returned.  <a href="../../d6/df5/unarynode_8h.html#a7c1731e77cea79913f90eb2775171538">More...</a><br /></td></tr>
+<tr class="separator:a7c1731e77cea79913f90eb2775171538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44cc0fd4d236910e0cc374ab6c51973f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a44cc0fd4d236910e0cc374ab6c51973f">cds_unary_node_cut_queue</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *before, <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *next)</td></tr>
+<tr class="memdesc:a44cc0fd4d236910e0cc374ab6c51973f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a chain of nodes between a starting node and the node that used to be right after the starting node. For example,.  <a href="../../d6/df5/unarynode_8h.html#a44cc0fd4d236910e0cc374ab6c51973f">More...</a><br /></td></tr>
+<tr class="separator:a44cc0fd4d236910e0cc374ab6c51973f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6075d75a73c321bfd9829b53ce2828"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a4a6075d75a73c321bfd9829b53ce2828">cds_unary_node_remove_next</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node)</td></tr>
+<tr class="memdesc:a4a6075d75a73c321bfd9829b53ce2828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the next node from the chain but reattach the nodes after that node to this node. This has the same effect as removing one element in an array.  <a href="../../d6/df5/unarynode_8h.html#a4a6075d75a73c321bfd9829b53ce2828">More...</a><br /></td></tr>
+<tr class="separator:a4a6075d75a73c321bfd9829b53ce2828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aa129876b77c61d9dd45dd389146db3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#a6aa129876b77c61d9dd45dd389146db3">cds_unary_node_replace</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *ancestor, <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *sibling)</td></tr>
+<tr class="memdesc:a6aa129876b77c61d9dd45dd389146db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the node chain after this node with another node chain, then return the old node chain. The new chain is called <code>sibling</code> in this function.  <a href="../../d6/df5/unarynode_8h.html#a6aa129876b77c61d9dd45dd389146db3">More...</a><br /></td></tr>
+<tr class="separator:a6aa129876b77c61d9dd45dd389146db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add9cfdef019990ffca728ec23b4c7a17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#add9cfdef019990ffca728ec23b4c7a17">cds_unary_node_clean_once</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
+<tr class="memdesc:add9cfdef019990ffca728ec23b4c7a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory pointed to by the <code>data</code> pointer.  <a href="../../d6/df5/unarynode_8h.html#add9cfdef019990ffca728ec23b4c7a17">More...</a><br /></td></tr>
+<tr class="separator:add9cfdef019990ffca728ec23b4c7a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfb280becd4fb5490c999ce3b1727252"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#adfb280becd4fb5490c999ce3b1727252">cds_unary_node_clean_all</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
+<tr class="memdesc:adfb280becd4fb5490c999ce3b1727252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean all the data pointers in all the nodes in the current chain.  <a href="../../d6/df5/unarynode_8h.html#adfb280becd4fb5490c999ce3b1727252">More...</a><br /></td></tr>
+<tr class="separator:adfb280becd4fb5490c999ce3b1727252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa8ce678ac763f1d9faf7b72dc55862"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/df5/unarynode_8h.html#aeaa8ce678ac763f1d9faf7b72dc55862">cds_unary_node_free_all</a> (<a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *node, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
+<tr class="memdesc:aeaa8ce678ac763f1d9faf7b72dc55862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all the nodes and data in the current chain.  <a href="../../d6/df5/unarynode_8h.html#aeaa8ce678ac763f1d9faf7b72dc55862">More...</a><br /></td></tr>
+<tr class="separator:aeaa8ce678ac763f1d9faf7b72dc55862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A header defining a unary node. </p>
@@ -151,14 +151,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a588ed68c7b896edf207e4d4e4962e4ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a588ed68c7b896edf207e4d4e4962e4ae">&#9670;&nbsp;</a></span>cds_unary_node_clean_all()</h2>
+<a id="adfb280becd4fb5490c999ce3b1727252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb280becd4fb5490c999ce3b1727252">&#9670;&nbsp;</a></span>cds_unary_node_clean_all()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_clean_all </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_clean_all </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -189,14 +189,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a95253476ef0a2c332f431e15d9dda276"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95253476ef0a2c332f431e15d9dda276">&#9670;&nbsp;</a></span>cds_unary_node_clean_once()</h2>
+<a id="add9cfdef019990ffca728ec23b4c7a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add9cfdef019990ffca728ec23b4c7a17">&#9670;&nbsp;</a></span>cds_unary_node_clean_once()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_clean_once </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_clean_once </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -227,14 +227,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afb0ad711ee6b8adbc495aa8a9f113444"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb0ad711ee6b8adbc495aa8a9f113444">&#9670;&nbsp;</a></span>cds_unary_node_cut_queue()</h2>
+<a id="a44cc0fd4d236910e0cc374ab6c51973f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44cc0fd4d236910e0cc374ab6c51973f">&#9670;&nbsp;</a></span>cds_unary_node_cut_queue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_cut_queue </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_cut_queue </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>before</em>, </td>
@@ -268,14 +268,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af3e385338e858985a09a35e7d7bbf8cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3e385338e858985a09a35e7d7bbf8cf">&#9670;&nbsp;</a></span>cds_unary_node_free_all()</h2>
+<a id="aeaa8ce678ac763f1d9faf7b72dc55862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa8ce678ac763f1d9faf7b72dc55862">&#9670;&nbsp;</a></span>cds_unary_node_free_all()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_free_all </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_free_all </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -306,14 +306,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7f0cdc36440648dcd9eb202c6d0477e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f0cdc36440648dcd9eb202c6d0477e6">&#9670;&nbsp;</a></span>cds_unary_node_get()</h2>
+<a id="a8bf8fd4fc6aa8fc1b7339e87b753bc21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf8fd4fc6aa8fc1b7339e87b753bc21">&#9670;&nbsp;</a></span>cds_unary_node_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_get </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_get </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -344,14 +344,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a40d5d847a6c9c247a4cf9739a793870c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40d5d847a6c9c247a4cf9739a793870c">&#9670;&nbsp;</a></span>cds_unary_node_get_end()</h2>
+<a id="a7c1731e77cea79913f90eb2775171538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1731e77cea79913f90eb2775171538">&#9670;&nbsp;</a></span>cds_unary_node_get_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_get_end </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_get_end </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
@@ -371,14 +371,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab61c54f196fb8eb7b00cbabc8c59ae2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab61c54f196fb8eb7b00cbabc8c59ae2f">&#9670;&nbsp;</a></span>cds_unary_node_init()</h2>
+<a id="ab8ed2ee04052296b25efebe7d3a3ccb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8ed2ee04052296b25efebe7d3a3ccb3">&#9670;&nbsp;</a></span>cds_unary_node_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_init </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_unary_node_init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
@@ -398,14 +398,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a50709f457b0c61a65958e71d1bfa74f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50709f457b0c61a65958e71d1bfa74f6">&#9670;&nbsp;</a></span>cds_unary_node_length()</h2>
+<a id="abec8ad737c78678f372a958ad5b3a943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec8ad737c78678f372a958ad5b3a943">&#9670;&nbsp;</a></span>cds_unary_node_length()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t cds_unary_node_length </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> size_t cds_unary_node_length </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
@@ -425,14 +425,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab2c7be5de19de857c84670f60af9a86a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2c7be5de19de857c84670f60af9a86a">&#9670;&nbsp;</a></span>cds_unary_node_new()</h2>
+<a id="ac2fa5ce22ebac6305744e5c62b0dfe3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2fa5ce22ebac6305744e5c62b0dfe3c">&#9670;&nbsp;</a></span>cds_unary_node_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_new </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_new </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -442,19 +442,19 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Create a node with at most 1 child. This node is uninitialised, so you must pass this pointer to. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/df5/unarynode_8h.html#ab61c54f196fb8eb7b00cbabc8c59ae2f">cds_unary_node_init</a>.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d6/df5/unarynode_8h.html#ab8ed2ee04052296b25efebe7d3a3ccb3">cds_unary_node_init</a>.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>cds_unary_node_t* The pointer to the node. </dd></dl>
 
 </div>
 </div>
-<a id="a43838adc3274806f2b208e9513c5c86a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43838adc3274806f2b208e9513c5c86a">&#9670;&nbsp;</a></span>cds_unary_node_remove_next()</h2>
+<a id="a4a6075d75a73c321bfd9829b53ce2828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6075d75a73c321bfd9829b53ce2828">&#9670;&nbsp;</a></span>cds_unary_node_remove_next()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_remove_next </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_remove_next </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
@@ -474,14 +474,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a50f839fdbd7e07f8b7ceb71f011d5fef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50f839fdbd7e07f8b7ceb71f011d5fef">&#9670;&nbsp;</a></span>cds_unary_node_replace()</h2>
+<a id="a6aa129876b77c61d9dd45dd389146db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa129876b77c61d9dd45dd389146db3">&#9670;&nbsp;</a></span>cds_unary_node_replace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_replace </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a>* cds_unary_node_replace </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/df5/unarynode_8h.html#a268cd081ba7a4d3e5ba363c4313c7abb">cds_unary_node_t</a> *&#160;</td>
           <td class="paramname"><em>ancestor</em>, </td>

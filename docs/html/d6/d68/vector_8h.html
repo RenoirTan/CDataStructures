@@ -102,45 +102,45 @@ Functions</h2></td></tr>
 <tr class="memitem:a60c1227dc262205efdec8429f221d3fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a2d39b8a4bd98c27f794db822ba6434f3">CDS_INLINE</a> <a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a60c1227dc262205efdec8429f221d3fd">cds_vector_get_info</a> (<a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> buffer)</td></tr>
 <tr class="memdesc:a60c1227dc262205efdec8429f221d3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the vector metadata from an array allocated using cds_vector_new and/or initialised by cds_vector_init.  <a href="../../d6/d68/vector_8h.html#a60c1227dc262205efdec8429f221d3fd">More...</a><br /></td></tr>
 <tr class="separator:a60c1227dc262205efdec8429f221d3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13302e2c56382e5dc527ca616bb7fe4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a13302e2c56382e5dc527ca616bb7fe4c">cds_vector_new</a> (void)</td></tr>
-<tr class="memdesc:a13302e2c56382e5dc527ca616bb7fe4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for a new vector on the heap.  <a href="../../d6/d68/vector_8h.html#a13302e2c56382e5dc527ca616bb7fe4c">More...</a><br /></td></tr>
-<tr class="separator:a13302e2c56382e5dc527ca616bb7fe4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2511c51ad3015813182d6367f3ca229a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a2511c51ad3015813182d6367f3ca229a">cds_vector_init</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t type_size)</td></tr>
-<tr class="memdesc:a2511c51ad3015813182d6367f3ca229a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the vector with the memory block for the buffer and the size of each type.  <a href="../../d6/d68/vector_8h.html#a2511c51ad3015813182d6367f3ca229a">More...</a><br /></td></tr>
-<tr class="separator:a2511c51ad3015813182d6367f3ca229a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d48aed142871f960b2fc73cbe0baaa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a2d48aed142871f960b2fc73cbe0baaa5">cds_vector_destroy</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
-<tr class="memdesc:a2d48aed142871f960b2fc73cbe0baaa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up the memory used by the buffer in the vector but do not free the vector itself. If you are using a 2-dimensional vector, you can pass in this function to <code>cds_vector_free</code> with the top-level vector when you want to deallocate all items. See <a class="el" href="../../d6/d68/vector_8h.html#ad69480b2f33e22aeccf3ce04cdd16341">cds_vector_free</a> for more info.  <a href="../../d6/d68/vector_8h.html#a2d48aed142871f960b2fc73cbe0baaa5">More...</a><br /></td></tr>
-<tr class="separator:a2d48aed142871f960b2fc73cbe0baaa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad69480b2f33e22aeccf3ce04cdd16341"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ad69480b2f33e22aeccf3ce04cdd16341">cds_vector_free</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
-<tr class="memdesc:ad69480b2f33e22aeccf3ce04cdd16341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up the memory used by the vector (both the buffer and the vector along with its metadata). You can provide a function to on how to destroy each element as the pointer moves right as an argument to <code>clean_element</code>. If <code>clean_element</code> is NULL, this function will not call out the destructor for each element.  <a href="../../d6/d68/vector_8h.html#ad69480b2f33e22aeccf3ce04cdd16341">More...</a><br /></td></tr>
-<tr class="separator:ad69480b2f33e22aeccf3ce04cdd16341"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf55f22df72f22cd0a4ac050e0aa524d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#aaf55f22df72f22cd0a4ac050e0aa524d">cds_vector_get</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index)</td></tr>
-<tr class="memdesc:aaf55f22df72f22cd0a4ac050e0aa524d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pointer to an element in the vector.  <a href="../../d6/d68/vector_8h.html#aaf55f22df72f22cd0a4ac050e0aa524d">More...</a><br /></td></tr>
-<tr class="separator:aaf55f22df72f22cd0a4ac050e0aa524d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f014ce6324bee0c07beffa40e76ea0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a6f014ce6324bee0c07beffa40e76ea0b">cds_vector_copy_to</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
-<tr class="memdesc:a6f014ce6324bee0c07beffa40e76ea0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite the data pointed by a pointer with the data in one of the elements of the vector.  <a href="../../d6/d68/vector_8h.html#a6f014ce6324bee0c07beffa40e76ea0b">More...</a><br /></td></tr>
-<tr class="separator:a6f014ce6324bee0c07beffa40e76ea0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4538bfd02eef32f967f1dddf989fbba3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a4538bfd02eef32f967f1dddf989fbba3">cds_vector_copy_from</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
-<tr class="memdesc:a4538bfd02eef32f967f1dddf989fbba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite the data of one of the elements in the vector with the data from a "source" pointer.  <a href="../../d6/d68/vector_8h.html#a4538bfd02eef32f967f1dddf989fbba3">More...</a><br /></td></tr>
-<tr class="separator:a4538bfd02eef32f967f1dddf989fbba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c4a33c44f9b1e4cc48bc8d134d7ed4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a0c4a33c44f9b1e4cc48bc8d134d7ed4a">cds_vector_insert</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
-<tr class="memdesc:a0c4a33c44f9b1e4cc48bc8d134d7ed4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an element to the vector.  <a href="../../d6/d68/vector_8h.html#a0c4a33c44f9b1e4cc48bc8d134d7ed4a">More...</a><br /></td></tr>
-<tr class="separator:a0c4a33c44f9b1e4cc48bc8d134d7ed4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acefa38586593a0c4d419382d92463abc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#acefa38586593a0c4d419382d92463abc">cds_vector_push_back</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
-<tr class="memdesc:acefa38586593a0c4d419382d92463abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push an element to the end of a vector.  <a href="../../d6/d68/vector_8h.html#acefa38586593a0c4d419382d92463abc">More...</a><br /></td></tr>
-<tr class="separator:acefa38586593a0c4d419382d92463abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a80e5b7a1c34e25115d17ac228852ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a2a80e5b7a1c34e25115d17ac228852ae">cds_vector_push_front</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
-<tr class="memdesc:a2a80e5b7a1c34e25115d17ac228852ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push an element to the front of the vector.  <a href="../../d6/d68/vector_8h.html#a2a80e5b7a1c34e25115d17ac228852ae">More...</a><br /></td></tr>
-<tr class="separator:a2a80e5b7a1c34e25115d17ac228852ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab46168e1b1c0a0e4a9a4fb49866535d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ab46168e1b1c0a0e4a9a4fb49866535d6">cds_vector_remove</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
-<tr class="memdesc:ab46168e1b1c0a0e4a9a4fb49866535d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#ab46168e1b1c0a0e4a9a4fb49866535d6">More...</a><br /></td></tr>
-<tr class="separator:ab46168e1b1c0a0e4a9a4fb49866535d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a678b504e69eb3e009a6be2e3f8adec33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a678b504e69eb3e009a6be2e3f8adec33">cds_vector_pop_back</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
-<tr class="memdesc:a678b504e69eb3e009a6be2e3f8adec33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last element from the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#a678b504e69eb3e009a6be2e3f8adec33">More...</a><br /></td></tr>
-<tr class="separator:a678b504e69eb3e009a6be2e3f8adec33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9ee8d9f6948b676c9bc4735ba45b537"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ab9ee8d9f6948b676c9bc4735ba45b537">cds_vector_pop_front</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
-<tr class="memdesc:ab9ee8d9f6948b676c9bc4735ba45b537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the first element in the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#ab9ee8d9f6948b676c9bc4735ba45b537">More...</a><br /></td></tr>
-<tr class="separator:ab9ee8d9f6948b676c9bc4735ba45b537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4ad68251a757afa4a38b2b47aea8f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a4e4ad68251a757afa4a38b2b47aea8f4">cds_vector_new</a> (void)</td></tr>
+<tr class="memdesc:a4e4ad68251a757afa4a38b2b47aea8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for a new vector on the heap.  <a href="../../d6/d68/vector_8h.html#a4e4ad68251a757afa4a38b2b47aea8f4">More...</a><br /></td></tr>
+<tr class="separator:a4e4ad68251a757afa4a38b2b47aea8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651b6d41eb185bc0b7c5fa35e0c4a504"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a651b6d41eb185bc0b7c5fa35e0c4a504">cds_vector_init</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t type_size)</td></tr>
+<tr class="memdesc:a651b6d41eb185bc0b7c5fa35e0c4a504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the vector with the memory block for the buffer and the size of each type.  <a href="../../d6/d68/vector_8h.html#a651b6d41eb185bc0b7c5fa35e0c4a504">More...</a><br /></td></tr>
+<tr class="separator:a651b6d41eb185bc0b7c5fa35e0c4a504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3fd903a5dd1a5a9e444339ae7d6625"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a5a3fd903a5dd1a5a9e444339ae7d6625">cds_vector_destroy</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
+<tr class="memdesc:a5a3fd903a5dd1a5a9e444339ae7d6625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up the memory used by the buffer in the vector but do not free the vector itself. If you are using a 2-dimensional vector, you can pass in this function to <code>cds_vector_free</code> with the top-level vector when you want to deallocate all items. See <a class="el" href="../../d6/d68/vector_8h.html#a64492ec2104ee701b15d2a3f4c8e7410">cds_vector_free</a> for more info.  <a href="../../d6/d68/vector_8h.html#a5a3fd903a5dd1a5a9e444339ae7d6625">More...</a><br /></td></tr>
+<tr class="separator:a5a3fd903a5dd1a5a9e444339ae7d6625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64492ec2104ee701b15d2a3f4c8e7410"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#a64492ec2104ee701b15d2a3f4c8e7410">cds_vector_free</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a3d23f2ffdf1199f05b886ca52a662dfb">cds_free_f</a> clean_element)</td></tr>
+<tr class="memdesc:a64492ec2104ee701b15d2a3f4c8e7410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free up the memory used by the vector (both the buffer and the vector along with its metadata). You can provide a function to on how to destroy each element as the pointer moves right as an argument to <code>clean_element</code>. If <code>clean_element</code> is NULL, this function will not call out the destructor for each element.  <a href="../../d6/d68/vector_8h.html#a64492ec2104ee701b15d2a3f4c8e7410">More...</a><br /></td></tr>
+<tr class="separator:a64492ec2104ee701b15d2a3f4c8e7410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae32576ad0707f45d09673522128d5ee8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ae32576ad0707f45d09673522128d5ee8">cds_vector_get</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index)</td></tr>
+<tr class="memdesc:ae32576ad0707f45d09673522128d5ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pointer to an element in the vector.  <a href="../../d6/d68/vector_8h.html#ae32576ad0707f45d09673522128d5ee8">More...</a><br /></td></tr>
+<tr class="separator:ae32576ad0707f45d09673522128d5ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f85f85e09b59426d584b17fc9ba356"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#af2f85f85e09b59426d584b17fc9ba356">cds_vector_copy_to</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
+<tr class="memdesc:af2f85f85e09b59426d584b17fc9ba356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite the data pointed by a pointer with the data in one of the elements of the vector.  <a href="../../d6/d68/vector_8h.html#af2f85f85e09b59426d584b17fc9ba356">More...</a><br /></td></tr>
+<tr class="separator:af2f85f85e09b59426d584b17fc9ba356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea4ab63e0c639ac1b6a3bef8352173fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#aea4ab63e0c639ac1b6a3bef8352173fc">cds_vector_copy_from</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
+<tr class="memdesc:aea4ab63e0c639ac1b6a3bef8352173fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overwrite the data of one of the elements in the vector with the data from a "source" pointer.  <a href="../../d6/d68/vector_8h.html#aea4ab63e0c639ac1b6a3bef8352173fc">More...</a><br /></td></tr>
+<tr class="separator:aea4ab63e0c639ac1b6a3bef8352173fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adff846c2e6df2922d2edd7b500ce3c01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#adff846c2e6df2922d2edd7b500ce3c01">cds_vector_insert</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
+<tr class="memdesc:adff846c2e6df2922d2edd7b500ce3c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an element to the vector.  <a href="../../d6/d68/vector_8h.html#adff846c2e6df2922d2edd7b500ce3c01">More...</a><br /></td></tr>
+<tr class="separator:adff846c2e6df2922d2edd7b500ce3c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3de359cb8583c68d4189cb311ac937c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ac3de359cb8583c68d4189cb311ac937c">cds_vector_push_back</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
+<tr class="memdesc:ac3de359cb8583c68d4189cb311ac937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push an element to the end of a vector.  <a href="../../d6/d68/vector_8h.html#ac3de359cb8583c68d4189cb311ac937c">More...</a><br /></td></tr>
+<tr class="separator:ac3de359cb8583c68d4189cb311ac937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afafda8325dd412ce625bad4deb8b8abb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#afafda8325dd412ce625bad4deb8b8abb">cds_vector_push_front</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> src)</td></tr>
+<tr class="memdesc:afafda8325dd412ce625bad4deb8b8abb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push an element to the front of the vector.  <a href="../../d6/d68/vector_8h.html#afafda8325dd412ce625bad4deb8b8abb">More...</a><br /></td></tr>
+<tr class="separator:afafda8325dd412ce625bad4deb8b8abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1be47a591db538e2fb5e03a49a50a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#afc1be47a591db538e2fb5e03a49a50a5">cds_vector_remove</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, size_t index, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
+<tr class="memdesc:afc1be47a591db538e2fb5e03a49a50a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#afc1be47a591db538e2fb5e03a49a50a5">More...</a><br /></td></tr>
+<tr class="separator:afc1be47a591db538e2fb5e03a49a50a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e8456e48f93d8e1d3289941ea28cda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#ac3e8456e48f93d8e1d3289941ea28cda">cds_vector_pop_back</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
+<tr class="memdesc:ac3e8456e48f93d8e1d3289941ea28cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last element from the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#ac3e8456e48f93d8e1d3289941ea28cda">More...</a><br /></td></tr>
+<tr class="separator:ac3e8456e48f93d8e1d3289941ea28cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad634d4df6c49c707abfd65895b33395"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d68/vector_8h.html#aad634d4df6c49c707abfd65895b33395">cds_vector_pop_front</a> (<a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *self, <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> dest)</td></tr>
+<tr class="memdesc:aad634d4df6c49c707abfd65895b33395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the first element in the vector. If dest is a non-null pointer, the data from the removed element is copied over to dest, otherwise dest is simply ignored.  <a href="../../d6/d68/vector_8h.html#aad634d4df6c49c707abfd65895b33395">More...</a><br /></td></tr>
+<tr class="separator:aad634d4df6c49c707abfd65895b33395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A header defining a vector (dynamic array). </p>
@@ -193,14 +193,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4538bfd02eef32f967f1dddf989fbba3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4538bfd02eef32f967f1dddf989fbba3">&#9670;&nbsp;</a></span>cds_vector_copy_from()</h2>
+<a id="aea4ab63e0c639ac1b6a3bef8352173fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4ab63e0c639ac1b6a3bef8352173fc">&#9670;&nbsp;</a></span>cds_vector_copy_from()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_copy_from </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_copy_from </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -238,14 +238,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f014ce6324bee0c07beffa40e76ea0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f014ce6324bee0c07beffa40e76ea0b">&#9670;&nbsp;</a></span>cds_vector_copy_to()</h2>
+<a id="af2f85f85e09b59426d584b17fc9ba356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f85f85e09b59426d584b17fc9ba356">&#9670;&nbsp;</a></span>cds_vector_copy_to()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_copy_to </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_copy_to </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -283,14 +283,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d48aed142871f960b2fc73cbe0baaa5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d48aed142871f960b2fc73cbe0baaa5">&#9670;&nbsp;</a></span>cds_vector_destroy()</h2>
+<a id="a5a3fd903a5dd1a5a9e444339ae7d6625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3fd903a5dd1a5a9e444339ae7d6625">&#9670;&nbsp;</a></span>cds_vector_destroy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_destroy </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_destroy </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -309,7 +309,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Free up the memory used by the buffer in the vector but do not free the vector itself. If you are using a 2-dimensional vector, you can pass in this function to <code>cds_vector_free</code> with the top-level vector when you want to deallocate all items. See <a class="el" href="../../d6/d68/vector_8h.html#ad69480b2f33e22aeccf3ce04cdd16341">cds_vector_free</a> for more info. </p>
+<p>Free up the memory used by the buffer in the vector but do not free the vector itself. If you are using a 2-dimensional vector, you can pass in this function to <code>cds_vector_free</code> with the top-level vector when you want to deallocate all items. See <a class="el" href="../../d6/d68/vector_8h.html#a64492ec2104ee701b15d2a3f4c8e7410">cds_vector_free</a> for more info. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>The vector to destroy </td></tr>
@@ -321,14 +321,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad69480b2f33e22aeccf3ce04cdd16341"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad69480b2f33e22aeccf3ce04cdd16341">&#9670;&nbsp;</a></span>cds_vector_free()</h2>
+<a id="a64492ec2104ee701b15d2a3f4c8e7410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64492ec2104ee701b15d2a3f4c8e7410">&#9670;&nbsp;</a></span>cds_vector_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_free </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_free </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -359,14 +359,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf55f22df72f22cd0a4ac050e0aa524d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf55f22df72f22cd0a4ac050e0aa524d">&#9670;&nbsp;</a></span>cds_vector_get()</h2>
+<a id="ae32576ad0707f45d09673522128d5ee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae32576ad0707f45d09673522128d5ee8">&#9670;&nbsp;</a></span>cds_vector_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> cds_vector_get </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../df/def/type_8h.html#a797dd49455e686d7823d4aa811de0658">cds_ptr_t</a> cds_vector_get </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -424,14 +424,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2511c51ad3015813182d6367f3ca229a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2511c51ad3015813182d6367f3ca229a">&#9670;&nbsp;</a></span>cds_vector_init()</h2>
+<a id="a651b6d41eb185bc0b7c5fa35e0c4a504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651b6d41eb185bc0b7c5fa35e0c4a504">&#9670;&nbsp;</a></span>cds_vector_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_init </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -462,14 +462,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0c4a33c44f9b1e4cc48bc8d134d7ed4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c4a33c44f9b1e4cc48bc8d134d7ed4a">&#9670;&nbsp;</a></span>cds_vector_insert()</h2>
+<a id="adff846c2e6df2922d2edd7b500ce3c01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adff846c2e6df2922d2edd7b500ce3c01">&#9670;&nbsp;</a></span>cds_vector_insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_insert </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_insert </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -507,14 +507,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a13302e2c56382e5dc527ca616bb7fe4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13302e2c56382e5dc527ca616bb7fe4c">&#9670;&nbsp;</a></span>cds_vector_new()</h2>
+<a id="a4e4ad68251a757afa4a38b2b47aea8f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4ad68251a757afa4a38b2b47aea8f4">&#9670;&nbsp;</a></span>cds_vector_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a>* cds_vector_new </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a>* cds_vector_new </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -528,14 +528,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a678b504e69eb3e009a6be2e3f8adec33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a678b504e69eb3e009a6be2e3f8adec33">&#9670;&nbsp;</a></span>cds_vector_pop_back()</h2>
+<a id="ac3e8456e48f93d8e1d3289941ea28cda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e8456e48f93d8e1d3289941ea28cda">&#9670;&nbsp;</a></span>cds_vector_pop_back()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_pop_back </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_pop_back </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -566,14 +566,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab9ee8d9f6948b676c9bc4735ba45b537"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9ee8d9f6948b676c9bc4735ba45b537">&#9670;&nbsp;</a></span>cds_vector_pop_front()</h2>
+<a id="aad634d4df6c49c707abfd65895b33395"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad634d4df6c49c707abfd65895b33395">&#9670;&nbsp;</a></span>cds_vector_pop_front()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_pop_front </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_pop_front </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -604,14 +604,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acefa38586593a0c4d419382d92463abc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acefa38586593a0c4d419382d92463abc">&#9670;&nbsp;</a></span>cds_vector_push_back()</h2>
+<a id="ac3de359cb8583c68d4189cb311ac937c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3de359cb8583c68d4189cb311ac937c">&#9670;&nbsp;</a></span>cds_vector_push_back()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_push_back </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_push_back </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -642,14 +642,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2a80e5b7a1c34e25115d17ac228852ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a80e5b7a1c34e25115d17ac228852ae">&#9670;&nbsp;</a></span>cds_vector_push_front()</h2>
+<a id="afafda8325dd412ce625bad4deb8b8abb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afafda8325dd412ce625bad4deb8b8abb">&#9670;&nbsp;</a></span>cds_vector_push_front()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_push_front </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_push_front </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>
@@ -680,14 +680,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab46168e1b1c0a0e4a9a4fb49866535d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab46168e1b1c0a0e4a9a4fb49866535d6">&#9670;&nbsp;</a></span>cds_vector_remove()</h2>
+<a id="afc1be47a591db538e2fb5e03a49a50a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1be47a591db538e2fb5e03a49a50a5">&#9670;&nbsp;</a></span>cds_vector_remove()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_remove </td>
+          <td class="memname"><a class="el" href="../../d0/d1d/__prelude_8h.html#a0b8d26a523df7b45d02f74f011d77c93">CDS_PUBLIC</a> <a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> cds_vector_remove </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d6/d68/vector_8h.html#a79694e6d36aa57eb6dfa5fc1c7858da2">cds_vector_t</a> *&#160;</td>
           <td class="paramname"><em>self</em>, </td>

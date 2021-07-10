@@ -86,7 +86,7 @@ Macros</h2></td></tr>
 <tr class="memitem:aa0aaf2258ddcfca2f58ab9da2506e0f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d13/status_8h.html#aa0aaf2258ddcfca2f58ab9da2506e0f2">CDS_NEW_STATUS</a>&#160;&#160;&#160;<a class="el" href="../../d1/d13/status_8h.html#a53695d3aa1c835757102006c7bfc0c05">cds_status_t</a> status</td></tr>
 <tr class="memdesc:aa0aaf2258ddcfca2f58ab9da2506e0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new variable or parameter called status of type <code>cds_status_t</code>.  <a href="../../d1/d13/status_8h.html#aa0aaf2258ddcfca2f58ab9da2506e0f2">More...</a><br /></td></tr>
 <tr class="separator:aa0aaf2258ddcfca2f58ab9da2506e0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b9aefd92ed5b61a71bc131e4766887e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d13/status_8h.html#a9b9aefd92ed5b61a71bc131e4766887e">CDS_IF_STATUS_ERROR</a>(expression)&#160;&#160;&#160;if ((status = expression) &gt; 0)</td></tr>
+<tr class="memitem:a9b9aefd92ed5b61a71bc131e4766887e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d13/status_8h.html#a9b9aefd92ed5b61a71bc131e4766887e">CDS_IF_STATUS_ERROR</a>(expression)&#160;&#160;&#160;if ((status = (expression)) &gt; 0)</td></tr>
 <tr class="memdesc:a9b9aefd92ed5b61a71bc131e4766887e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The condition part of an if statement checking if an expression returned an error code.  <a href="../../d1/d13/status_8h.html#a9b9aefd92ed5b61a71bc131e4766887e">More...</a><br /></td></tr>
 <tr class="separator:a9b9aefd92ed5b61a71bc131e4766887e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d46b4ddbd8ce8525176f4aa444a7113"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d13/status_8h.html#a7d46b4ddbd8ce8525176f4aa444a7113">CDS_IF_ERROR_RETURN_STATUS</a>(expression)&#160;&#160;&#160;    <a class="el" href="../../d1/d13/status_8h.html#a9b9aefd92ed5b61a71bc131e4766887e">CDS_IF_STATUS_ERROR</a>(expression) return status;</td></tr>
@@ -191,7 +191,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (pointer == NULL) \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> ((pointer) == NULL) \</div>
 <div class="line">        return <a class="code" href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1a28953aa88e9d86059427b58228270f42">cds_alloc_error</a>;</div>
 <div class="ttc" id="astatus_8h_html_a557ce42ff53f979ec5ea709f2d8e8fb1a28953aa88e9d86059427b58228270f42"><div class="ttname"><a href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1a28953aa88e9d86059427b58228270f42">cds_alloc_error</a></div><div class="ttdeci">@ cds_alloc_error</div><div class="ttdoc">If memory allocation could not be made.</div><div class="ttdef"><b>Definition:</b> status.h:29</div></div>
 </div><!-- fragment -->
@@ -214,7 +214,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (pointer == NULL) \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> ((pointer) == NULL) \</div>
 <div class="line">        return <a class="code" href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1ab361ec1473597b193b1ec551ca5a8f12">cds_null_error</a>;</div>
 <div class="ttc" id="astatus_8h_html_a557ce42ff53f979ec5ea709f2d8e8fb1ab361ec1473597b193b1ec551ca5a8f12"><div class="ttname"><a href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1ab361ec1473597b193b1ec551ca5a8f12">cds_null_error</a></div><div class="ttdeci">@ cds_null_error</div><div class="ttdoc">If a null pointer was passed as an argument or received from somewhere else.</div><div class="ttdef"><b>Definition:</b> status.h:34</div></div>
 </div><!-- fragment -->
@@ -233,7 +233,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">expression</td><td>)</td>
-          <td>&#160;&#160;&#160;if ((status = expression) &gt; 0)</td>
+          <td>&#160;&#160;&#160;if ((status = (expression)) &gt; 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -257,7 +257,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (value == 0) \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> ((value) == 0) \</div>
 <div class="line">        return <a class="code" href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1a25166abb8f6d4c6079c2730237546675">cds_zero_error</a>;</div>
 <div class="ttc" id="astatus_8h_html_a557ce42ff53f979ec5ea709f2d8e8fb1a25166abb8f6d4c6079c2730237546675"><div class="ttname"><a href="../../d1/d13/status_8h.html#a557ce42ff53f979ec5ea709f2d8e8fb1a25166abb8f6d4c6079c2730237546675">cds_zero_error</a></div><div class="ttdeci">@ cds_zero_error</div><div class="ttdoc">If a value or parameter is 0.</div><div class="ttdef"><b>Definition:</b> status.h:25</div></div>
 </div><!-- fragment -->

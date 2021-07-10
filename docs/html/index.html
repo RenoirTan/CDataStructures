@@ -69,9 +69,12 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> This repository contains my implementation of data structures in C (<em>shudder</em>) and is meant for me to hone my C skills as well as familiarising myself with tools such as CMake and documentation generators such as Doxygen. If you spot any problem in the source code you can file an issue or initiate a pull request on <a href="https://github.com/RenoirTan/CDataStructures">this library's Github Repository</a>.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Documentation</h1>
+<p>See the <a href="https://renoirtan.github.io/CDataStructures/html/">Github Pages</a> for this repository.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Building</h1>
 <p><em>NOTE: I've only tested this on Windows (using Cygwin and MSVC) because I'm too lazy to fire up my Ubuntu virtual machine.</em></p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Setup</h2>
 <p>This project heavily uses CMake to simplify the build process, so make sure that you have CMake installed. If CMake is not on your system yet, you can cheese your way through by installing the <code>cmake</code> package on the Python Package Index:</p>
 <div class="fragment"><div class="line">pip install cmake</div>
@@ -104,29 +107,29 @@ Setup</h2>
 <div class="line">                                 mingw32-make.</div>
 <div class="line"> </div>
 <div class="line">.................................. AND SO ON ..................................</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
 Actually building the library</h2>
 <p>Before doing anything, *<code>cd</code>* into the repository directory:</p>
 <div class="fragment"><div class="line">cd ./CDataStructures</div>
 </div><!-- fragment --><p>After setting up your build environment, you can run the <code>gen.sh</code> or <code>gen.bat</code> scripts (anything ending with <code>.sh</code> runs on Unix and those with <code>.bat</code> run on Windows) to let CMake configure the settings and Makefiles for this project.</p>
 <p>If no errors pop up, you should be good to go, and you can run <code>build.sh</code> or <code>build.bat</code> (of course, which file you run depends on your OS).</p>
 <p>All the binary files should end up in the <code>./bin</code> folder created in the repository.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Generating the documentation</h2>
 <p>As mentioned before, this library uses Doxygen to convert comments to documentation. To get Doxygen, following the instructions on their <a href="https://www.doxygen.nl/manual/install.html">website</a>.</p>
 <p>Then, in your terminal, type in the following command (where you can see a file called <code>Doxyfile</code>):</p>
 <div class="fragment"><div class="line">doxygen Doxyfile</div>
 </div><!-- fragment --><p>If you're more comfortable with a GUI, you can use Doxywizard, which is bundled together with Doxygen (in fact, the <code>Doxyfile</code> was created using the Doxywizard GUI!).</p>
 <p>The documentation files can be found in the <code>./docs</code> folder.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Using this library as a dependency</h1>
 <p>Add this repository as a sub-directory of your project and add the top-level <code>CMakeLists.txt</code> as a subdirectory of your project using the <code>add_subdirectory</code> command.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Conventions</h1>
 <p>All custom identifiers defined here are prefixed by <code>cds</code> or <code>CDS</code>.</p>
 <p>This library uses <em>snake_case</em> for most identifiers, including but not limited to functions, variables and type names. For example, the vector data structure is known as <code>cds_vector_t</code> in the library. This example also showcases the suffixes used to annotate data types. The <code>_t</code> at the end of <code>cds_vector_t</code> tells us that this struct stores data, while typedefs like <code>cds_free_f</code> suggests that this type is a function pointer.</p>
 <p>Macros use SCREAMING_SNAKE_CASE, including header guards.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Data Structures</h1>
 <p>Available data structures:</p>
 <table class="markdownTable">

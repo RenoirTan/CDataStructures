@@ -1,3 +1,22 @@
+/**
+ * @file functional.h
+ * @author RenoirTan
+ * @brief A header defining common functions for functional programming.
+ * This includes comparison functions for the most common types.
+ * 
+ * To avoid having to write too much boilerplate code, the functions for
+ * each data type are generated using macros.
+ * 
+ * "TS" is a macro which applies each function generator macro onto each of the
+ * data types. These function generator macros include "F1" and "F2" which
+ * expands to functions involving the types found in "TS".
+ * @version 0.1
+ * @date 2021-07-10
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_FUNCTIONAL_H
 #   define CDATASTRUCTURES_FUNCTIONAL_H
 

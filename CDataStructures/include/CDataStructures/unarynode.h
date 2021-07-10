@@ -28,6 +28,7 @@ typedef struct _cds_unary_node_t cds_unary_node_t;
  * 
  * @return cds_unary_node_t* The pointer to the node.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_new(void);
 
 /**
@@ -36,6 +37,7 @@ cds_unary_node_t *cds_unary_node_new(void);
  * @param node The node to initialise.
  * @return cds_status_t This operation's status code.
  */
+CDS_PUBLIC
 cds_status_t cds_unary_node_init(cds_unary_node_t *node);
 
 /**
@@ -46,6 +48,7 @@ cds_status_t cds_unary_node_init(cds_unary_node_t *node);
  * @param index The index of the node you want to get.
  * @return cds_unary_node_t* The pointer to the successor node.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_get(cds_unary_node_t *node, size_t index);
 
 /**
@@ -55,6 +58,7 @@ cds_unary_node_t *cds_unary_node_get(cds_unary_node_t *node, size_t index);
  * @param node The node you want to start counting from.
  * @return size_t The length of the node chain.
  */
+CDS_PUBLIC
 size_t cds_unary_node_length(cds_unary_node_t *node);
 
 /**
@@ -64,6 +68,7 @@ size_t cds_unary_node_length(cds_unary_node_t *node);
  * @param node The current node in the chain.
  * @return cds_unary_node_t* The final node in the chain.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_get_end(cds_unary_node_t *node);
 
 /**
@@ -81,6 +86,7 @@ cds_unary_node_t *cds_unary_node_get_end(cds_unary_node_t *node);
  * @param next The node which inserts itself into the chain.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_unary_node_cut_queue(
     cds_unary_node_t *before,
     cds_unary_node_t *next
@@ -97,6 +103,7 @@ cds_status_t cds_unary_node_cut_queue(
  * the data in the node as well as the node itself using some form of the
  * function `free`.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_remove_next(cds_unary_node_t *node);
 
 /**
@@ -108,6 +115,7 @@ cds_unary_node_t *cds_unary_node_remove_next(cds_unary_node_t *node);
  * @param sibling The new node chain.
  * @return cds_unary_node_t* The old node chain.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_replace(
     cds_unary_node_t *ancestor,
     cds_unary_node_t *sibling
@@ -120,6 +128,7 @@ cds_unary_node_t *cds_unary_node_replace(
  * @param clean_element The function used to free the data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_unary_node_clean_once(
     cds_unary_node_t *node,
     cds_free_f clean_element
@@ -132,6 +141,7 @@ cds_status_t cds_unary_node_clean_once(
  * @param clean_element The function used to free the data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_unary_node_clean_all(
     cds_unary_node_t *node,
     cds_free_f clean_element
@@ -144,6 +154,7 @@ cds_status_t cds_unary_node_clean_all(
  * @param clean_element The function used to free the data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_unary_node_free_all(
     cds_unary_node_t *node,
     cds_free_f clean_element

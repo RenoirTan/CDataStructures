@@ -53,6 +53,7 @@ CDS_INLINE cds_vector_t *cds_vector_get_info(cds_ptr_t buffer) {
  * 
  * @return cds_vector_t* The location of the vector in memory.
  */
+CDS_PUBLIC
 cds_vector_t *cds_vector_new(void);
 
 /**
@@ -63,6 +64,7 @@ cds_vector_t *cds_vector_new(void);
  * @param type_size The size of the type being stored in bytes.
  * @return cds_status_t This operation's status code.
  */
+CDS_PUBLIC
 cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
 
 /**
@@ -75,6 +77,7 @@ cds_status_t cds_vector_init(cds_vector_t *self, size_t type_size);
  * @param clean_element The function which destroys each element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element);
 
 /**
@@ -88,6 +91,7 @@ cds_status_t cds_vector_destroy(cds_vector_t *self, cds_free_f clean_element);
  * @param clean_element The function which destroys each element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element);
 
 /**
@@ -97,6 +101,7 @@ cds_status_t cds_vector_free(cds_vector_t *self, cds_free_f clean_element);
  * @param index The placement of the element in the queue.
  * @return cds_ptr_t The pointer to the element. NULL if there is an error.
  */
+CDS_PUBLIC
 cds_ptr_t cds_vector_get(cds_vector_t *self, size_t index);
 
 /**
@@ -108,6 +113,7 @@ cds_ptr_t cds_vector_get(cds_vector_t *self, size_t index);
  * @param dest The pointer to the data to be overwritten.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_copy_to(
     cds_vector_t *self,
     size_t index,
@@ -123,6 +129,7 @@ cds_status_t cds_vector_copy_to(
  * @param src The source of the data.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_copy_from(
     cds_vector_t *self,
     size_t index,
@@ -137,6 +144,7 @@ cds_status_t cds_vector_copy_from(
  * @param src The source of the data.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_insert(cds_vector_t *self, size_t index, cds_ptr_t src);
 
 /**
@@ -146,6 +154,7 @@ cds_status_t cds_vector_insert(cds_vector_t *self, size_t index, cds_ptr_t src);
  * @param src The source of the data of the new element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_push_back(cds_vector_t *self, cds_ptr_t src);
 
 /**
@@ -155,6 +164,7 @@ cds_status_t cds_vector_push_back(cds_vector_t *self, cds_ptr_t src);
  * @param src The source of the data of the new element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_push_front(cds_vector_t *self, cds_ptr_t src);
 
 /**
@@ -168,6 +178,7 @@ cds_status_t cds_vector_push_front(cds_vector_t *self, cds_ptr_t src);
  * the removed element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_remove(
     cds_vector_t *self,
     size_t index,
@@ -184,6 +195,7 @@ cds_status_t cds_vector_remove(
  * the removed element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_pop_back(cds_vector_t *self, cds_ptr_t dest);
 
 /**
@@ -196,6 +208,7 @@ cds_status_t cds_vector_pop_back(cds_vector_t *self, cds_ptr_t dest);
  * the removed element.
  * @return cds_status_t 
  */
+CDS_PUBLIC
 cds_status_t cds_vector_pop_front(cds_vector_t *self, cds_ptr_t dest);
 
 #endif

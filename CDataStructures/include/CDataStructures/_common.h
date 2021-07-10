@@ -17,8 +17,8 @@
 #   define CDATASTRUCTURES_MIN_CAPACITY 16
 #   define CDATASTRUCTURES_BLOCK_SIZE 8
 
-#   define bound(n, x, y) (max(min(n, y), x))
-#   define amount_to_next_multiple(a, b) (b - (a % b))
+#   define bound(n, x, y) (max(min((n), (y)), (x)))
+#   define amount_to_next_multiple(a, b) ((b) - ((a) % (b)))
 
 #   define _CDS_SMASH_NAMES(a, b) cds_##a##_##b
 #   define CDS_SMASH_PUBLIC(typename, suffix) _CDS_SMASH_NAMES(typename, suffix)

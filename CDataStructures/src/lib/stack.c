@@ -4,11 +4,12 @@
 #include <CDataStructures/stack.h>
 #include <CDataStructures/utils.h>
 
-
+CDS_PUBLIC
 cds_stack_t *cds_stack_new(void) {
     return CDS_NEW(cds_stack_t);
 }
 
+CDS_PUBLIC
 cds_status_t cds_stack_init(cds_stack_t *self) {
     CDS_IF_NULL_RETURN_ERROR(self);
     cds_slist_t *slist = cds_slist_new();
@@ -22,6 +23,7 @@ cds_status_t cds_stack_init(cds_stack_t *self) {
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_stack_t cds_stack_from_slist(cds_slist_t *slist) {
     cds_stack_t stack = {
         .slist = slist
@@ -29,34 +31,40 @@ cds_stack_t cds_stack_from_slist(cds_slist_t *slist) {
     return stack;
 }
 
+CDS_PUBLIC
 bool cds_stack_is_empty(cds_stack_t *self) {
     return (self == NULL || self->slist == NULL || self->slist->head == NULL);
 }
 
+CDS_PUBLIC
 cds_status_t cds_stack_destroy(cds_stack_t *self, cds_free_f clean_element) {
     CDS_IF_NULL_RETURN_ERROR(self);
     return cds_slist_destroy(self->slist, clean_element);
 }
 
+CDS_PUBLIC
 cds_status_t cds_stack_free(cds_stack_t *self, cds_free_f clean_element) {
     CDS_NEW_STATUS;
-    CDS_IF_ERROR_RETURN_STATUS((cds_stack_destroy(self, clean_element)));
+    CDS_IF_ERROR_RETURN_STATUS(cds_stack_destroy(self, clean_element));
     free(self);
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_ptr_t cds_stack_top(cds_stack_t *self) {
     if (self == NULL || self->slist == NULL || self->slist->head == NULL)
         return NULL;
     return self->slist->head->data;
 }
 
+CDS_PUBLIC
 cds_status_t cds_stack_push(cds_stack_t *self, cds_ptr_t data) {
     if (self == NULL || self->slist == NULL)
         return cds_null_error;
     return cds_slist_push_front(self->slist, data);
 }
 
+CDS_PUBLIC
 cds_status_t cds_stack_pop(cds_stack_t *self, cds_ptr_t *data) {
     if (self == NULL || self->slist == NULL)
         return cds_null_error;

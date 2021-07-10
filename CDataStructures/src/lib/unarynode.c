@@ -2,7 +2,8 @@
 #include <string.h>
 #include <CDataStructures/unarynode.h>
 
-CDS_PRIVATE cds_status_t _cds_unary_node_cut_queue(
+CDS_PRIVATE 
+cds_status_t _cds_unary_node_cut_queue(
     cds_unary_node_t *before,
     cds_unary_node_t *next
 ) {
@@ -12,7 +13,8 @@ CDS_PRIVATE cds_status_t _cds_unary_node_cut_queue(
     return cds_ok;
 }
 
-CDS_PRIVATE cds_unary_node_t *_cds_unary_node_remove_next(
+CDS_PRIVATE 
+cds_unary_node_t *_cds_unary_node_remove_next(
     cds_unary_node_t *node
 ) {
     cds_unary_node_t *next = node->next;
@@ -21,7 +23,8 @@ CDS_PRIVATE cds_unary_node_t *_cds_unary_node_remove_next(
     return next;
 }
 
-CDS_PRIVATE cds_unary_node_t *_cds_unary_node_replace(
+CDS_PRIVATE 
+cds_unary_node_t *_cds_unary_node_replace(
     cds_unary_node_t *ancestor,
     cds_unary_node_t *sibling
 ) {
@@ -30,7 +33,8 @@ CDS_PRIVATE cds_unary_node_t *_cds_unary_node_replace(
     return child;
 }
 
-CDS_PRIVATE cds_status_t _cds_unary_node_clean_once(
+CDS_PRIVATE 
+cds_status_t _cds_unary_node_clean_once(
     cds_unary_node_t *node,
     cds_free_f clean_element
 ) {
@@ -42,10 +46,12 @@ CDS_PRIVATE cds_status_t _cds_unary_node_clean_once(
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_new(void) {
     return malloc(sizeof(cds_unary_node_t));
 }
 
+CDS_PUBLIC
 cds_status_t cds_unary_node_init(cds_unary_node_t *node) {
     CDS_IF_NULL_RETURN_ERROR(node);
     node->data = NULL;
@@ -53,6 +59,7 @@ cds_status_t cds_unary_node_init(cds_unary_node_t *node) {
     return cds_ok;
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_get(cds_unary_node_t *node, size_t index) {
     size_t passed = 0;
     while (passed < index && node != NULL) {
@@ -62,6 +69,7 @@ cds_unary_node_t *cds_unary_node_get(cds_unary_node_t *node, size_t index) {
     return node;
 }
 
+CDS_PUBLIC
 size_t cds_unary_node_length(cds_unary_node_t *node) {
     if (node == NULL)
         return 0;
@@ -73,6 +81,7 @@ size_t cds_unary_node_length(cds_unary_node_t *node) {
     return length;
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_get_end(cds_unary_node_t *node) {
     if (node == NULL)
         return NULL;
@@ -82,6 +91,7 @@ cds_unary_node_t *cds_unary_node_get_end(cds_unary_node_t *node) {
     return node;
 }
 
+CDS_PUBLIC
 cds_status_t cds_unary_node_cut_queue(
     cds_unary_node_t *before,
     cds_unary_node_t *next
@@ -91,6 +101,7 @@ cds_status_t cds_unary_node_cut_queue(
     return _cds_unary_node_cut_queue(before, next);
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_remove_next(cds_unary_node_t *node) {
     if (node == NULL)
         return NULL;
@@ -98,6 +109,7 @@ cds_unary_node_t *cds_unary_node_remove_next(cds_unary_node_t *node) {
         return _cds_unary_node_remove_next(node);
 }
 
+CDS_PUBLIC
 cds_unary_node_t *cds_unary_node_replace(
     cds_unary_node_t *ancestor,
     cds_unary_node_t *sibling
@@ -108,6 +120,7 @@ cds_unary_node_t *cds_unary_node_replace(
         return _cds_unary_node_replace(ancestor, sibling);
 }
 
+CDS_PUBLIC
 cds_status_t cds_unary_node_clean_once(
     cds_unary_node_t *node,
     cds_free_f clean_element
@@ -116,6 +129,7 @@ cds_status_t cds_unary_node_clean_once(
     return _cds_unary_node_clean_once(node, clean_element);
 }
 
+CDS_PUBLIC
 cds_status_t cds_unary_node_clean_all(
     cds_unary_node_t *node,
     cds_free_f clean_element
@@ -128,6 +142,7 @@ cds_status_t cds_unary_node_clean_all(
     return status;
 }
 
+CDS_PUBLIC
 cds_status_t cds_unary_node_free_all(
     cds_unary_node_t *node,
     cds_free_f clean_element

@@ -33,6 +33,7 @@ typedef struct _cds_slist_t cds_slist_t;
  * @return cds_slist_t* The new singly-linked list. If memory cannot be
  * allocated, NULL is returned.
  */
+CDS_PUBLIC
 cds_slist_t *cds_slist_new(void);
 
 /**
@@ -41,6 +42,7 @@ cds_slist_t *cds_slist_new(void);
  * @param self The uninitialised singly-linked list.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_init(cds_slist_t *self);
 
 /**
@@ -51,6 +53,7 @@ cds_status_t cds_slist_init(cds_slist_t *self);
  * @param self The list.
  * @return size_t The number of nodes.
  */
+CDS_PUBLIC
 size_t cds_slist_length(cds_slist_t *self);
 
 /**
@@ -61,6 +64,7 @@ size_t cds_slist_length(cds_slist_t *self);
  * @param clean_element The function used to free the data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element);
 
 /**
@@ -70,6 +74,7 @@ cds_status_t cds_slist_destroy(cds_slist_t *self, cds_free_f clean_element);
  * @param clean_element The function used to free the data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element);
 
 /**
@@ -79,6 +84,7 @@ cds_status_t cds_slist_free(cds_slist_t *self, cds_free_f clean_element);
  * @param index The index of the node.
  * @return cds_unary_node_t* The pointer to the node.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
 
 /**
@@ -88,6 +94,7 @@ cds_unary_node_t *cds_slist_get_node(cds_slist_t *self, size_t index);
  * @param index The index of the node.
  * @return cds_ptr_t The pointer to the data.
  */
+CDS_PUBLIC
 cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index);
 
 /**
@@ -96,6 +103,7 @@ cds_ptr_t cds_slist_get_data(cds_slist_t *self, size_t index);
  * @param self The list.
  * @return cds_unary_node_t* The last node.
  */
+CDS_PUBLIC
 cds_unary_node_t *cds_slist_get_last_node(cds_slist_t *self);
 
 /**
@@ -106,6 +114,7 @@ cds_unary_node_t *cds_slist_get_last_node(cds_slist_t *self);
  * @param data The data to be stored in the list.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_insert(
     cds_slist_t *self,
     size_t index,
@@ -119,6 +128,7 @@ cds_status_t cds_slist_insert(
  * @param data The data to be prepended to the list.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_push_front(cds_slist_t *self, cds_ptr_t data);
 
 /**
@@ -130,6 +140,7 @@ cds_status_t cds_slist_push_front(cds_slist_t *self, cds_ptr_t data);
  * @param data The data to be appended to the list.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_push_back(cds_slist_t *self, cds_ptr_t data);
 
 /**
@@ -144,6 +155,7 @@ cds_status_t cds_slist_push_back(cds_slist_t *self, cds_ptr_t data);
  * overwritten with the pointer to the removed data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_remove(cds_slist_t *self, size_t index, cds_ptr_t *data);
 
 /**
@@ -157,6 +169,7 @@ cds_status_t cds_slist_remove(cds_slist_t *self, size_t index, cds_ptr_t *data);
  * overwritten with the pointer to the removed data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data);
 
 /**
@@ -170,6 +183,7 @@ cds_status_t cds_slist_pop_front(cds_slist_t *self, cds_ptr_t *data);
  * overwritten with the pointer to the removed data.
  * @return cds_status_t The status code of this operation.
  */
+CDS_PUBLIC
 cds_status_t cds_slist_pop_back(cds_slist_t *self, cds_ptr_t *data);
 
 #endif

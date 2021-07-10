@@ -27,13 +27,14 @@
  * @return size_t The recommended capacity the array should have.
  */
 CDS_INLINE size_t _cds_recommended_capacity(size_t length) {
-    if (length <= CDATASTRUCTURES_MIN_CAPACITY)
+    if (length <= CDATASTRUCTURES_MIN_CAPACITY) {
         return CDATASTRUCTURES_MIN_CAPACITY;
-    else
+    } else {
         return length + amount_to_next_multiple(
             length - CDATASTRUCTURES_MIN_CAPACITY,
             CDATASTRUCTURES_BLOCK_SIZE
         );
+    }
 }
 
 /**

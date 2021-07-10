@@ -27,10 +27,18 @@
  */
 #   define CDS_PRIVATE static
 
+#   ifdef __cplusplus
 /**
  * @brief A macro designating a function definition as part of the public
  * API.
  */
-#   define CDS_PUBLIC
+#       define CDS_PUBLIC extern "C"
+#   else
+/**
+ * @brief A macro designating a function definition as part of the public
+ * API.
+ */
+#       define CDS_PUBLIC extern
+#   endif
 
 #endif

@@ -6,6 +6,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 
 set(${PROJECT_NAME}-build_test ON CACHE BOOL "Whether to build tests or not.")
 message(STATUS "Build test executables - ${${PROJECT_NAME}-build_test}")
+set(${PROJECT_NAME}-substitute-unstable ON CACHE BOOL "Whether to use the currently unstable API instead of the stable ones.")
+message(STATUS "Substitute using unstable API - ${${PROJECT_NAME}-substitute-unstable}")
 set(CMAKE_BUILD_TYPE Debug)
 message(STATUS "CMake Build Type - ${CMAKE_BUILD_TYPE}")
 set(CMAKE_C_STANDARD 90)

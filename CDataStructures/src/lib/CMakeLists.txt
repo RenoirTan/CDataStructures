@@ -11,10 +11,8 @@ target_link_libraries(${PROJECT_NAME}-stack-shared PUBLIC ${PROJECT_NAME}-slist-
 add_library(${PROJECT_NAME}-unarynode-static STATIC unarynode.c)
 add_library(${PROJECT_NAME}-unarynode-shared SHARED unarynode.c)
 
-if(${${PROJECT_NAME}-substitute-unstable})
-    add_library(${PROJECT_NAME}-vector-static STATIC _vector_unsized.c)
-    add_library(${PROJECT_NAME}-vector-shared SHARED _vector_unsized.c)
-else()
-    add_library(${PROJECT_NAME}-vector-static STATIC vector.c)
-    add_library(${PROJECT_NAME}-vector-shared SHARED vector.c)
-endif()
+add_library(${PROJECT_NAME}-dynbuffer-static STATIC dynbuffer.c)
+add_library(${PROJECT_NAME}-dynbuffer-shared SHARED dynbuffer.c)
+
+add_library(${PROJECT_NAME}-vector-static STATIC vector.c)
+add_library(${PROJECT_NAME}-vector-shared SHARED vector.c)

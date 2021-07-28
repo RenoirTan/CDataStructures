@@ -150,4 +150,17 @@ cds_status_t cds_buffer_destroy(cds_buffer_t buffer, cds_free_f clean_element);
 CDS_PUBLIC
 cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element);
 
+
+/**
+ * @brief Increase the size of the buffer so that it can fit an additional
+ * specified number of elements (`amount`).
+ * 
+ * @param buffer The buffer whose size is to be increased.
+ * @param amount The number of extra elements the buffer should have.
+ * 
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_reserve_more(cds_buffer_t buffer, size_t amount);
+
 #endif

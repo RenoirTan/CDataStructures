@@ -8,6 +8,7 @@
 struct _cds_buffer_header_t {
     size_t type_size;
     size_t length;
+    size_t _reserved;
     size_t _bytes_allocated;
 };
 

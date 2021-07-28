@@ -90,6 +90,7 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
     cds_buffer_data_t *self = cds_buffer_get_data(*buffer);
     self->header.type_size = type_size;
     self->header.length = 0;
+    self->header._reserved = 0;
     cds_buffer_data_t *inited = realloc(
         self,
         cds_buffer_alloc_length(0, type_size)

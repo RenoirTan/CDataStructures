@@ -11,7 +11,7 @@
     CDS_IF_NULL_RETURN_ERROR(self);
 
 CDS_PRIVATE
-cds_status_t _cds_vector_realloc_data(
+cds_status_t _cds_buffer_realloc_data(
     cds_buffer_data_t **self,
     size_t bytes
 ) {
@@ -23,11 +23,11 @@ cds_status_t _cds_vector_realloc_data(
 }
 
 CDS_PRIVATE
-cds_status_t _cds_vector_realloc_eager(
+cds_status_t _cds_buffer_realloc_eager(
     cds_buffer_data_t **self,
     size_t length
 ) {
-    CDS_NEW_STATUS = _cds_vector_realloc_data(
+    CDS_NEW_STATUS = _cds_buffer_realloc_data(
         self,
         cds_buffer_alloc_length(length, _HEAD(self).type_size)
     );
@@ -38,13 +38,13 @@ cds_status_t _cds_vector_realloc_eager(
 }
 
 CDS_PRIVATE
-cds_status_t _cds_vector_realloc_lazy(
+cds_status_t _cds_buffer_realloc_lazy(
     cds_buffer_data_t **self,
     size_t length
 ) {
     size_t bytes = cds_buffer_alloc_length(length, _HEAD(self).type_size);
     if (bytes != _HEAD(self)._bytes_allocated) {
-        CDS_NEW_STATUS = _cds_vector_realloc_data(self, bytes);
+        CDS_NEW_STATUS = _cds_buffer_realloc_data(self, bytes);
         if (!CDS_IS_ERROR(status)) {
             _HEAD(self).length = length;
         }
@@ -55,12 +55,12 @@ cds_status_t _cds_vector_realloc_lazy(
 }
 
 CDS_PRIVATE
-cds_ptr_t _cds_vector_get(cds_buffer_data_t *self, size_t index) {
+cds_ptr_t _cds_buffer_get(cds_buffer_data_t *self, size_t index) {
     return cds_buffer_get_inner(self) + (index * self->header.type_size);
 }
 
 CDS_PRIVATE
-cds_status_t _cds_vector_destroy(
+cds_status_t _cds_buffer_destroy(
     cds_buffer_data_t **_self,
     cds_free_f clean_element
 ) {
@@ -68,10 +68,10 @@ cds_status_t _cds_vector_destroy(
     if (clean_element != NULL) {
         size_t index = 0;
         for (; index < self->header.length; ++index) {
-            clean_element(_cds_vector_get(self, index));
+            clean_element(_cds_buffer_get(self, index));
         }
     }
-    return _cds_vector_realloc_eager(_self, 0);
+    return _cds_buffer_realloc_eager(_self, 0);
 }
 
 CDS_PUBLIC
@@ -109,7 +109,7 @@ cds_status_t cds_buffer_destroy(cds_buffer_t buffer, cds_free_f clean_element) {
     _VALIDATE_BUF(buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
     CDS_NEW_STATUS;
-    if (!CDS_IS_ERROR(_cds_vector_destroy(&self, clean_element))) {
+    if (!CDS_IS_ERROR(_cds_buffer_destroy(&self, clean_element))) {
         cds_buffer_get_inner(self);
     }
     return status;

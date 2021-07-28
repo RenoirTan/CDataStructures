@@ -15,12 +15,12 @@ typedef struct _cds_buffer_header_t cds_buffer_header_t;
 
 struct _cds_buffer_data_t {
     struct _cds_buffer_header_t header;
-    cds_buffer_t buffer;
+    cds_slice_t buffer;
 };
 
 typedef struct _cds_buffer_data_t cds_buffer_data_t;
 
-typedef cds_array_t cds_buffer_t;
+// typedef cds_array_t cds_buffer_t;
 
 CDS_INLINE
 cds_buffer_t cds_buffer_get_inner(cds_buffer_data_t *self) {
@@ -28,7 +28,7 @@ cds_buffer_t cds_buffer_get_inner(cds_buffer_data_t *self) {
 }
 
 CDS_INLINE 
-cds_buffer_data_t *cds_buffer_get_data(cds_buffer_t buffer) {
+cds_buffer_data_t *cds_buffer_get_data(cds_slice_t buffer) {
     if (buffer == NULL)
         return NULL;
     else {

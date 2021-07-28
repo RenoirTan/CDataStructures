@@ -57,3 +57,5 @@ build/
 
 *.stackdump
 docs/
+
+bin/

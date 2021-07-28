@@ -64,14 +64,14 @@ cds_status_t _cds_vector_destroy(
     cds_buffer_data_t **_self,
     cds_free_f clean_element
 ) {
-    cds_buffer_data_t *self = _self;
+    cds_buffer_data_t *self = *_self;
     if (clean_element != NULL) {
         size_t index = 0;
         for (; index < self->header.length; ++index) {
             clean_element(_cds_vector_get(self, index));
         }
     }
-    return _cds_vector_realloc_eager(self, 0);
+    return _cds_vector_realloc_eager(_self, 0);
 }
 
 CDS_PUBLIC

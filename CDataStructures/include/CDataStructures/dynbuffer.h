@@ -5,6 +5,14 @@
 #   include "_common.h"
 #   include "utils.h"
 
+/**
+ * @brief A pointer to an array of bytes. Although it pretty much has the same
+ * representation under the hood as `cds_array_t`, I've defined this typedef
+ * to distinguish the "purposes" of variables marked as a `cds_array_t` and
+ * a `cds_buffer_t`.
+ */
+typedef cds_byte_t *cds_buffer_t;
+
 struct _cds_buffer_header_t {
     size_t type_size;
     size_t length;
@@ -53,7 +61,7 @@ cds_buffer_t cds_buffer_get_inner(cds_buffer_data_t *self) {
  * buffer.
  */
 CDS_INLINE 
-cds_buffer_data_t *cds_buffer_get_data(cds_slice_t buffer) {
+cds_buffer_data_t *cds_buffer_get_data(cds_buffer_t buffer) {
     if (buffer == NULL)
         return NULL;
     else {

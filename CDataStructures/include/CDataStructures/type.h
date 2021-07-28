@@ -31,8 +31,6 @@ typedef char char8_t;
  */
 typedef cds_byte_t* cds_array_t;
 
-typedef cds_byte_t* cds_buffer_t;
-
 typedef cds_byte_t cds_slice_t[];
 
 /**

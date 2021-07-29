@@ -12,7 +12,7 @@
 
 CDS_PRIVATE
 size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
-
+    return 0;
 }
 
 CDS_PRIVATE
@@ -82,7 +82,7 @@ cds_status_t _cds_buffer_destroy(
 CDS_PUBLIC
 size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
     if (self == NULL)
-        return NULL;
+        return cds_null_error;
     else
         return _cds_buffer_required_bytes(self, length);
 }
@@ -133,5 +133,10 @@ cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element) {
     CDS_NEW_STATUS;
     CDS_IF_ERROR_RETURN_STATUS(cds_buffer_destroy(buffer, clean_element));
     free(cds_buffer_get_data(buffer));
+    return cds_ok;
+}
+
+CDS_PUBLIC
+cds_status_t cds_buffer_reserve_more(cds_buffer_t buffer, size_t amount) {
     return cds_ok;
 }

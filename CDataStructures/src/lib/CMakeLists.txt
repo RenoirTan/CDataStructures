@@ -1,3 +1,6 @@
+add_library(${PROJECT_NAME}-alloc-static STATIC alloc.c)
+add_library(${PROJECT_NAME}-alloc-shared SHARED alloc.c)
+
 add_library(${PROJECT_NAME}-slist-static STATIC slist.c)
 target_link_libraries(${PROJECT_NAME}-slist-static PUBLIC ${PROJECT_NAME}-unarynode-static)
 add_library(${PROJECT_NAME}-slist-shared SHARED slist.c)

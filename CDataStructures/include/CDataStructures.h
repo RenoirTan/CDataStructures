@@ -12,6 +12,7 @@
 #ifndef CDATASTRUCTURES_H
 #   define CDATASTRUCTURES_H
 
+#   include "CDataStructures/alloc.h"
 #   include "CDataStructures/functional.h"
 #   include "CDataStructures/slist.h"
 #   include "CDataStructures/stack.h"

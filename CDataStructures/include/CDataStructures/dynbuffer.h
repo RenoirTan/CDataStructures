@@ -104,6 +104,18 @@ size_t cds_buffer_alloc_length(size_t length, size_t type_size) {
 }
 
 /**
+ * @brief Calculate the number of required bytes based on the desired
+ * `length` of the buffer.
+ * 
+ * @param self The data object managing the buffer.
+ * @param length The desired length.
+ * 
+ * @return size_t The number of bytes to be allocated.
+ */
+CDS_PUBLIC
+size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length);
+
+/**
  * @brief Create a new uninitialised buffer object.
  * 
  * @return cds_buffer_t The pointer to the buffer (not including the preceding

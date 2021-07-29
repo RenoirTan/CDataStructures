@@ -11,6 +11,11 @@
     CDS_IF_NULL_RETURN_ERROR(self);
 
 CDS_PRIVATE
+size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
+
+}
+
+CDS_PRIVATE
 cds_status_t _cds_buffer_realloc_data(
     cds_buffer_data_t **self,
     size_t bytes
@@ -72,6 +77,14 @@ cds_status_t _cds_buffer_destroy(
         }
     }
     return _cds_buffer_realloc_eager(_self, 0);
+}
+
+CDS_PUBLIC
+size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
+    if (self == NULL)
+        return NULL;
+    else
+        return _cds_buffer_required_bytes(self, length);
 }
 
 CDS_PUBLIC

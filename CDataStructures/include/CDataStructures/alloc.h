@@ -1,6 +1,18 @@
+/**
+ * @file alloc.h
+ * @author RenoirTan
+ * @brief A header defining constructs which help in memory allocation.
+ * @version 0.1
+ * @date 2021-07-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef CDATASTRUCTURES_ALLOC_H
 #   define CDATASTRUCTURES_ALLOC_H
 
+#   include <stdio.h>
 #   include "_prelude.h"
 #   include "_common.h"
 
@@ -26,6 +38,17 @@ struct _cds_alloc_config_t {
  * transferred to all instances where your config object gets used.
  */ 
 typedef struct _cds_alloc_config_t cds_alloc_config_t;
+
+/**
+ * @brief Print (debug) this alloc config object to a file.
+ * 
+ * @param self The allocation config object.
+ * @param file The file to print the output to.
+ * 
+ * @return int The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_alloc_config_debug(cds_alloc_config_t self, FILE *file);
 
 /**
  * @brief Calculate the number of bytes required to store a dynamically

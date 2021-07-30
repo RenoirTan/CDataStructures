@@ -157,4 +157,21 @@ cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element);
 CDS_PUBLIC
 cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount);
 
+
+/**
+ * @brief Insert an item into the buffer at the specified index. After
+ * insertion, the item can be accessed again using `buffer[index]`. This
+ * function inserts the item by copying the data held in `src`.
+ * 
+ * @param buffer The buffer which you want to insert the element into.
+ * @param index The position of the new element.
+ * @param src A pointer pointing to the data to be inserted into the buffer.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_insert(
+    cds_buffer_t *buffer,
+    size_t index,
+    cds_ptr_t src
+);
+
 #endif

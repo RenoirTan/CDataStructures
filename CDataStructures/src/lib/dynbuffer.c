@@ -172,3 +172,15 @@ cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount) {
     size_t needed = self->header.length + amount;
     return _cds_buffer_reserve(self, needed);
 }
+
+CDS_PUBLIC
+cds_status_t cds_buffer_insert(
+    cds_buffer_t *buffer,
+    size_t index,
+    cds_ptr_t src
+) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
+    cds_buffer_data_t *self;
+    _VALIDATE_BUF(*buffer);
+    CDS_IF_NULL_RETURN_ERROR(self);
+}

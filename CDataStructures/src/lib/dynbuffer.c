@@ -172,10 +172,8 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
     self->header.type_size = type_size;
     self->header.length = 0;
     self->header._reserved = 0;
-    cds_buffer_data_t *inited = _cds_buffer_realloc_eager(self, 0);
-    if (inited == NULL)
-        return cds_alloc_error;
-    else {
+    CDS_NEW_STATUS;
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_eager(&self, 0)) else {
         *buffer = cds_buffer_get_inner(self);
         return cds_ok;
     }

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <CDataStructures/dynbuffer.h>
-#include <CDataStructures/utils.h>
 
 #define _HEAD(self) (*self)->header
 #define _VALIDATE_BUF(buffer) \
@@ -10,11 +9,29 @@
     self = cds_buffer_get_data(buffer); \
     CDS_IF_NULL_RETURN_ERROR(self);
 
+
+const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG = {
+    .constant_offset = sizeof(cds_buffer_header_t),
+    .block_mincapacity = CDS_DEFAULT_BLOCK_MINSIZE,
+    .block_increment = CDS_DEFAULT_BLOCK_INCREMENT
+};
+
+/**
+ * @brief Get how many bytes are required to store a buffer of a certain
+ * length carrying a certain type of data.
+ */
 CDS_PRIVATE
 size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
-    return 0;
+    return cds_required_space_with_config(
+        length,
+        self->header.type_size,
+        CDS_BUFFER_DATA_ALLOC_CONFIG
+    );
 }
 
+/**
+ * @brief Reallocate the buffer to a certain number of bytes.
+ */
 CDS_PRIVATE
 cds_status_t _cds_buffer_realloc_data(
     cds_buffer_data_t **self,
@@ -34,7 +51,7 @@ cds_status_t _cds_buffer_realloc_eager(
 ) {
     CDS_NEW_STATUS = _cds_buffer_realloc_data(
         self,
-        cds_buffer_alloc_length(length, _HEAD(self).type_size)
+        _cds_buffer_required_bytes(*self, length)
     );
     if (!CDS_IS_ERROR(status)) {
         _HEAD(self).length = length;
@@ -47,7 +64,7 @@ cds_status_t _cds_buffer_realloc_lazy(
     cds_buffer_data_t **self,
     size_t length
 ) {
-    size_t bytes = cds_buffer_alloc_length(length, _HEAD(self).type_size);
+    size_t bytes = _cds_buffer_required_bytes(*self, length);
     if (bytes != _HEAD(self)._bytes_allocated) {
         CDS_NEW_STATUS = _cds_buffer_realloc_data(self, bytes);
         if (!CDS_IS_ERROR(status)) {
@@ -57,6 +74,19 @@ cds_status_t _cds_buffer_realloc_lazy(
     } else {
         return cds_ok;
     }
+}
+
+CDS_PRIVATE
+cds_status_t _cds_buffer_reserve(cds_buffer_data_t **self, size_t new_capacity) {
+    CDS_NEW_STATUS = cds_ok;
+    if (new_capacity > _HEAD(self)._reserved) {
+        CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_data(
+            self,
+            _cds_buffer_required_bytes(*self, new_capacity)
+        ));
+        _HEAD(self)._reserved = new_capacity;
+    }
+    return status;
 }
 
 CDS_PRIVATE
@@ -104,10 +134,7 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
     self->header.type_size = type_size;
     self->header.length = 0;
     self->header._reserved = 0;
-    cds_buffer_data_t *inited = realloc(
-        self,
-        cds_buffer_alloc_length(0, type_size)
-    );
+    cds_buffer_data_t *inited = _cds_buffer_realloc_eager(self, 0);
     if (inited == NULL)
         return cds_alloc_error;
     else {
@@ -130,13 +157,18 @@ cds_status_t cds_buffer_destroy(cds_buffer_t buffer, cds_free_f clean_element) {
 
 CDS_PUBLIC
 cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element) {
-    CDS_NEW_STATUS;
+    CDS_NEW_STATUS = cds_ok;
     CDS_IF_ERROR_RETURN_STATUS(cds_buffer_destroy(buffer, clean_element));
     free(cds_buffer_get_data(buffer));
-    return cds_ok;
+    return status;
 }
 
 CDS_PUBLIC
-cds_status_t cds_buffer_reserve_more(cds_buffer_t buffer, size_t amount) {
-    return cds_ok;
+cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
+    cds_buffer_data_t *self;
+    _VALIDATE_BUF(*buffer);
+    CDS_IF_NULL_RETURN_ERROR(self);
+    size_t needed = self->header.length + amount;
+    return _cds_buffer_reserve(self, needed);
 }

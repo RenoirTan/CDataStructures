@@ -3,6 +3,7 @@
 
 #   include "_prelude.h"
 #   include "_common.h"
+#   include "alloc.h"
 #   include "utils.h"
 
 /**
@@ -38,6 +39,11 @@ struct _cds_buffer_data_t {
  */
 typedef struct _cds_buffer_data_t cds_buffer_data_t;
 
+/**
+ * @brief Memory allocation configuration data for `cds_buffer_t`.
+ */
+CDS_PUBLIC const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG;
+
 // typedef cds_array_t cds_buffer_t;
 
 /**
@@ -68,39 +74,6 @@ cds_buffer_data_t *cds_buffer_get_data(cds_buffer_t buffer) {
         cds_buffer_header_t *header = (cds_buffer_header_t*)buffer;
         return (cds_buffer_data_t*) (header - 1);
     }
-}
-
-/**
- * @brief Get how many bytes should be allocated to store the buffer including
- * the preceding metadata.
- * 
- * @param buffer_bytes The number of bytes allocated exclusively for the buffer
- * (the part of the struct which stores user data).
- * 
- * @return size_t The number of bytes required for the entire object.
- */
-CDS_INLINE
-size_t cds_buffer_alloc_bytes(size_t buffer_bytes) {
-    return sizeof(cds_buffer_data_t) + buffer_bytes;
-}
-
-/**
- * @brief Get the amount of bytes required to store a buffer (including
- * metadata) in memory based on how much data is stored inside (`length`) and
- * the size of each piece of data (`type_size`).
- * 
- * @param length The number of pieces of data stored in the buffer.
- * @param type_size The number of bytes each piece of data requires. This value
- * can be obtained using the `sizeof(type)` macro.
- * 
- * @return size_t The number of bytes required to be reserved for the full
- * buffer.
- */
-CDS_INLINE
-size_t cds_buffer_alloc_length(size_t length, size_t type_size) {
-    return cds_buffer_alloc_bytes(
-        _cds_recommended_capacity(length) * type_size
-    );
 }
 
 /**
@@ -182,6 +155,6 @@ cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element);
  * @return cds_status_t The status code of this operation.
  */
 CDS_PUBLIC
-cds_status_t cds_buffer_reserve_more(cds_buffer_t buffer, size_t amount);
+cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount);
 
 #endif

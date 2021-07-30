@@ -219,6 +219,7 @@ cds_status_t cds_buffer_insert(
     cds_ptr_t src
 ) {
     CDS_IF_NULL_RETURN_ERROR(buffer);
+    CDS_IF_NULL_RETURN_ERROR(src);
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);

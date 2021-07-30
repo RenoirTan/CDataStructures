@@ -124,6 +124,29 @@ cds_status_t _cds_buffer_destroy(
     return _cds_buffer_realloc_eager(_self, 0);
 }
 
+CDS_PRIVATE
+cds_status_t _cds_buffer_make_gap(cds_buffer_data_t *self, size_t index) {
+    if (index >= self->header.length)
+        return cds_ok;
+    size_t block_size = (self->header.length - index) * self->header.type_size;
+    cds_byte_t *old_location = _cds_buffer_get(self, index);
+    cds_byte_t *new_location = old_location + self->header.type_size;
+    memcpy(new_location, old_location, block_size);
+    return cds_ok;
+}
+
+CDS_PRIVATE
+cds_status_t _cds_buffer_close_gap(cds_buffer_data_t *self, size_t index) {
+    if (index >= self->header.length)
+        return cds_error;
+    size_t block_size = (self->header.length - index - 1)
+        * self->header.type_size;
+    cds_byte_t *new_location = _cds_buffer_get(self, index);
+    cds_byte_t *old_location = old_location + self->header.type_size;
+    memcpy(new_location, old_location, block_size);
+    return cds_ok;
+}
+
 CDS_PUBLIC
 size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
     if (self == NULL)
@@ -184,6 +207,7 @@ cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount) {
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
+
     size_t needed = self->header.length + amount;
     return _cds_buffer_reserve(&self, needed);
 }
@@ -198,4 +222,14 @@ cds_status_t cds_buffer_insert(
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
+    CDS_NEW_STATUS = cds_ok;
+    
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_lazy(
+        &self,
+        self->header.length + 1
+    ));
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(self, index));
+    memcpy(_cds_buffer_get(self, index), src, self->header.type_size);
+
+    return status;
 }

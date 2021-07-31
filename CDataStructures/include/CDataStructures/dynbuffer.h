@@ -128,7 +128,7 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size);
  * @return cds_status_t The status code of this operation.
  */
 CDS_PUBLIC
-cds_status_t cds_buffer_destroy(cds_buffer_t buffer, cds_free_f clean_element);
+cds_status_t cds_buffer_destroy(cds_buffer_t *buffer, cds_free_f clean_element);
 
 /**
  * @brief Free the entire buffer, including the metadata.
@@ -156,6 +156,20 @@ cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element);
  */
 CDS_PUBLIC
 cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount);
+
+
+/**
+ * @brief Remove unused capacity from the buffer. This means that the amount
+ * of space reserved for this buffer should only be able to hold the current
+ * number of elements inside the buffer. This has the effect of reducing the
+ * amount of space used by the buffer, hence "compacting" it.
+ * 
+ * @param buffer The buffer to be compacted into a smaller memory block.
+ * 
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_compact(cds_buffer_t *buffer);
 
 
 /**

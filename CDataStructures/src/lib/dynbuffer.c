@@ -21,12 +21,16 @@ const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG = {
  * length carrying a certain type of data.
  */
 CDS_PRIVATE
-size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
+size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t capacity) {
+#ifdef CDS_USE_ALLOC_LIB
     return cds_required_space_with_config(
-        length,
+        capacity,
         self->header.type_size,
         CDS_BUFFER_DATA_ALLOC_CONFIG
     );
+#else
+    return self->header.type_size * capacity + sizeof(cds_buffer_header_t);
+#endif
 }
 
 CDS_INLINE
@@ -58,6 +62,7 @@ cds_status_t _cds_buffer_realloc_data(
     return cds_ok;
 }
 
+/* 
 CDS_PRIVATE
 cds_status_t _cds_buffer_realloc_eager(
     cds_buffer_data_t **self,
@@ -90,18 +95,59 @@ cds_status_t _cds_buffer_realloc_lazy(
         return cds_ok;
     }
 }
+ */
 
 CDS_PRIVATE
-cds_status_t _cds_buffer_reserve(cds_buffer_data_t **self, size_t new_capacity) {
+cds_status_t _cds_buffer_reserve(
+    cds_buffer_data_t **self,
+    size_t new_capacity
+) {
     CDS_NEW_STATUS = cds_ok;
-    if (new_capacity > _HEAD(self)._reserved) {
+    size_t current = _HEAD(self)._reserved;
+    if (new_capacity > current) {
         CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_data(
             self,
             _cds_buffer_required_bytes(*self, new_capacity)
         ));
         _HEAD(self)._reserved = new_capacity;
+    } else if (new_capacity < current) {
+        return cds_alloc_error;
     }
     return status;
+}
+
+CDS_PRIVATE
+cds_status_t _cds_buffer_increase_reserved(cds_buffer_data_t **self) {
+    size_t extra = _HEAD(self)._reserved;
+    if (extra == 0)
+        return _cds_buffer_reserve(self, 1);
+    CDS_NEW_STATUS = cds_ok;
+    while (extra > 0) {
+        size_t new_capacity = _HEAD(self)._reserved + extra;
+        switch (status = _cds_buffer_reserve(self, new_capacity)) {
+            case cds_ok:
+                return cds_ok;
+            case cds_alloc_error:
+                extra >>= 1;
+                break;
+            default:
+                return status;
+        }
+    }
+    return cds_error;
+}
+
+CDS_PRIVATE
+cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
+    if (length > _HEAD(self)._reserved) {
+        CDS_NEW_STATUS = cds_ok;
+        CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_increase_reserved(self));
+        _HEAD(self).length = length;
+        return status;
+    } else {
+        _HEAD(self).length = length;
+        return cds_ok;
+    }
 }
 
 CDS_PRIVATE
@@ -111,17 +157,16 @@ cds_ptr_t _cds_buffer_get(cds_buffer_data_t *self, size_t index) {
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_destroy(
-    cds_buffer_data_t **_self,
+    cds_buffer_data_t **self,
     cds_free_f clean_element
 ) {
-    cds_buffer_data_t *self = *_self;
     if (clean_element != NULL) {
         size_t index = 0;
-        for (; index < self->header.length; ++index) {
-            clean_element(_cds_buffer_get(self, index));
+        for (; index < _HEAD(self).length; ++index) {
+            clean_element(_cds_buffer_get(*self, index));
         }
     }
-    return _cds_buffer_realloc_eager(_self, 0);
+    return _cds_buffer_set_length(self, 0);
 }
 
 CDS_PRIVATE
@@ -149,21 +194,22 @@ cds_status_t _cds_buffer_close_gap(cds_buffer_data_t *self, size_t index) {
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_insert(
-    cds_buffer_data_t *self,
+    cds_buffer_data_t **self,
     size_t index,
     cds_ptr_t src
 ) {
-    if (index > self->header.length) {
+    if (index > _HEAD(self).length) {
         return cds_index_error;
     }
 
     CDS_NEW_STATUS = cds_ok;
 
-    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_lazy(
-        &self,
-        self->header.length + 1));
-    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(self, index));
-    memcpy(_cds_buffer_get(self, index), src, self->header.type_size);
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_set_length(
+        self,
+        _HEAD(self).length + 1
+    ));
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(*self, index));
+    memcpy(_cds_buffer_get(*self, index), src, _HEAD(self).type_size);
 
     return status;
 }
@@ -178,10 +224,10 @@ size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
 
 CDS_PUBLIC
 cds_buffer_t cds_buffer_new(void) {
-    cds_buffer_data_t *vector = CDS_NEW(cds_buffer_data_t);
-    if (vector == NULL)
+    cds_buffer_data_t *buffer = CDS_NEW(cds_buffer_data_t);
+    if (buffer == NULL)
         return NULL;
-    return cds_buffer_get_inner(vector);
+    return cds_buffer_get_inner(buffer);
 }
 
 CDS_PUBLIC
@@ -228,7 +274,11 @@ cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount) {
     CDS_IF_NULL_RETURN_ERROR(self);
 
     size_t needed = self->header.length + amount;
-    return _cds_buffer_reserve(&self, needed);
+    CDS_NEW_STATUS = _cds_buffer_reserve(&self, needed);
+    CDS_IF_ERROR_RETURN_STATUS(status) else {
+        *buffer = cds_buffer_get_inner(self);
+    }
+    return status;
 }
 
 CDS_PUBLIC
@@ -242,7 +292,11 @@ cds_status_t cds_buffer_insert(
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
-    return _cds_buffer_insert(self, index, src);
+    CDS_NEW_STATUS = _cds_buffer_insert(&self, index, src);
+    CDS_IF_ERROR_RETURN_STATUS(status) else {
+        *buffer = cds_buffer_get_inner(self);
+    }
+    return status;
 }
 
 CDS_PUBLIC
@@ -265,7 +319,9 @@ cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
-    CDS_NEW_STATUS = cds_ok;
-
-    return _cds_buffer_insert(self, self->header.length, src);
+    CDS_NEW_STATUS = _cds_buffer_insert(&self, self->header.length, src);
+    CDS_IF_ERROR_RETURN_STATUS(status) else {
+        *buffer = cds_buffer_get_inner(self);
+    }
+    return status;
 }

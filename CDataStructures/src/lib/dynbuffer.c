@@ -147,6 +147,27 @@ cds_status_t _cds_buffer_close_gap(cds_buffer_data_t *self, size_t index) {
     return cds_ok;
 }
 
+CDS_PRIVATE
+cds_status_t _cds_buffer_insert(
+    cds_buffer_data_t *self,
+    size_t index,
+    cds_ptr_t src
+) {
+    if (index > self->header.length) {
+        return cds_index_error;
+    }
+
+    CDS_NEW_STATUS = cds_ok;
+
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_lazy(
+        &self,
+        self->header.length + 1));
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(self, index));
+    memcpy(_cds_buffer_get(self, index), src, self->header.type_size);
+
+    return status;
+}
+
 CDS_PUBLIC
 size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
     if (self == NULL)
@@ -221,14 +242,30 @@ cds_status_t cds_buffer_insert(
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
-    CDS_NEW_STATUS = cds_ok;
-    
-    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_lazy(
-        &self,
-        self->header.length + 1
-    ));
-    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(self, index));
-    memcpy(_cds_buffer_get(self, index), src, self->header.type_size);
+    return _cds_buffer_insert(self, index, src);
+}
 
-    return status;
+CDS_PUBLIC
+cds_status_t cds_buffer_push_front(cds_buffer_t *buffer, cds_ptr_t src) {
+    return cds_buffer_insert(buffer, 0, src);
+}
+
+/**
+ * @brief Insert an item to the end of the buffer.
+ * 
+ * @param buffer The buffer which you want to insert the element into.
+ * @param src A pointer pointing to the data to be inserted into the buffer.
+ * 
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
+    CDS_IF_NULL_RETURN_ERROR(src);
+    cds_buffer_data_t *self;
+    _VALIDATE_BUF(*buffer);
+    CDS_IF_NULL_RETURN_ERROR(self);
+    CDS_NEW_STATUS = cds_ok;
+
+    return _cds_buffer_insert(self, self->header.length, src);
 }

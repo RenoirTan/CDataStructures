@@ -166,6 +166,8 @@ cds_status_t cds_buffer_reserve(cds_buffer_t *buffer, size_t amount);
  * @param buffer The buffer which you want to insert the element into.
  * @param index The position of the new element.
  * @param src A pointer pointing to the data to be inserted into the buffer.
+ * 
+ * @return cds_status_t The status code of this operation.
  */
 CDS_PUBLIC
 cds_status_t cds_buffer_insert(
@@ -173,5 +175,29 @@ cds_status_t cds_buffer_insert(
     size_t index,
     cds_ptr_t src
 );
+
+
+/**
+ * @brief Insert an item to the start of the buffer.
+ * 
+ * @param buffer The buffer which you want to insert the element into.
+ * @param src A pointer pointing to the data to be inserted into the buffer.
+ * 
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_push_front(cds_buffer_t *buffer, cds_ptr_t src);
+
+
+/**
+ * @brief Insert an item to the end of the buffer.
+ * 
+ * @param buffer The buffer which you want to insert the element into.
+ * @param src A pointer pointing to the data to be inserted into the buffer.
+ * 
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src);
 
 #endif

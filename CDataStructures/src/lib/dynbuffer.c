@@ -138,6 +138,26 @@ cds_status_t _cds_buffer_increase_reserved(cds_buffer_data_t **self) {
 }
 
 CDS_PRIVATE
+cds_status_t _cds_buffer_fit(cds_buffer_data_t **self) {
+    size_t length = _HEAD(self).length;
+    size_t old_reserved = _HEAD(self)._reserved;
+    if (length < old_reserved) {
+        CDS_NEW_STATUS = cds_ok;
+        CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_data(
+            self,
+            _cds_buffer_required_bytes(*self, length)
+        )) else {
+            _HEAD(self)._reserved = length;
+            return status;
+        }
+    } else if (length > old_reserved) {
+        return cds_error;
+    } else {
+        return cds_ok;
+    }
+}
+
+CDS_PRIVATE
 cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
     if (length > _HEAD(self)._reserved) {
         CDS_NEW_STATUS = cds_ok;
@@ -166,7 +186,10 @@ cds_status_t _cds_buffer_destroy(
             clean_element(_cds_buffer_get(*self, index));
         }
     }
-    return _cds_buffer_set_length(self, 0);
+    CDS_NEW_STATUS = cds_ok;
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_set_length(self, 0));
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_fit(self));
+    return status;
 }
 
 CDS_PRIVATE

@@ -271,8 +271,9 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
 
 CDS_PUBLIC
 cds_status_t cds_buffer_destroy(cds_buffer_t *buffer, cds_free_f clean_element) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
     cds_buffer_data_t *self;
-    _VALIDATE_BUF(buffer);
+    _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
     CDS_NEW_STATUS;
     if (!CDS_IS_ERROR(_cds_buffer_destroy(&self, clean_element))) {
@@ -284,7 +285,7 @@ cds_status_t cds_buffer_destroy(cds_buffer_t *buffer, cds_free_f clean_element) 
 CDS_PUBLIC
 cds_status_t cds_buffer_free(cds_buffer_t buffer, cds_free_f clean_element) {
     CDS_NEW_STATUS = cds_ok;
-    CDS_IF_ERROR_RETURN_STATUS(cds_buffer_destroy(buffer, clean_element));
+    CDS_IF_ERROR_RETURN_STATUS(cds_buffer_destroy(&buffer, clean_element));
     free(cds_buffer_get_data(buffer));
     return status;
 }

@@ -13,6 +13,7 @@
 #   define CDATASTRUCTURES_H
 
 #   include "CDataStructures/alloc.h"
+#   include "CDataStructures/dynbuffer.h"
 #   include "CDataStructures/functional.h"
 #   include "CDataStructures/slist.h"
 #   include "CDataStructures/stack.h"

@@ -1,5 +1,5 @@
-#ifndef CDATASTRUCTURES_VECTOR_H
-#   define CDATASTRUCTURES_VECTOR_H
+#ifndef CDATASTRUCTURES_DYNBUFFER_H
+#   define CDATASTRUCTURES_DYNBUFFER_H
 
 #   include "_prelude.h"
 #   include "_common.h"

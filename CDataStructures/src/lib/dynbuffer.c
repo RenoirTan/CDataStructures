@@ -247,7 +247,7 @@ size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
 
 CDS_PUBLIC
 cds_buffer_t cds_buffer_new(void) {
-    cds_buffer_data_t *buffer = CDS_NEW(cds_buffer_data_t);
+    cds_buffer_data_t *buffer = malloc(sizeof(cds_buffer_data_t));
     if (buffer == NULL)
         return NULL;
     return cds_buffer_get_inner(buffer);
@@ -263,10 +263,7 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
     self->header.length = 0;
     self->header.reserved = 0;
     CDS_NEW_STATUS;
-    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_eager(&self, 0)) else {
-        *buffer = cds_buffer_get_inner(self);
-        return cds_ok;
-    }
+    return cds_ok;
 }
 
 CDS_PUBLIC

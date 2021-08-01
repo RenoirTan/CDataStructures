@@ -3,6 +3,9 @@ if(${${PROJECT_NAME}-build_test})
     add_executable(${PROJECT_NAME}-alloc alloc.c)
     target_link_libraries(${PROJECT_NAME}-alloc PRIVATE ${PROJECT_NAME}-alloc-static)
 
+    add_executable(${PROJECT_NAME}-dynbuffer dynbuffer.c)
+    target_link_libraries(${PROJECT_NAME}-dynbuffer PRIVATE ${PROJECT_NAME}-dynbuffer-static)
+
     add_executable(${PROJECT_NAME}-functional functional.c)
 
     add_executable(${PROJECT_NAME}-stack stack.c)

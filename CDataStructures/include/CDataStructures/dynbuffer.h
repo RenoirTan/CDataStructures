@@ -17,8 +17,8 @@ typedef cds_byte_t *cds_buffer_t;
 struct _cds_buffer_header_t {
     size_t type_size;
     size_t length;
-    size_t _reserved;
-    size_t _bytes_allocated;
+    size_t reserved;
+    size_t bytes_allocated;
 };
 
 /**

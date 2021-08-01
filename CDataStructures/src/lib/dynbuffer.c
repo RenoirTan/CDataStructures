@@ -22,7 +22,7 @@ const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG = {
  */
 CDS_PRIVATE
 size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t capacity) {
-#ifdef CDS_USE_ALLOC_LIB
+#if 0
     return cds_required_space_with_config(
         capacity,
         self->header.type_size,

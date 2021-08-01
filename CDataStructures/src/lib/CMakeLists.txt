@@ -2,9 +2,7 @@ add_library(${PROJECT_NAME}-alloc-static STATIC alloc.c)
 add_library(${PROJECT_NAME}-alloc-shared SHARED alloc.c)
 
 add_library(${PROJECT_NAME}-dynbuffer-static STATIC dynbuffer.c)
-target_link_libraries(${PROJECT_NAME}-dynbuffer-static PUBLIC ${PROJECT_NAME}-alloc-static)
 add_library(${PROJECT_NAME}-dynbuffer-shared SHARED dynbuffer.c)
-target_link_libraries(${PROJECT_NAME}-dynbuffer-shared PUBLIC ${PROJECT_NAME}-alloc-shared)
 
 add_library(${PROJECT_NAME}-slist-static STATIC slist.c)
 target_link_libraries(${PROJECT_NAME}-slist-static PUBLIC ${PROJECT_NAME}-unarynode-static)

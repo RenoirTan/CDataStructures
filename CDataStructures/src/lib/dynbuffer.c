@@ -84,7 +84,7 @@ cds_status_t _cds_buffer_realloc_lazy(
     size_t length
 ) {
     size_t bytes = _cds_buffer_required_bytes(*self, length);
-    if (bytes > _HEAD(self)._bytes_allocated) {
+    if (bytes > _HEAD(self).bytes_allocated) {
         CDS_NEW_STATUS = _cds_buffer_realloc_data(self, bytes);
         if (!CDS_IS_ERROR(status)) {
             _HEAD(self).length = length;

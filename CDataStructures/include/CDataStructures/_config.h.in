@@ -1,0 +1,7 @@
+#ifndef _CDATASTRUCTURES_CONFIG_H
+#   define _CDATASTRUCTURES_CONFIG_H
+
+#   cmakedefine CDS_DEBUG
+#   cmakedefine CDS_USE_ALLOC_LIB
+
+#endif

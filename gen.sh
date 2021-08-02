@@ -7,4 +7,4 @@ else
     echo "CMake found."
 fi
 
-cmake -S ./CDataStructures -B build/
+cmake -S ./CDataStructures -B build/ "$@"

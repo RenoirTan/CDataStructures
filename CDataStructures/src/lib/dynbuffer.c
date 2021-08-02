@@ -142,10 +142,13 @@ cds_status_t _cds_buffer_fit(cds_buffer_data_t **self) {
     size_t length = _HEAD(self).length;
     size_t old_reserved = _HEAD(self).reserved;
     if (length < old_reserved) {
+        size_t required = length == 0
+            ? 1
+            : _cds_buffer_required_bytes(*self, length);
         CDS_NEW_STATUS = cds_ok;
         CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_realloc_data(
             self,
-            _cds_buffer_required_bytes(*self, length)
+            required
         )) else {
             _HEAD(self).reserved = length;
             return status;
@@ -247,10 +250,11 @@ size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
 
 CDS_PUBLIC
 cds_buffer_t cds_buffer_new(void) {
-    cds_buffer_data_t *buffer = malloc(sizeof(cds_buffer_data_t));
-    if (buffer == NULL)
+    cds_buffer_data_t *self = malloc(sizeof(cds_buffer_data_t) + 1);
+    if (self == NULL)
         return NULL;
-    return cds_buffer_get_inner(buffer);
+    self->header.bytes_allocated = 1;
+    return cds_buffer_get_inner(self);
 }
 
 CDS_PUBLIC
@@ -263,6 +267,7 @@ cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
     self->header.length = 0;
     self->header.reserved = 0;
     CDS_NEW_STATUS;
+    // CDS_IF_ERROR_RETURN_STATUS(cds_buffer_reserve(buffer, 1));
     return cds_ok;
 }
 

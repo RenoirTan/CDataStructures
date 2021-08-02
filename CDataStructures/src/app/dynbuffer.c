@@ -45,6 +45,8 @@ int main(int argc, char **argv) {
     if (buffer == NULL) {
         printf("Could not allocate memory for the buffer.\n");
         return 1;
+    } else {
+        printf("Memory allocated for blank buffer.\n");
     }
     if (CDS_IS_ERROR(cds_buffer_init(&buffer, sizeof(struct message_t)))) {
         printf("Could not initialise buffer.\n");

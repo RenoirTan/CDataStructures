@@ -9,12 +9,13 @@
     self = cds_buffer_get_data(buffer); \
     CDS_IF_NULL_RETURN_ERROR(self);
 
-
+#ifdef CDS_USE_ALLOC_LIB
 const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG = {
     .constant_offset = sizeof(cds_buffer_header_t),
     .block_mincapacity = CDS_DEFAULT_BLOCK_MINSIZE,
     .block_increment = CDS_DEFAULT_BLOCK_INCREMENT
 };
+#endif
 
 /**
  * @brief Get how many bytes are required to store a buffer of a certain
@@ -22,7 +23,7 @@ const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG = {
  */
 CDS_PRIVATE
 size_t _cds_buffer_required_bytes(cds_buffer_data_t *self, size_t capacity) {
-#if 0
+#ifdef CDS_USE_ALLOC_LIB
     return cds_required_space_with_config(
         capacity,
         self->header.type_size,
@@ -62,7 +63,7 @@ cds_status_t _cds_buffer_realloc_data(
     return cds_ok;
 }
 
-/* 
+#ifdef CDS_USE_ALLOC_LIB
 CDS_PRIVATE
 cds_status_t _cds_buffer_realloc_eager(
     cds_buffer_data_t **self,
@@ -95,7 +96,7 @@ cds_status_t _cds_buffer_realloc_lazy(
         return cds_ok;
     }
 }
- */
+#endif
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_reserve(
@@ -162,6 +163,9 @@ cds_status_t _cds_buffer_fit(cds_buffer_data_t **self) {
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
+#ifdef CDS_USE_ALLOC_LIB
+    return _cds_buffer_realloc_lazy(self, length);
+#else
     if (length > _HEAD(self).reserved) {
         CDS_NEW_STATUS = cds_ok;
         CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_increase_reserved(self));
@@ -171,6 +175,7 @@ cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
         _HEAD(self).length = length;
         return cds_ok;
     }
+#endif
 }
 
 CDS_PRIVATE

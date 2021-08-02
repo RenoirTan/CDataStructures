@@ -3,7 +3,9 @@
 
 #   include "_prelude.h"
 #   include "_common.h"
-#   include "alloc.h"
+#   ifdef CDS_USE_ALLOC_LIB
+#       include "alloc.h"
+#   endif
 #   include "utils.h"
 
 /**
@@ -39,10 +41,12 @@ struct _cds_buffer_data_t {
  */
 typedef struct _cds_buffer_data_t cds_buffer_data_t;
 
+#   ifdef CDS_USE_ALLOC_LIB
 /**
  * @brief Memory allocation configuration data for `cds_buffer_t`.
  */
 CDS_PUBLIC const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG;
+#   endif
 
 // typedef cds_array_t cds_buffer_t;
 

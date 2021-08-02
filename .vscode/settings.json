@@ -11,6 +11,8 @@
         "_common.h": "c",
         "stack.h": "c",
         "time.h": "c",
-        "cdatastructures.h": "c"
+        "cdatastructures.h": "c",
+        "_config.h": "c",
+        "dynbuffer.h": "c"
     }
 }

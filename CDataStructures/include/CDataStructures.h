@@ -12,8 +12,10 @@
 #ifndef CDATASTRUCTURES_H
 #   define CDATASTRUCTURES_H
 
-#   include "CDataStructures/alloc.h"
 #   include "CDataStructures/_config.h"
+#   ifdef CDS_USE_ALLOC_LIB
+#       include "CDataStructures/alloc.h"
+#   endif
 #   include "CDataStructures/dynbuffer.h"
 #   include "CDataStructures/functional.h"
 #   include "CDataStructures/slist.h"

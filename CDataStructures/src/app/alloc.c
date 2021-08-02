@@ -1,3 +1,4 @@
+#define CDS_USE_ALLOC_LIB
 #include <CDataStructures.h>
 #include <stdio.h>
 

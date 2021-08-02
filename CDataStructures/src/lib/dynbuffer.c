@@ -229,19 +229,40 @@ cds_status_t _cds_buffer_insert(
     size_t index,
     cds_ptr_t src
 ) {
+#ifdef CDS_DEBUG
+    printf(" --> [_cds_buffer_insert]\n");
+#endif
     if (index > _HEAD(self).length) {
+#ifdef CDS_DEBUG
+        printf(" <-- [_cds_buffer_insert] Index out of bounds\n");
+#endif
         return cds_index_error;
     }
 
     CDS_NEW_STATUS = cds_ok;
 
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_insert] Setting length\n");
+#endif
     CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_set_length(
         self,
         _HEAD(self).length + 1
     ));
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_insert] Location of buffer: %p\n", *self);
+#endif
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_insert] Making gap\n");
+#endif
     CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(*self, index));
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_insert] Copying new element into buffer\n");
+#endif
     memcpy(_cds_buffer_get(*self, index), src, _HEAD(self).type_size);
 
+#ifdef CDS_DEBUG
+    printf(" <-- [_cds_buffer_insert]\n");
+#endif
     return status;
 }
 
@@ -255,23 +276,45 @@ size_t cds_buffer_required_bytes(cds_buffer_data_t *self, size_t length) {
 
 CDS_PUBLIC
 cds_buffer_t cds_buffer_new(void) {
+#ifdef CDS_DEBUG
+    printf(" --> [cds_buffer_new]\n");
+#endif
     cds_buffer_data_t *self = malloc(sizeof(cds_buffer_data_t) + 1);
-    if (self == NULL)
+#ifdef CDS_DEBUG
+    printf("[cds_buffer_new] Malloced!\n");
+#endif
+    if (self == NULL) {
+#ifdef CDS_DEBUG
+        printf(" <-- [cds_buffer_new] Failed!\n");
+#endif
         return NULL;
+    }
+#ifdef CDS_DEBUG
+    printf(" <-- [cds_buffer_new] Returning...\n");
+#endif
     self->header.bytes_allocated = 1;
     return cds_buffer_get_inner(self);
 }
 
 CDS_PUBLIC
 cds_status_t cds_buffer_init(cds_buffer_t *buffer, size_t type_size) {
+#ifdef CDS_DEBUG
+    printf(" --> [cds_buffer_init]\n");
+#endif
     CDS_IF_NULL_RETURN_ERROR(buffer);
     CDS_IF_NULL_RETURN_ERROR(*buffer);
     CDS_IF_ZERO_RETURN_ERROR(type_size);
+#ifdef CDS_DEBUG
+    printf("[cds_buffer_init] NULL pointer checks successful\n");
+#endif
     cds_buffer_data_t *self = cds_buffer_get_data(*buffer);
     self->header.type_size = type_size;
     self->header.length = 0;
     self->header.reserved = 0;
-    CDS_NEW_STATUS;
+#ifdef CDS_DEBUG
+    printf(" <-- [cds_buffer_init] Setting everything to 0\n");
+#endif
+    // CDS_NEW_STATUS;
     // CDS_IF_ERROR_RETURN_STATUS(cds_buffer_reserve(buffer, 1));
     return cds_ok;
 }
@@ -359,14 +402,23 @@ cds_status_t cds_buffer_push_front(cds_buffer_t *buffer, cds_ptr_t src) {
  */
 CDS_PUBLIC
 cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
+#ifdef CDS_DEBUG
+    printf(" --> [cds_buffer_push_back]\n");
+#endif
     CDS_IF_NULL_RETURN_ERROR(buffer);
     CDS_IF_NULL_RETURN_ERROR(src);
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
+#ifdef CDS_DEBUG
+    printf("[cds_buffer_push_back] Validation checks successful\n");
+#endif
     CDS_NEW_STATUS = _cds_buffer_insert(&self, self->header.length, src);
     CDS_IF_ERROR_RETURN_STATUS(status) else {
         *buffer = cds_buffer_get_inner(self);
     }
+#ifdef CDS_DEBUG
+    printf(" <-- [cds_buffer_push_back]\n");
+#endif
     return status;
 }

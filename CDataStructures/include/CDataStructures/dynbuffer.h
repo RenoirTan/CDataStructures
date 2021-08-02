@@ -7,6 +7,9 @@
 #       include "alloc.h"
 #   endif
 #   include "utils.h"
+#   ifdef CDS_DEBUG
+#       include <stdio.h>
+#   endif
 
 /**
  * @brief A pointer to an array of bytes. Although it pretty much has the same
@@ -59,7 +62,13 @@ CDS_PUBLIC const cds_alloc_config_t CDS_BUFFER_DATA_ALLOC_CONFIG;
  */
 CDS_INLINE
 cds_buffer_t cds_buffer_get_inner(cds_buffer_data_t *self) {
-    return self->buffer;
+#ifdef CDS_DEBUG
+    printf(" --> [cds_buffer_get_inner]\n");
+#endif
+#ifdef CDS_DEBUG
+    printf(" <-- [cds_buffer_get_inner] Returning inner buffer\n");
+#endif
+    return (cds_buffer_t) &((cds_buffer_header_t *) self)[1];
 }
 
 /**
@@ -72,10 +81,22 @@ cds_buffer_t cds_buffer_get_inner(cds_buffer_data_t *self) {
  */
 CDS_INLINE 
 cds_buffer_data_t *cds_buffer_get_data(cds_buffer_t buffer) {
-    if (buffer == NULL)
+#ifdef CDS_DEBUG
+    printf(" --> [cds_buffer_get_data]\n");
+#endif
+    if (buffer == NULL) {
+#ifdef CDS_DEBUG
+        printf(" <-- [cds_buffer_get_data] NULL pointer\n");
+#endif
         return NULL;
-    else {
+    } else {
+#ifdef CDS_DEBUG
+        printf("[cds_buffer_get_data] Grabbing header\n");
+#endif
         cds_buffer_header_t *header = (cds_buffer_header_t*)buffer;
+#ifdef CDS_DEBUG
+        printf(" <-- [cds_buffer_get_data] Returning\n");
+#endif
         return (cds_buffer_data_t*) (header - 1);
     }
 }

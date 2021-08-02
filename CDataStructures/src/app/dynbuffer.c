@@ -14,11 +14,14 @@ struct message_t {
 
 static struct message_t random_message(void) {
     size_t length = rand() % MAX_MESSAGE_LEN;
+    if (length == 0)
+        length = 1;
     char *message = malloc(length * sizeof(char));
     size_t index = 0;
-    for (; index < length; ++index) {
+    for (; index < length - 1; ++index) {
         message[index] = "abcdefghijklmnopqrstuvwxyz"[rand() % 26];
     }
+    message[length - 1] = '\0';
     struct message_t object = {
         .length = length,
         .message = message
@@ -50,6 +53,8 @@ int main(int argc, char **argv) {
     }
     if (CDS_IS_ERROR(cds_buffer_init(&buffer, sizeof(struct message_t)))) {
         printf("Could not initialise buffer.\n");
+    } else {
+        printf("Successfully initialised buffer.\n");
     }
 
     CDS_NEW_STATUS = cds_ok;

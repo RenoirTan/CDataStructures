@@ -84,7 +84,7 @@ int main(int argc, char **argv) {
 
     for (; index < 32; ++index) {
         message = random_message();
-        status = cds_buffer_push_back((cds_buffer_t *)&buffer, &message);
+        status = cds_buffer_push_back((cds_buffer_t *) &buffer, &message);
         CDS_IF_STATUS_ERROR(status) {
             printf("Could not add message. Index: %zu\n", index);
             goto errored;
@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
 
     printf("Message successfully put into the buffer.\n");
 
-    for (index = 0; index < cds_buffer_cds_get_length((cds_buffer_t) buffer); ++index) {
+    for (index = 0; index < cds_buffer_cds_get_length(buffer); ++index) {
         printf("[%zu]: ", index);
         debug_message(&buffer[index]);
     }
@@ -116,12 +116,12 @@ int main(int argc, char **argv) {
     goto success;
 
 success:
-    cds_buffer_free((cds_buffer_t) buffer, (cds_free_f)clean_message);
+    cds_buffer_free(buffer, (cds_free_f)clean_message);
     printf("Success.\n");
     return 0;
 
 errored:
-    cds_buffer_free((cds_buffer_t) buffer, (cds_free_f)clean_message);
+    cds_buffer_free(buffer, (cds_free_f)clean_message);
     printf("Errored out.\n");
     return 1;
 }

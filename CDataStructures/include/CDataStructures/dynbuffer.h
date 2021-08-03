@@ -17,7 +17,7 @@
  * to distinguish the "purposes" of variables marked as a `cds_array_t` and
  * a `cds_buffer_t`.
  */
-typedef cds_byte_t *cds_buffer_t;
+typedef cds_ptr_t cds_buffer_t;
 
 struct _cds_buffer_header_t {
     size_t type_size;

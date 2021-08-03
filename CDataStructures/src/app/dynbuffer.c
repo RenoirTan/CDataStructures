@@ -82,14 +82,8 @@ int main(int argc, char **argv) {
     size_t index = 0;
 
     for (; index < 32; ++index) {
-        struct message_t *message = CDS_NEW(struct message_t);
-        if (message == NULL) {
-            printf("Could not allocate memory for message.\n");
-            goto errored;
-        }
-        *message = random_message();
-        status = cds_buffer_push_back((cds_buffer_t *)&buffer, message);
-        free(message);
+        struct message_t message = random_message();
+        status = cds_buffer_push_back((cds_buffer_t *)&buffer, &message);
         CDS_IF_STATUS_ERROR(status) {
             printf("Could not add message. Index: %zu\n", index);
             goto errored;

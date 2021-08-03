@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <CDataStructures/stack.h>
@@ -19,7 +20,7 @@ int64_t check_brackets(char *pointer) {
     int64_t index;
 
     for (index = 0; pointer[index] != '\0'; ++index) {
-        printf("Current index: %lli\n", index);
+        printf("Current index: %" PRId64 "\n", index);
         char *top = cds_stack_top(stack);
         if (cds_stack_is_empty(stack)) {
             printf("The stack is empty.\n");
@@ -80,12 +81,12 @@ int main(int argc, char **argv) {
     printf("Checking if '%s' is syntactically correct.\n", buffer);
     int64_t loc = check_brackets(buffer);
     if (loc == -1) {
-        printf("No discrepancies!.\n");
+        printf("No discrepancies!\n");
     } else if (loc == -2) {
         printf("An error occurred.\n");
     } else if (loc >= 0) {
-        printf("Bad character at index %lli\n", loc);
+        printf("Bad character at index %" PRId64 "\n", loc);
     } else {
-        printf("Unknown status code: %lli\n", loc);
+        printf("Unknown status code: %" PRId64 "\n", loc);
     }
 }

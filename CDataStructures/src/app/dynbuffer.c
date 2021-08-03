@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <CDataStructures.h>
 
@@ -78,11 +79,11 @@ int main(int argc, char **argv) {
     printf("Buffer location: %p\n", buffer);
 
     CDS_NEW_STATUS = cds_ok;
-
     size_t index = 0;
+    struct message_t message;
 
     for (; index < 32; ++index) {
-        struct message_t message = random_message();
+        message = random_message();
         status = cds_buffer_push_back((cds_buffer_t *)&buffer, &message);
         CDS_IF_STATUS_ERROR(status) {
             printf("Could not add message. Index: %zu\n", index);
@@ -90,9 +91,28 @@ int main(int argc, char **argv) {
         }
     }
 
+    char *msg = malloc(8 * sizeof(char));
+    strcpy(msg, "WILDCARD");
+    struct message_t _message = {
+        .length = 8,
+        .message = msg
+    };
+    CDS_IF_STATUS_ERROR(cds_buffer_insert(
+        (cds_buffer_t *) &buffer,
+        5,
+        &_message
+    )) {
+        printf("Could not insert wildcard.\n");
+        goto errored;
+    }
+
     printf("Message successfully put into the buffer.\n");
 
-    for (index = 0; index < 32; ++index) {
+    for (
+        index = 0;
+        index < cds_buffer_get_data((cds_buffer_t) buffer)->header.length;
+        ++index
+    ) {
         printf("[%zu]: ", index);
         debug_message(&buffer[index]);
     }

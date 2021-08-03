@@ -64,3 +64,5 @@ bin/
 CDataStructures/include/CDataStructures/_config.h
 
 .vscode/c_cpp_properties.json
+
+logs/

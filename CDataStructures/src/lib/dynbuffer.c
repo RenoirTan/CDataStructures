@@ -250,7 +250,7 @@ cds_status_t _cds_buffer_make_gap(cds_buffer_data_t *self, size_t index) {
     size_t block_size = (self->header.length - index) * self->header.type_size;
     cds_byte_t *old_location = _cds_buffer_get(self, index);
     cds_byte_t *new_location = old_location + self->header.type_size;
-    memcpy(new_location, old_location, block_size);
+    memmove(new_location, old_location, block_size);
     return cds_ok;
 }
 
@@ -262,7 +262,7 @@ cds_status_t _cds_buffer_close_gap(cds_buffer_data_t *self, size_t index) {
         * self->header.type_size;
     cds_byte_t *new_location = _cds_buffer_get(self, index);
     cds_byte_t *old_location = old_location + self->header.type_size;
-    memcpy(new_location, old_location, block_size);
+    memmove(new_location, old_location, block_size);
     return cds_ok;
 }
 

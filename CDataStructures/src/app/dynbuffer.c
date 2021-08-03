@@ -20,11 +20,12 @@ static struct message_t random_message(void) {
     printf("[random_message] length of new message: %zu\n", length);
 #endif
     char *message = malloc(length * sizeof(char));
+    --length;
     size_t index = 0;
-    for (; index < length - 1; ++index) {
+    for (; index < length; ++index) {
         message[index] = "abcdefghijklmnopqrstuvwxyz"[rand() % 26];
     }
-    message[length - 1] = '\0';
+    message[length] = '\0';
     struct message_t object = {
         .length = length,
         .message = message
@@ -58,18 +59,22 @@ int main(int argc, char **argv) {
 
     srand((uint32_t) time(NULL));
 
-    cds_buffer_t buffer = cds_buffer_new();
+    struct message_t *buffer = (struct message_t *) cds_buffer_new();
     if (buffer == NULL) {
         printf("Could not allocate memory for the buffer.\n");
         return 1;
     } else {
         printf("Memory allocated for blank buffer.\n");
     }
-    if (CDS_IS_ERROR(cds_buffer_init(&buffer, sizeof(struct message_t)))) {
+    if (CDS_IS_ERROR(cds_buffer_init(
+        (cds_buffer_t *) &buffer,
+        sizeof(struct message_t)
+    ))) {
         printf("Could not initialise buffer.\n");
     } else {
         printf("Successfully initialised buffer.\n");
     }
+    printf("Buffer location: %p\n", buffer);
 
     CDS_NEW_STATUS = cds_ok;
 
@@ -82,10 +87,8 @@ int main(int argc, char **argv) {
             goto errored;
         }
         *message = random_message();
-        debug_message(message);
-        status = cds_buffer_push_back(&buffer, message);
+        status = cds_buffer_push_back((cds_buffer_t *)&buffer, message);
         free(message);
-        printf("Status: %d\n", status);
         CDS_IF_STATUS_ERROR(status) {
             printf("Could not add message. Index: %zu\n", index);
             goto errored;
@@ -94,15 +97,20 @@ int main(int argc, char **argv) {
 
     printf("Message successfully put into the buffer.\n");
 
+    for (index = 0; index < 32; ++index) {
+        printf("[%zu]: ", index);
+        debug_message(&buffer[index]);
+    }
+
     goto success;
 
 success:
-    cds_buffer_free(buffer, (cds_free_f) clean_message);
+    cds_buffer_free((cds_buffer_t) buffer, (cds_free_f)clean_message);
     printf("Success.\n");
     return 0;
 
 errored:
-    cds_buffer_free(buffer, (cds_free_f) clean_message);
+    cds_buffer_free((cds_buffer_t) buffer, (cds_free_f)clean_message);
     printf("Errored out.\n");
     return 1;
 }

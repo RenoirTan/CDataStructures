@@ -245,12 +245,28 @@ cds_status_t _cds_buffer_destroy(
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_make_gap(cds_buffer_data_t *self, size_t index) {
-    if (index >= self->header.length)
+#ifdef CDS_DEBUG
+    printf(" --> [_cds_buffer_make_gap]\n");
+#endif
+    if (index >= self->header.length) {
+#ifdef CDS_DEBUG
+        printf(" <-- [_cds_buffer_make_gap] Nothing to move\n");
+#endif
         return cds_ok;
+    }
     size_t block_size = (self->header.length - index) * self->header.type_size;
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_make_gap] Length: %zu\n", self->header.length);
+    printf("[_cds_buffer_make_gap] Index: %zu\n", index);
+    printf("[_cds_buffer_make_gap] Type size: %zu\n", self->header.type_size);
+    printf("[_cds_buffer_make_gap] Block size: %zu\n", block_size);
+#endif
     cds_byte_t *old_location = _cds_buffer_get(self, index);
     cds_byte_t *new_location = old_location + self->header.type_size;
     memmove(new_location, old_location, block_size);
+#ifdef CDS_DEBUG
+    printf(" <-- [_cds_buffer_make_gap]\n");
+#endif
     return cds_ok;
 }
 

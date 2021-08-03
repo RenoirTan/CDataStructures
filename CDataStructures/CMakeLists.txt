@@ -10,7 +10,7 @@ set(${PROJECT_NAME}-substitute-unstable ON CACHE BOOL "Whether to use the curren
 message(STATUS "Substitute using unstable API - ${${PROJECT_NAME}-substitute-unstable}")
 set(CMAKE_BUILD_TYPE Debug)
 message(STATUS "CMake Build Type - ${CMAKE_BUILD_TYPE}")
-set(${PROJECT_NAME}-debug-output ON CACHE BOOL "Whether to show debug output.")
+set(${PROJECT_NAME}-debug-output OFF CACHE BOOL "Whether to show debug output.")
 message(STATUS "Show debug output - ${${PROJECT_NAME}-debug-output}")
 set(${PROJECT_NAME}-use-alloc-lib OFF CACHE BOOL "Whether to use the custom alloc library written for this project.")
 message(STATUS "Use custom alloc library - ${${PROJECT_NAME}-use-alloc-lib}")

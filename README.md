@@ -141,4 +141,4 @@ Available data structures:
 
 | Branch Name | Description | Fixed |
 | ----------- | ----------- | ----- |
-| dynbuffer | `CDataStructures-dynbuffer: malloc.c:2379: sysmalloc: Assertion (old_top == initial_top (av) && old_size == 0) \|\| ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.` at cds_buffer_new. | ❌ |
+| dynbuffer | `CDataStructures-dynbuffer: malloc.c:2379: sysmalloc: Assertion (old_top == initial_top (av) && old_size == 0) \|\| ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.` at _cds_buffer_make_gap. | ✔️ |

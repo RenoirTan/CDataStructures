@@ -48,6 +48,7 @@ static void clean_message(struct message_t *message) {
     if (message == NULL || message->message == NULL)
         return;
     else {
+        printf("Freeing \"%s\"\n", message->message);
         free(message->message);
         message->message = NULL;
     }

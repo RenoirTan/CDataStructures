@@ -101,6 +101,24 @@ cds_buffer_data_t *cds_buffer_get_data(cds_buffer_t buffer) {
     }
 }
 
+#define _SIZE_T_FIELDS(applier) \
+    applier(type_size) \
+    applier(length) \
+    applier(reserved) \
+    applier(bytes_allocated)
+
+#define _SIZE_T_GETTER(field) \
+    CDS_INLINE \
+    size_t CDS_SMASH_PUBLIC(buffer, _CDS_SMASH_NAMES(get, field)) \
+    (cds_buffer_t buffer) { \
+        return cds_buffer_get_data(buffer)->header.field; \
+    }
+
+_SIZE_T_FIELDS(_SIZE_T_GETTER)
+
+#undef _SIZE_T_GETTER
+#undef _SIZE_T_FIELDS
+
 /**
  * @brief Calculate the number of required bytes based on the desired
  * `length` of the buffer.

@@ -108,11 +108,7 @@ int main(int argc, char **argv) {
 
     printf("Message successfully put into the buffer.\n");
 
-    for (
-        index = 0;
-        index < cds_buffer_get_data((cds_buffer_t) buffer)->header.length;
-        ++index
-    ) {
+    for (index = 0; index < cds_buffer_cds_get_length((cds_buffer_t) buffer); ++index) {
         printf("[%zu]: ", index);
         debug_message(&buffer[index]);
     }

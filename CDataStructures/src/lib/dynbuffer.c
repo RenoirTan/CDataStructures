@@ -56,10 +56,21 @@ cds_status_t _cds_buffer_realloc_data(
     cds_buffer_data_t **self,
     size_t bytes
 ) {
+#ifdef CDS_DEBUG
+    printf(" --> [_cds_buffer_realloc_data]\n");
+    printf("[_cds_buffer_realloc_data] amount of bytes required: %zu\n", bytes);
+    printf("[_cds_buffer_realloc_data] old: %p\n", *self);
+#endif
     cds_buffer_data_t *new = realloc(*self, bytes);
     CDS_IF_NULL_RETURN_ALLOC_ERROR(new);
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_realloc_data] new: %p\n", new);
+#endif
     *self = new;
     _HEAD(self).bytes_allocated = bytes;
+#ifdef CDS_DEBUG
+    printf(" <-- [_cds_buffer_realloc_data]\n");
+#endif
     return cds_ok;
 }
 
@@ -119,22 +130,37 @@ cds_status_t _cds_buffer_reserve(
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_increase_reserved(cds_buffer_data_t **self) {
+#ifdef CDS_DEBUG
+    printf(" --> [_cds_buffer_increase_reserved]\n");
+#endif
     size_t extra = _HEAD(self).reserved;
+#ifdef CDS_DEBUG
+    printf("[_cds_buffer_increase_reserved] Amount of space already inside: %zu\n", extra);
+#endif
     if (extra == 0)
         return _cds_buffer_reserve(self, 1);
     CDS_NEW_STATUS = cds_ok;
     while (extra > 0) {
         size_t new_capacity = _HEAD(self).reserved + extra;
+#ifdef CDS_DEBUG
+        printf("[_cds_buffer_increase_reserved] Trying new capacity: %zu\n", new_capacity);
+#endif
         switch (status = _cds_buffer_reserve(self, new_capacity)) {
             case cds_ok:
+#ifdef CDS_DEBUG
+                printf(" <-- [_cds_buffer_increase_reserved] Successfully reserved\n");
+#endif
                 return cds_ok;
             case cds_alloc_error:
                 extra >>= 1;
-                break;
+                continue;
             default:
                 return status;
         }
     }
+#ifdef CDS_DEBUG
+    printf(" <-- [_cds_buffer_increase_reserved] Error\n");
+#endif
     return cds_error;
 }
 
@@ -163,16 +189,33 @@ cds_status_t _cds_buffer_fit(cds_buffer_data_t **self) {
 
 CDS_PRIVATE
 cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
+#ifdef CDS_DEBUG
+    printf(" --> [_cds_buffer_set_length]\n");
+#endif
 #ifdef CDS_USE_ALLOC_LIB
+#   ifdef CDS_DEBUG
+    printf(" <-- [_cds_buffer_set_length] realloc_lazy\n");
+#   endif
     return _cds_buffer_realloc_lazy(self, length);
 #else
     if (length > _HEAD(self).reserved) {
+#ifdef CDS_DEBUG
+        printf("[_cds_buffer_set_length] More space required\n");
+#endif
         CDS_NEW_STATUS = cds_ok;
         CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_increase_reserved(self));
         _HEAD(self).length = length;
+#ifdef CDS_DEBUG
+        printf("[_cds_buffer_set_length] New length: %zu\n", _HEAD(self).length);
+        printf(" <-- [_cds_buffer_set_length]\n");
+#endif
         return status;
     } else {
         _HEAD(self).length = length;
+#ifdef CDS_DEBUG
+        printf("[_cds_buffer_set_length] New length: %zu\n", _HEAD(self).length);
+        printf(" <-- [_cds_buffer_set_length] No more space required\n");
+#endif
         return cds_ok;
     }
 #endif
@@ -279,7 +322,7 @@ cds_buffer_t cds_buffer_new(void) {
 #ifdef CDS_DEBUG
     printf(" --> [cds_buffer_new]\n");
 #endif
-    cds_buffer_data_t *self = malloc(sizeof(cds_buffer_data_t) + 1);
+    cds_buffer_data_t *self = malloc(sizeof(cds_buffer_data_t));
 #ifdef CDS_DEBUG
     printf("[cds_buffer_new] Malloced!\n");
 #endif
@@ -292,7 +335,7 @@ cds_buffer_t cds_buffer_new(void) {
 #ifdef CDS_DEBUG
     printf(" <-- [cds_buffer_new] Returning...\n");
 #endif
-    self->header.bytes_allocated = 1;
+    self->header.bytes_allocated = 0;
     return cds_buffer_get_inner(self);
 }
 
@@ -418,6 +461,8 @@ cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
         *buffer = cds_buffer_get_inner(self);
     }
 #ifdef CDS_DEBUG
+    printf("[cds_buffer_push_back] New data location: %p\n", self);
+    printf("[cds_buffer_push_back] New buffer location: %p\n", *buffer);
     printf(" <-- [cds_buffer_push_back]\n");
 #endif
     return status;

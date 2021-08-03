@@ -4,7 +4,7 @@
 #include <CDataStructures.h>
 
 
-#define MAX_MESSAGE_LEN 128
+#define MAX_MESSAGE_LEN 16
 
 
 struct message_t {
@@ -16,6 +16,9 @@ static struct message_t random_message(void) {
     size_t length = rand() % MAX_MESSAGE_LEN;
     if (length == 0)
         length = 1;
+#ifdef CDS_DEBUG
+    printf("[random_message] length of new message: %zu\n", length);
+#endif
     char *message = malloc(length * sizeof(char));
     size_t index = 0;
     for (; index < length - 1; ++index) {
@@ -27,6 +30,17 @@ static struct message_t random_message(void) {
         .message = message
     };
     return object;
+}
+
+static int debug_message(struct message_t *message) {
+    return printf(
+        "struct message_t {\n"
+        "    .length = %zu,\n"
+        "    .message = %s\n"
+        "}\n",
+        message->length,
+        message->message
+    );
 }
 
 static void clean_message(struct message_t *message) {
@@ -62,8 +76,17 @@ int main(int argc, char **argv) {
     size_t index = 0;
 
     for (; index < 32; ++index) {
-        struct message_t message = random_message();
-        CDS_IF_STATUS_ERROR(cds_buffer_push_back(&buffer, &message)) {
+        struct message_t *message = CDS_NEW(struct message_t);
+        if (message == NULL) {
+            printf("Could not allocate memory for message.\n");
+            goto errored;
+        }
+        *message = random_message();
+        debug_message(message);
+        status = cds_buffer_push_back(&buffer, message);
+        free(message);
+        printf("Status: %d\n", status);
+        CDS_IF_STATUS_ERROR(status) {
             printf("Could not add message. Index: %zu\n", index);
             goto errored;
         }

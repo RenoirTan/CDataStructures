@@ -313,7 +313,9 @@ cds_status_t _cds_buffer_insert(
 #ifdef CDS_DEBUG
     printf("[_cds_buffer_insert] Making gap\n");
 #endif
+    --(_HEAD(self).length);
     CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_make_gap(*self, index));
+    ++(_HEAD(self).length);
 #ifdef CDS_DEBUG
     printf("[_cds_buffer_insert] Copying new element into buffer\n");
 #endif

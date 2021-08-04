@@ -106,12 +106,34 @@ int main(int argc, char **argv) {
         goto errored;
     }
 
-    printf("Message successfully put into the buffer.\n");
+    struct message_t dumpyard = {0};
 
+    CDS_IF_STATUS_ERROR(cds_buffer_remove(&buffer, 10, &dumpyard)) {
+        printf("Could not remove item.\n");
+        goto errored;
+    } else {
+        printf("Removed message at index 10.\n");
+        debug_message(&dumpyard);
+        clean_message(&dumpyard);
+    }
+
+    CDS_IF_STATUS_ERROR(cds_buffer_pop_back(&buffer, &dumpyard)) {
+        printf("Could not pop last item.\n");
+        goto errored;
+    } else {
+        printf("Removed last message.\n");
+        debug_message(&dumpyard);
+        clean_message(&dumpyard);
+    }
+
+    printf("Messages successfully piled onto the buffer.\n");
+
+    /*
     for (index = 0; index < cds_buffer_cds_get_length(buffer); ++index) {
         printf("[%zu]: ", index);
         debug_message(&buffer[index]);
     }
+    */
 
     goto success;
 

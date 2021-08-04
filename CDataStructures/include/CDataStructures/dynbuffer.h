@@ -257,4 +257,52 @@ cds_status_t cds_buffer_push_front(cds_buffer_t *buffer, cds_ptr_t src);
 CDS_PUBLIC
 cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src);
 
+
+/**
+ * @brief Remove an item in the buffer at a specified index. As you may want
+ * to use the item's data somewhere else, you can pass in a pointer to the
+ * `dest` parameter to copy the removed data to.
+ * 
+ * @param buffer The buffer you want to remove the item from.
+ * @param index The index of the element.
+ * @param dest The destination pointer which contains the address of the
+ * memory block where you want to copy the discarded element's data to. If
+ * the pointer is NULL, then no data will be copied over.
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_remove(
+    cds_buffer_t *buffer,
+    size_t index,
+    cds_ptr_t dest
+);
+
+
+/**
+ * @brief Remove the first item in the buffer. The data of the now deleted
+ * element will be copied to `dest` if it's not NULL.
+ * 
+ * @see cds_buffer_remove
+ * 
+ * @param buffer The buffer you want to remove the item from.
+ * @param dest The destination pointer for the removed data.
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_pop_front(cds_buffer_t *buffer, cds_ptr_t dest);
+
+
+/**
+ * @brief Remove the last item in the buffer. The data of the now deleted
+ * element will be copied to `dest` if it's not NULL.
+ * 
+ * @see cds_buffer_remove
+ * 
+ * @param buffer The buffer you want to remove the item from.
+ * @param dest The destination pointer for the removed data.
+ * @return cds_status_t The status code of this operation.
+ */
+CDS_PUBLIC
+cds_status_t cds_buffer_pop_back(cds_buffer_t *buffer, cds_ptr_t dest);
+
 #endif

@@ -278,7 +278,7 @@ cds_status_t _cds_buffer_close_gap(cds_buffer_data_t *self, size_t index) {
     size_t block_size = (self->header.length - index - 1)
         * self->header.type_size;
     cds_byte_t *new_location = _cds_buffer_get(self, index);
-    cds_byte_t *old_location = old_location + self->header.type_size;
+    cds_byte_t *old_location = new_location + self->header.type_size;
     memmove(new_location, old_location, block_size);
     return cds_ok;
 }
@@ -325,6 +325,27 @@ cds_status_t _cds_buffer_insert(
 #ifdef CDS_DEBUG
     printf(" <-- [_cds_buffer_insert]\n");
 #endif
+    return status;
+}
+
+CDS_PRIVATE
+cds_status_t _cds_buffer_remove(
+    cds_buffer_data_t **self,
+    size_t index,
+    cds_ptr_t dest
+) {
+    if (index >= _HEAD(self).length) {
+        return cds_index_error;
+    }
+    CDS_NEW_STATUS = cds_ok;
+    if (dest != NULL) {
+        memcpy(dest, _cds_buffer_get(*self, index), _HEAD(self).type_size);
+    }
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_close_gap(*self, index));
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_set_length(
+        self,
+        _HEAD(self).length - 1
+    ));
     return status;
 }
 
@@ -454,14 +475,6 @@ cds_status_t cds_buffer_push_front(cds_buffer_t *buffer, cds_ptr_t src) {
     return cds_buffer_insert(buffer, 0, src);
 }
 
-/**
- * @brief Insert an item to the end of the buffer.
- * 
- * @param buffer The buffer which you want to insert the element into.
- * @param src A pointer pointing to the data to be inserted into the buffer.
- * 
- * @return cds_status_t The status code of this operation.
- */
 CDS_PUBLIC
 cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
 #ifdef CDS_DEBUG
@@ -484,5 +497,44 @@ cds_status_t cds_buffer_push_back(cds_buffer_t *buffer, cds_ptr_t src) {
     printf("[cds_buffer_push_back] New buffer location: %p\n", *buffer);
     printf(" <-- [cds_buffer_push_back]\n");
 #endif
+    return status;
+}
+
+CDS_PUBLIC
+cds_status_t cds_buffer_remove(
+    cds_buffer_t *buffer,
+    size_t index,
+    cds_ptr_t dest
+) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
+    cds_buffer_data_t *self;
+    _VALIDATE_BUF(*buffer);
+    CDS_IF_NULL_RETURN_ERROR(self);
+    CDS_NEW_STATUS = cds_ok;
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_remove(&self, index, dest)) else {
+        *buffer = cds_buffer_get_inner(self);
+    }
+    return status;
+}
+
+CDS_PUBLIC
+cds_status_t cds_buffer_pop_front(cds_buffer_t *buffer, cds_ptr_t dest) {
+    return cds_buffer_remove(buffer, 0, dest);
+}
+
+CDS_PUBLIC
+cds_status_t cds_buffer_pop_back(cds_buffer_t *buffer, cds_ptr_t dest) {
+    CDS_IF_NULL_RETURN_ERROR(buffer);
+    cds_buffer_data_t *self;
+    _VALIDATE_BUF(*buffer);
+    CDS_IF_NULL_RETURN_ERROR(self);
+    CDS_NEW_STATUS = cds_ok;
+    CDS_IF_ERROR_RETURN_STATUS(_cds_buffer_remove(
+        &self,
+        self->header.length - 1,
+        dest
+    )) else {
+        *buffer = cds_buffer_get_inner(self);
+    }
     return status;
 }

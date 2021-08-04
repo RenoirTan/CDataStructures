@@ -1,0 +1,18 @@
+#ifndef _CDATASTRUCTURES_CONFIG_H
+#   define _CDATASTRUCTURES_CONFIG_H
+
+#   cmakedefine CDS_DEBUG
+#   cmakedefine CDS_USE_ALLOC_LIB
+
+#   if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
+#       define _CDS_COMPILER "MSVC"
+#       pragma warning(disable : 4996)
+#   elif defined(__GNUC__) && !defined(__clang__)
+#       define _CDS_COMPILER "GCC"
+#   elif defined(__clang__)
+#       define _CDS_COMPILER "clang"
+#   else
+#       define _CDS_COMPILER "Unknown"
+#   endif
+
+#endif

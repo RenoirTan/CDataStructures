@@ -8,6 +8,6 @@ if errorlevel 1 (
     echo CMake found.
 )
 
-cmake -S .\CDataStructures -B .\build
+cmake -S .\CDataStructures -B .\build %*
 
 @echo on

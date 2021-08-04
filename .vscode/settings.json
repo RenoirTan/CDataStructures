@@ -3,12 +3,17 @@
         "CMakeLists.txt": "cmake",
         "*.txt": "plaintext",
         "*.html": "html",
+        "*.prolog": "prolog",
         "vector.h": "c",
         "string.h": "c",
         "corecrt.h": "c",
         "vcruntime_string.h": "c",
         "_common.h": "c",
         "stack.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "cdatastructures.h": "c",
+        "_config.h": "c",
+        "dynbuffer.h": "c",
+        "inttypes.h": "c"
     }
 }

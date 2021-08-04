@@ -60,3 +60,13 @@ build/
 docs/latex
 docs/man
 docs/rtf
+docs/
+
+bin/
+
+# Use gen.sh or gen.bat to get CMake to generate the file with _config.h.in
+CDataStructures/include/CDataStructures/_config.h
+
+.vscode/c_cpp_properties.json
+
+logs/

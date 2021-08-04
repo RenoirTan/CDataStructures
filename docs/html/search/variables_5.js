@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['next_210',['next',['../d5/d34/struct__cds__unary__node__t.html#a96322580ef672b784bbbbef06f433ac9',1,'_cds_unary_node_t']]]
+  ['length_278',['length',['../d1/db3/struct__cds__buffer__header__t.html#ae809d5359ac030c60a30a8f0b2294b82',1,'_cds_buffer_header_t::length()'],['../d5/d5b/struct__cds__vector__t.html#ae809d5359ac030c60a30a8f0b2294b82',1,'_cds_vector_t::length()']]]
 ];

@@ -140,7 +140,17 @@ Data Structures</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Unary Node   </td><td class="markdownTableBodyNone">CDataStructures-unarynode   </td><td class="markdownTableBodyNone">unary-node   </td><td class="markdownTableBodyNone">✔️   </td><td class="markdownTableBodyNone">A node which points to one other node, forming a chain which can be used in singly-linked lists, merkle trees and stacks.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Vector   </td><td class="markdownTableBodyNone">CDataStructures-vector   </td><td class="markdownTableBodyNone">vector   </td><td class="markdownTableBodyNone">✔️   </td><td class="markdownTableBodyNone">A dynamically allocated region of memory which can store an array of elements. This data structure can expand and shrink in size when needed.   </td></tr>
+<td class="markdownTableBodyNone">Vector   </td><td class="markdownTableBodyNone">CDataStructures-vector   </td><td class="markdownTableBodyNone">vector   </td><td class="markdownTableBodyNone">✔️   </td><td class="markdownTableBodyNone">A dynamically allocated region of memory which can store an array of elements. This data structure can expand and shrink in size when needed.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Dynamic Buffer   </td><td class="markdownTableBodyNone">CDataStructures-dynbuffer   </td><td class="markdownTableBodyNone">dynbuffer   </td><td class="markdownTableBodyNone">✔️   </td><td class="markdownTableBodyNone">A dynamically allocated buffer, has similar capabilities as a typical <code>vector</code> but the elements are stored directly adjacent to the buffer's metadata.   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Current Bugs</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Branch Name   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Fixed    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">dynbuffer   </td><td class="markdownTableBodyNone">&lsquo;CDataStructures-dynbuffer: malloc.c:2379: sysmalloc: Assertion (old_top == initial_top (av) &amp;&amp; old_size == 0) || ((unsigned long) (old_size) &gt;= MINSIZE &amp;&amp; prev_inuse (old_top) &amp;&amp; ((unsigned long) old_end &amp; (pagesize - 1)) == 0)&rsquo; failed.` at _cds_buffer_make_gap.   </td><td class="markdownTableBodyNone">✔️   </td></tr>
 </table>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

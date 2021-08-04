@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_207',['data',['../d5/d34/struct__cds__unary__node__t.html#a09b87969402fb69fc9a245e7612fb60a',1,'_cds_unary_node_t']]]
+  ['constant_5foffset_274',['constant_offset',['../dd/db5/struct__cds__alloc__config__t.html#ae0d5c6b6245dd219de827417f72f4186',1,'_cds_alloc_config_t']]]
 ];

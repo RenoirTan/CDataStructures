@@ -223,7 +223,8 @@ cds_status_t _cds_buffer_set_length(cds_buffer_data_t **self, size_t length) {
 
 CDS_PRIVATE
 cds_ptr_t _cds_buffer_get(cds_buffer_data_t *self, size_t index) {
-    return cds_buffer_get_inner(self) + (index * self->header.type_size);
+    return ((cds_byte_t *) cds_buffer_get_inner(self))
+        + (index * self->header.type_size);
 }
 
 CDS_PRIVATE

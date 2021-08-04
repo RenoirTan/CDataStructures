@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    char *msg = malloc(8 * sizeof(char));
+    char *msg = malloc(9 * sizeof(char));
     strcpy(msg, "WILDCARD");
     struct message_t _message = {
         .length = 8,

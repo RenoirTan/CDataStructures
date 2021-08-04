@@ -387,7 +387,7 @@ cds_status_t cds_buffer_destroy(cds_buffer_t *buffer, cds_free_f clean_element) 
     cds_buffer_data_t *self;
     _VALIDATE_BUF(*buffer);
     CDS_IF_NULL_RETURN_ERROR(self);
-    CDS_NEW_STATUS;
+    CDS_NEW_STATUS = cds_ok;
     if (!CDS_IS_ERROR(_cds_buffer_destroy(&self, clean_element))) {
         *buffer = cds_buffer_get_inner(self);
     }

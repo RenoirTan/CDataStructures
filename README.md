@@ -135,7 +135,7 @@ Available data structures:
 | Singly-linked List | CDataStructures-slist | singly-linked-list | ✔️ | A list where each element points to the next element in the list via a pointer. |
 | Unary Node | CDataStructures-unarynode | unary-node | ✔️ | A node which points to one other node, forming a chain which can be used in singly-linked lists, merkle trees and stacks. |
 | Vector | CDataStructures-vector | vector | ✔️ | A dynamically allocated region of memory which can store an array of elements. This data structure can expand and shrink in size when needed. |
-| Dynamic Buffer | CDataStructures-dynbuffer | dynbuffer | ❌ | A dynamically allocated buffer, has similar capabilities as a typical `vector` but the elements are stored directly adjacent to the buffer's metadata.
+| Dynamic Buffer | CDataStructures-dynbuffer | dynbuffer | ✔️ | A dynamically allocated buffer, has similar capabilities as a typical `vector` but the elements are stored directly adjacent to the buffer's metadata.
 
 # Current Bugs
 
